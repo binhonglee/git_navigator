@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Git Navigator</title>
+    <meta
+      name="description"
+      content="Git Navigator is a VS Code extension for visual Git operations: commit graph, drag-and-drop rebase, conflict resolution, and more."
+    />
+    <meta property="og:title" content="Git Navigator" />
+    <meta
+      property="og:description"
+      content="Local-first visual Git operations inside your editor."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gitnav.xyz/" />
+    <meta property="og:image" content="https://gitnav.xyz/static/landing.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f8;
+        --surface: #ffffff;
+        --text: #14171f;
+        --muted: #596275;
+        --accent: #1f6feb;
+        --border: #d7dbe0;
+        --shadow: 0 14px 30px rgba(12, 18, 28, 0.08);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          --bg: #0f1116;
+          --surface: #151922;
+          --text: #e6e9f0;
+          --muted: #a1a8b5;
+          --accent: #6da6ff;
+          --border: #2a3240;
+          --shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      header {
+        padding: 64px 24px 40px;
+      }
+
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+
+      .hero {
+        display: grid;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 3vw, 3.2rem);
+        margin: 0 0 12px;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin: 0 0 24px;
+        line-height: 1.6;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        border-radius: 8px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--accent);
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        background: var(--surface);
+      }
+
+      section {
+        padding: 32px 24px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 12px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: 0 6px 16px rgba(12, 18, 28, 0.04);
+      }
+
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      figure {
+        margin: 0;
+      }
+
+      figure img,
+      figure video {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: #0f1116;
+      }
+
+      figure video {
+        cursor: pointer;
+      }
+
+      figcaption {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .showcase {
+        display: grid;
+        gap: 24px;
+      }
+
+      .showcase-item {
+        display: grid;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .showcase-text {
+        padding: 16px;
+        border-radius: 12px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+
+      .showcase-text h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+
+      .showcase-text p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .requirements {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .whats-new {
+        display: grid;
+        gap: 16px;
+      }
+
+      .carousel {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .carousel-card {
+        min-width: min(360px, 85vw);
+        scroll-snap-align: start;
+        padding: 18px;
+        border-radius: 12px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: 0 6px 16px rgba(12, 18, 28, 0.04);
+      }
+
+      .carousel-card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+
+      .carousel-card ul {
+        padding-left: 18px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .carousel-hint {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .carousel::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .carousel::-webkit-scrollbar-thumb {
+        background: rgba(89, 98, 117, 0.4);
+        border-radius: 999px;
+      }
+
+      .badge {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        font-weight: 600;
+      }
+
+      footer {
+        padding: 32px 24px 56px;
+        color: var(--muted);
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 7, 12, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+
+      .overlay.is-active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .overlay-content {
+        position: relative;
+        max-width: min(960px, 100%);
+        width: 100%;
+        padding-top: 28px;
+      }
+
+      .overlay video {
+        width: 100%;
+        max-height: 80vh;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: #0f1116;
+        object-fit: contain;
+        display: block;
+      }
+
+      .overlay-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .no-scroll {
+        overflow: hidden;
+      }
+
+      @media (min-width: 920px) {
+        .hero {
+          grid-template-columns: 1.05fr 1fr;
+        }
+
+        .showcase-item {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .showcase-item.reverse {
+          direction: rtl;
+        }
+
+        .showcase-item.reverse > * {
+          direction: ltr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container hero">
+        <div>
+          <h1>Git Navigator</h1>
+          <p>
+            Git Navigator is a VS Code extension that puts Git actions on a visual
+            canvas. Drag, click, and resolve without leaving your editor.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button"
+              href="https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator"
+            >
+              VS Code Marketplace
+            </a>
+            <a
+              class="button"
+              href="https://open-vsx.org/extension/binhonglee/git-navigator"
+            >
+              Open VSX
+            </a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="static/landing.png" alt="Git Navigator overview" />
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Why Git Navigator?</h2>
+        <div class="showcase">
+          <div class="showcase-item">
+            <figure>
+              <video src="static/commit-graph.mp4" autoplay muted loop playsinline></video>
+              <figcaption>Interactive commit graph with branch and tag labels.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Focused commit graph</h3>
+              <p>See branches, tags, and history at a glance with a clean, readable graph.</p>
+            </div>
+          </div>
+          <div class="showcase-item reverse">
+            <figure>
+              <video src="static/rebase.mp4" autoplay muted loop playsinline></video>
+              <figcaption>Drag commits to rebase visually.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Drag-and-drop rebase</h3>
+              <p>Reorder commits visually and preview results before applying.</p>
+            </div>
+          </div>
+          <div class="showcase-item">
+            <figure>
+              <video src="static/uncommitted.mp4" autoplay muted loop playsinline></video>
+              <figcaption>Stage, unstage, and split commits with precision.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Commit control</h3>
+              <p>Split commits, stage line-by-line, amend, or uncommit without CLI hops.</p>
+            </div>
+          </div>
+          <div class="showcase-item reverse">
+            <figure>
+              <video src="static/conflict.mp4" autoplay muted loop playsinline></video>
+              <figcaption>Resolve conflicts with block-level actions.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Conflict resolution</h3>
+              <p>Resolve conflicts with clear actions and block-level choices.</p>
+            </div>
+          </div>
+          <div class="showcase-item">
+            <figure>
+              <video
+                src="static/create-branch-anywhere.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+              <figcaption>Create branches and tags directly from the graph.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Branches & tags</h3>
+              <p>Create, delete, and manage branches and tags without leaving the graph.</p>
+            </div>
+          </div>
+          <div class="showcase-item reverse">
+            <figure>
+              <video src="static/gitlab-mr-ci.mp4" autoplay muted loop playsinline></video>
+              <figcaption>Optional PR/MR and CI status in the commit list.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Provider metadata</h3>
+              <p>Surface PR/MR status and CI checks from GitHub, GitLab, or Bitbucket.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Requirements</h2>
+        <div class="requirements">
+          <span class="badge">VS Code 1.85+</span>
+          <span class="badge">Any Git repository</span>
+          <span class="badge">No extra dependencies</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container whats-new">
+        <h2 class="section-title">What's new</h2>
+        <div class="carousel" aria-label="Changelog updates">
+          <!-- CHANGELOG_CARDS_START -->
+          <!-- Auto-generated by scripts/update-site.js -->
+          <article class="carousel-card">
+            <h3>0.0.4 · 2026-01-13</h3>
+            <ul>
+              <li>GitHub App device login for optional metadata sign-in</li>
+              <li>GitLab merge request and pipeline metadata support (PAT-based)</li>
+              <li>Bitbucket Cloud pull request and pipeline metadata support (API token)</li>
+              <li>Improved Git lock handling overlay</li>
+              <li>Switched to remote-safe file access</li>
+              <li>Show commits directly when the graph contains a single commit</li>
+            </ul>
+          </article>
+          <article class="carousel-card">
+            <h3>0.0.3 · 2026-01-09</h3>
+            <ul>
+              <li>Character-level diff highlights</li>
+              <li>Clickable placeholders in the commit graph</li>
+              <li>New icon</li>
+              <li>Simple sidebar</li>
+              <li>Consolidated diff view with context lines</li>
+            </ul>
+          </article>
+          <article class="carousel-card">
+            <h3>0.0.2 · 2026-01-07</h3>
+            <ul>
+              <li>Auto-open the extension on install</li>
+              <li>Split commits on non-tip HEAD</li>
+              <li>Conflict resolution graph overlay</li>
+              <li>Stash drop conflict handling</li>
+              <li>Ignore extra files in `.vscodeignore` for smaller extension bundles</li>
+              <li>Refine changes screen UI updates</li>
+            </ul>
+          </article>
+<!-- CHANGELOG_CARDS_END -->
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        Git Navigator keeps Git simple so you can focus on the code.
+      </div>
+    </footer>
+
+    <div class="overlay" id="video-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close video">
+          ×
+        </button>
+        <video autoplay muted loop playsinline controls></video>
+      </div>
+    </div>
+
+    <script>
+      const overlay = document.getElementById("video-overlay");
+      const overlayVideo = overlay.querySelector("video");
+      const closeButton = overlay.querySelector(".overlay-close");
+
+      const closeOverlay = () => {
+        overlay.classList.remove("is-active");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("no-scroll");
+        overlayVideo.pause();
+        overlayVideo.removeAttribute("src");
+        overlayVideo.load();
+      };
+
+      document.querySelectorAll("figure video").forEach((video) => {
+        video.addEventListener("click", () => {
+          overlayVideo.src = video.currentSrc || video.src;
+          overlayVideo.currentTime = 0;
+          overlayVideo.play();
+          overlay.classList.add("is-active");
+          overlay.setAttribute("aria-hidden", "false");
+          document.body.classList.add("no-scroll");
+        });
+      });
+
+      closeButton.addEventListener("click", closeOverlay);
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+          closeOverlay();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && overlay.classList.contains("is-active")) {
+          closeOverlay();
+        }
+      });
+    </script>
+  </body>
+</html>

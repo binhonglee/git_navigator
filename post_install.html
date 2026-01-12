@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Git Navigator · GitHub App Installed</title>
+    <meta
+      name="description"
+      content="Finish Git Navigator GitHub App installation and optionally install for another organization."
+    />
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f8;
+        --surface: #ffffff;
+        --text: #14171f;
+        --muted: #596275;
+        --accent: #1f6feb;
+        --border: #d7dbe0;
+        --shadow: 0 14px 30px rgba(12, 18, 28, 0.08);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          --bg: #0f1116;
+          --surface: #151922;
+          --text: #e6e9f0;
+          --muted: #a1a8b5;
+          --accent: #6da6ff;
+          --border: #2a3240;
+          --shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .card {
+        max-width: 560px;
+        width: 100%;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 1.8rem;
+      }
+
+      p {
+        margin: 0 0 20px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        border-radius: 8px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--accent);
+      }
+
+      .note {
+        margin-top: 16px;
+        font-size: 0.95rem;
+      }
+
+      .note[hidden] {
+        display: none;
+      }
+
+      .question[hidden],
+      .actions[hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>GitHub App installed</h1>
+      <p class="question">
+        Want to install the Git Navigator GitHub App for another organization or team?
+      </p>
+      <div class="actions">
+        <a
+          class="button"
+          href="https://github.com/apps/vscode-git-navigator/installations/select_target"
+        >
+          Install for another org/team
+        </a>
+        <button class="button secondary" type="button" id="done-button">
+          No, I'm done
+        </button>
+      </div>
+      <p class="note" id="done" hidden>
+        You're all set. You can return to your editor now.
+      </p>
+    </div>
+
+    <script>
+      const doneButton = document.getElementById("done-button");
+      const doneNote = document.getElementById("done");
+      const question = document.querySelector(".question");
+      const actions = document.querySelector(".actions");
+
+      doneButton.addEventListener("click", () => {
+        doneNote.hidden = false;
+        question.hidden = true;
+        actions.hidden = true;
+      });
+    </script>
+  </body>
+</html>
