@@ -18,337 +18,17 @@
     <meta property="og:image" content="https://gitnav.xyz/static/landing.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="static/icon.png" type="image/png" />
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f6f7f8;
-        --surface: #ffffff;
-        --text: #14171f;
-        --muted: #596275;
-        --accent: #1f6feb;
-        --border: #d7dbe0;
-        --shadow: 0 14px 30px rgba(12, 18, 28, 0.08);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          color-scheme: dark;
-          --bg: #0f1116;
-          --surface: #151922;
-          --text: #e6e9f0;
-          --muted: #a1a8b5;
-          --accent: #6da6ff;
-          --border: #2a3240;
-          --shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
-        }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-        color: var(--text);
-        background: var(--bg);
-      }
-
-      a {
-        color: inherit;
-      }
-
-      header {
-        padding: 64px 24px 40px;
-      }
-
-      .container {
-        max-width: 1080px;
-        margin: 0 auto;
-      }
-
-      .hero {
-        display: grid;
-        gap: 32px;
-        align-items: center;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.2rem, 3vw, 3.2rem);
-        margin: 0 0 12px;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-        color: var(--muted);
-        margin: 0 0 24px;
-        line-height: 1.6;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 20px;
-        border-radius: 8px;
-        border: 1px solid var(--accent);
-        background: var(--accent);
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .button.secondary {
-        background: transparent;
-        color: var(--accent);
-      }
-
-      .hero-media img {
-        width: 100%;
-        border-radius: 16px;
-        box-shadow: var(--shadow);
-        background: var(--surface);
-      }
-
-      section {
-        padding: 32px 24px;
-      }
-
-      .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 16px;
-      }
-
-      .grid {
-        display: grid;
-        gap: 20px;
-      }
-
-      .card {
-        padding: 20px;
-        border-radius: 12px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        box-shadow: 0 6px 16px rgba(12, 18, 28, 0.04);
-      }
-
-      .card h3 {
-        margin-top: 0;
-        margin-bottom: 8px;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.5;
-      }
-
-      figure {
-        margin: 0;
-      }
-
-      figure img,
-      figure video {
-        width: 100%;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        background: #0f1116;
-      }
-
-      figure video {
-        cursor: pointer;
-      }
-
-      figcaption {
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .showcase {
-        display: grid;
-        gap: 24px;
-      }
-
-      .showcase-item {
-        display: grid;
-        gap: 16px;
-        align-items: center;
-      }
-
-      .showcase-text {
-        padding: 16px;
-        border-radius: 12px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-      }
-
-      .showcase-text h3 {
-        margin-top: 0;
-        margin-bottom: 8px;
-      }
-
-      .showcase-text p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.5;
-      }
-
-      .requirements {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .whats-new {
-        display: grid;
-        gap: 16px;
-      }
-
-      .carousel {
-        display: flex;
-        gap: 16px;
-        overflow-x: auto;
-        padding-bottom: 8px;
-        scroll-snap-type: x mandatory;
-      }
-
-      .carousel-card {
-        min-width: min(360px, 85vw);
-        scroll-snap-align: start;
-        padding: 18px;
-        border-radius: 12px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        box-shadow: 0 6px 16px rgba(12, 18, 28, 0.04);
-      }
-
-      .carousel-card h3 {
-        margin-top: 0;
-        margin-bottom: 8px;
-      }
-
-      .carousel-card ul {
-        padding-left: 18px;
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.5;
-      }
-
-      .carousel-hint {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .carousel::-webkit-scrollbar {
-        height: 8px;
-      }
-
-      .carousel::-webkit-scrollbar-thumb {
-        background: rgba(89, 98, 117, 0.4);
-        border-radius: 999px;
-      }
-
-      .badge {
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        font-weight: 600;
-      }
-
-      footer {
-        padding: 32px 24px 56px;
-        color: var(--muted);
-      }
-
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(5, 7, 12, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 24px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease;
-      }
-
-      .overlay.is-active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .overlay-content {
-        position: relative;
-        max-width: min(960px, 100%);
-        width: 100%;
-        padding-top: 28px;
-      }
-
-      .overlay video {
-        width: 100%;
-        max-height: 80vh;
-        border-radius: 16px;
-        border: 1px solid var(--border);
-        background: #0f1116;
-        object-fit: contain;
-        display: block;
-      }
-
-      .overlay-close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        background: var(--surface);
-        color: var(--text);
-        font-size: 20px;
-        cursor: pointer;
-        z-index: 2;
-      }
-
-      .no-scroll {
-        overflow: hidden;
-      }
-
-      @media (min-width: 920px) {
-        .hero {
-          grid-template-columns: 1.05fr 1fr;
-        }
-
-        .showcase-item {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .showcase-item.reverse {
-          direction: rtl;
-        }
-
-        .showcase-item.reverse > * {
-          direction: ltr;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="static/site.css" />
   </head>
-  <body>
+  <body class="page-index">
     <header>
       <div class="container hero">
         <div>
           <h1>Git Navigator</h1>
           <p>
             Git Navigator is a VS Code extension that puts Git actions on a visual
-            canvas. Drag, click, and resolve without leaving your editor.
+            canvas and keeps Git simple so you can focus on the code. Drag, click,
+            and resolve without leaving your editor.
           </p>
           <div class="hero-actions">
             <a
@@ -377,7 +57,14 @@
         <div class="showcase">
           <div class="showcase-item">
             <figure>
-              <video src="static/commit-graph.mp4" autoplay muted loop playsinline></video>
+              <video
+                src="static/commit-graph.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                data-zoom
+              ></video>
               <figcaption>Interactive commit graph with branch and tag labels.</figcaption>
             </figure>
             <div class="showcase-text">
@@ -387,7 +74,7 @@
           </div>
           <div class="showcase-item reverse">
             <figure>
-              <video src="static/rebase.mp4" autoplay muted loop playsinline></video>
+              <video src="static/rebase.mp4" autoplay muted loop playsinline data-zoom></video>
               <figcaption>Drag commits to rebase visually.</figcaption>
             </figure>
             <div class="showcase-text">
@@ -397,7 +84,7 @@
           </div>
           <div class="showcase-item">
             <figure>
-              <video src="static/uncommitted.mp4" autoplay muted loop playsinline></video>
+              <video src="static/uncommitted.mp4" autoplay muted loop playsinline data-zoom></video>
               <figcaption>Stage, unstage, and split commits with precision.</figcaption>
             </figure>
             <div class="showcase-text">
@@ -407,7 +94,7 @@
           </div>
           <div class="showcase-item reverse">
             <figure>
-              <video src="static/conflict.mp4" autoplay muted loop playsinline></video>
+              <video src="static/conflict.mp4" autoplay muted loop playsinline data-zoom></video>
               <figcaption>Resolve conflicts with block-level actions.</figcaption>
             </figure>
             <div class="showcase-text">
@@ -423,6 +110,7 @@
                 muted
                 loop
                 playsinline
+                data-zoom
               ></video>
               <figcaption>Create branches and tags directly from the graph.</figcaption>
             </figure>
@@ -433,7 +121,7 @@
           </div>
           <div class="showcase-item reverse">
             <figure>
-              <video src="static/gitlab-mr-ci.mp4" autoplay muted loop playsinline></video>
+              <video src="static/gitlab-mr-ci.mp4" autoplay muted loop playsinline data-zoom></video>
               <figcaption>Optional PR/MR and CI status in the commit list.</figcaption>
             </figure>
             <div class="showcase-text">
@@ -499,58 +187,15 @@
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        Git Navigator keeps Git simple so you can focus on the code.
-      </div>
-    </footer>
-
-    <div class="overlay" id="video-overlay" aria-hidden="true">
+    <div class="overlay" id="media-overlay" aria-hidden="true">
       <div class="overlay-content">
-        <button class="overlay-close" type="button" aria-label="Close video">
-          ×
+        <button class="overlay-close" type="button" aria-label="Close media">
+          x
         </button>
-        <video autoplay muted loop playsinline controls></video>
+        <div class="overlay-body"></div>
       </div>
     </div>
 
-    <script>
-      const overlay = document.getElementById("video-overlay");
-      const overlayVideo = overlay.querySelector("video");
-      const closeButton = overlay.querySelector(".overlay-close");
-
-      const closeOverlay = () => {
-        overlay.classList.remove("is-active");
-        overlay.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("no-scroll");
-        overlayVideo.pause();
-        overlayVideo.removeAttribute("src");
-        overlayVideo.load();
-      };
-
-      document.querySelectorAll("figure video").forEach((video) => {
-        video.addEventListener("click", () => {
-          overlayVideo.src = video.currentSrc || video.src;
-          overlayVideo.currentTime = 0;
-          overlayVideo.play();
-          overlay.classList.add("is-active");
-          overlay.setAttribute("aria-hidden", "false");
-          document.body.classList.add("no-scroll");
-        });
-      });
-
-      closeButton.addEventListener("click", closeOverlay);
-      overlay.addEventListener("click", (event) => {
-        if (event.target === overlay) {
-          closeOverlay();
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && overlay.classList.contains("is-active")) {
-          closeOverlay();
-        }
-      });
-    </script>
+    <script src="static/site.js"></script>
   </body>
 </html>
