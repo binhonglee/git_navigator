@@ -39,7 +39,7 @@ a {
 }
 
 header {
-  padding: 24px 24px 24px;
+  padding: 64px 24px 40px;
 }
 
 section {
@@ -89,10 +89,6 @@ section {
 .section-title {
   font-size: 1.4rem;
   margin-bottom: 24px;
-}
-
-.page-index header {
-  padding: 64px 24px 40px;
 }
 
 .page-index section {

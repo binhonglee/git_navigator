@@ -197,6 +197,27 @@ feature    E -> F' -> G' (feature tip)</pre>
             </figure>
           </div>
           <div class="card">
+            <h3>Push</h3>
+            <figure>
+              <div class="comparison">
+                <div class="comparison-item">
+                  <span>Branch mode</span>
+                  <div class="media-frame">
+                    <video src="static/push-branch.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Pushing on branch mode pushes the selected branch to remote</figcaption>
+                </div>
+                <div class="comparison-item">
+                  <span>Stack mode</span>
+                  <div class="media-frame">
+                    <video src="static/push-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Pushing on stack mode requires each commit on the stack to be a named branch before it can be pushed.</figcaption>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="card">
             <h3>Graph View</h3>
             <figure>
               <div class="comparison">
@@ -314,6 +335,11 @@ feature    E -> F' -> G' (feature tip)</pre>
                 <td>Amend</td>
                 <td>Current commit only</td>
                 <td>Updates the stack above it</td>
+              </tr>
+              <tr>
+                <td>Push</td>
+                <td>Single branch push</td>
+                <td>Multi-branch stack push</td>
               </tr>
               <tr>
                 <td>Squash</td>
