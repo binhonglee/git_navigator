@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stack Reviewer - Git Navigator</title>
+    <meta
+      name="description"
+      content="Stack Reviewer provides a deterministic stacked PR view on GitHub pull requests."
+    />
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="static/site.css" />
+  </head>
+  <body class="page-stack-reviewer">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container">
+        <h1>Stack Reviewer</h1>
+        <p>Deterministic stacked PR view on GitHub pull requests.</p>
+        <p>
+          Stack Reviewer is a companion browser extension for Git Navigator. It shows a
+          clear, stable view of stacked pull requests so reviewers can understand
+          ordering and dependencies at a glance.
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container grid">
+        <div class="card">
+          <h3>Deterministic stack view</h3>
+          <p>
+            Always shows the same stack order for a given PR so reviewers can follow the
+            expected sequence without guesswork.
+          </p>
+        </div>
+        <div class="card">
+          <h3>In the PR sidebar</h3>
+          <p>
+            Adds a compact panel next to the GitHub conversation so you can reference the
+            stack without leaving the review flow.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Current PR highlighted</h3>
+          <p>
+            Highlights the PR you are reviewing and shows the base reference for context.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Visual preview (placeholder)</h2>
+        <div class="card">
+          <div class="media-placeholder">
+            Stack Reviewer panel in a GitHub PR
+            <code>static/stack-reviewer.png</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">How it works</h2>
+        <div class="card">
+          <p>
+            Open any GitHub pull request. Stack Reviewer injects a panel in the sidebar
+            and loads the stack for that PR.
+          </p>
+          <p>
+            If the repo is private or restricted, you may be prompted to sign in with
+            GitHub in the extension popup.
+          </p>
+          <p>
+            If branching is detected, Stack Reviewer falls back to a linear path so the
+            review order stays clear and deterministic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Permissions & data</h2>
+        <div class="card">
+          <p>
+            Stack Reviewer runs as a browser extension on GitHub pull request pages and
+            uses the GitHub API to fetch stack information. It does not require any
+            Git Navigator server.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="overlay" id="media-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close media">
+          x
+        </button>
+        <div class="overlay-body"></div>
+      </div>
+    </div>
+
+    <script src="static/site.js"></script>
+  </body>
+</html>

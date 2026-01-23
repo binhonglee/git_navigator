@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="static/site.css" />
   </head>
   <body class="page-stack">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
     <header>
       <div class="container hero">
         <h1>Branch mode vs Stack mode</h1>
@@ -83,76 +92,7 @@ feature    E -> F' -> G' (feature tip)</pre>
 
     <section>
       <div class="container">
-        <h2 class="section-title">What actually changes when you edit a commit</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Branch mode</h3>
-            <p>
-              Only the branch tip you are on is rewritten. Other branches that happen
-              to include that commit are left alone.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Stack mode</h3>
-            <p>
-              Git Navigator rewrites the commit and then updates any descendant
-              branches so they continue to point to the rewritten history.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <h2 class="section-title">How to choose</h2>
-        <div class="card">
-          <p>
-            Stack workflows usually review commits one by one, so going back to amend an
-            earlier commit is normal. Branch-mode workflows usually review the branch as a
-            whole, so you typically add new commits instead of rewriting old ones.
-          </p>
-          <ul class="tips">
-            <li>Use <strong>branch mode</strong> if you are working on a shared or long-lived branch.</li>
-            <li>Use <strong>stack</strong> if you are building a short sequence of commits that depend on each other.</li>
-            <li>If you plan to rewrite history often (amend, squash, reorder), stack mode is smoother.</li>
-            <li>If you are unsure, start with branch mode. You can switch later.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container grid">
-        <div class="card">
-          <h2>How Git Navigator uses stack mode</h2>
-          <p>
-            Stack mode is stored per repository. Git Navigator uses a base reference
-            (by default, your default branch) and treats commits from that base to your
-            current work as one stack.
-          </p>
-          <p>
-            When you amend, rebase, or squash in stack mode, Git Navigator updates the
-            rest of the stack so everything stays connected and consistent.
-          </p>
-        </div>
-        <div class="card">
-          <h2>If you are new to Git</h2>
-          <p>
-            You do not have to pick a mode permanently. The safest mental model is:
-            branch mode is "change only what I can see," and stack is "change this and
-            everything built on top of it."
-          </p>
-          <p>
-            If you are still unsure, ask a teammate which workflow your project expects.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <h2 class="section-title">Visual examples</h2>
+        <h2 class="section-title">Visual comparisons</h2>
         <div class="grid">
           <div class="card">
             <h3>Drag-and-drop Rebase</h3>
@@ -218,6 +158,24 @@ feature    E -> F' -> G' (feature tip)</pre>
             </figure>
           </div>
           <div class="card">
+            <h3>Cherrypick</h3>
+            <figure>
+              <div class="comparison">
+                <div class="comparison-item">
+                  <span>Branch mode</span>
+                  <div class="media-frame">
+                    <video src="static/cherrypick.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Cherrypicking on branch mode cherrypicks the selected commit(s) to the target branch</figcaption>
+                </div>
+                <div class="comparison-item">
+                  <span>Stack mode</span>
+                  <figcaption>Cherrypick is unsupported on stack mode</figcaption>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="card">
             <h3>Graph View</h3>
             <figure>
               <div class="comparison">
@@ -242,6 +200,75 @@ feature    E -> F' -> G' (feature tip)</pre>
               </div>
             </figure>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">What actually changes when you edit a commit</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Branch mode</h3>
+            <p>
+              Only the branch tip you are on is rewritten. Other branches that happen
+              to include that commit are left alone.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Stack mode</h3>
+            <p>
+              Git Navigator rewrites the commit and then updates any descendant
+              branches so they continue to point to the rewritten history.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">How to choose</h2>
+        <div class="card">
+          <p>
+            Stack workflows usually review commits one by one, so going back to amend an
+            earlier commit is normal. Branch-mode workflows usually review the branch as a
+            whole, so you typically add new commits instead of rewriting old ones.
+          </p>
+          <ul class="tips">
+            <li>Use <strong>branch mode</strong> if you are working on a shared or long-lived branch.</li>
+            <li>Use <strong>stack</strong> if you are building a short sequence of commits that depend on each other.</li>
+            <li>If you plan to rewrite history often (amend, squash, reorder), stack mode is smoother.</li>
+            <li>If you are unsure, start with branch mode. You can switch later.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid">
+        <div class="card">
+          <h2>How Git Navigator uses stack mode</h2>
+          <p>
+            Stack mode is stored per repository. Git Navigator uses a base reference
+            (by default, your default branch) and treats commits from that base to your
+            current work as one stack.
+          </p>
+          <p>
+            When you amend, rebase, or squash in stack mode, Git Navigator updates the
+            rest of the stack so everything stays connected and consistent.
+          </p>
+        </div>
+        <div class="card">
+          <h2>If you are new to Git</h2>
+          <p>
+            You do not have to pick a mode permanently. The safest mental model is:
+            branch mode is "change only what I can see," and stack is "change this and
+            everything built on top of it."
+          </p>
+          <p>
+            If you are still unsure, ask a teammate which workflow your project expects.
+          </p>
         </div>
       </div>
     </section>

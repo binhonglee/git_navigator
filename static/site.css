@@ -38,6 +38,41 @@ a {
   color: inherit;
 }
 
+.site-nav {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.nav-brand {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
 header {
   padding: 64px 24px 40px;
 }
@@ -95,6 +130,10 @@ section {
   padding: 32px 24px;
 }
 
+.page-index header {
+  padding: 48px 24px 40px;
+}
+
 .page-index .container {
   max-width: 1080px;
 }
@@ -125,6 +164,13 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.page-index .install-note {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .page-index .hero-media img {
@@ -163,6 +209,11 @@ section {
 }
 
 .page-index figure video {
+  cursor: pointer;
+}
+
+.page-index figure img[data-zoom],
+.page-index figure video[data-zoom] {
   cursor: pointer;
 }
 
@@ -349,6 +400,10 @@ section {
 .page-stack .hero {
   display: grid;
   gap: 16px;
+}
+
+.page-stack header {
+  padding: 48px 24px 32px;
 }
 
 .page-stack .hero h1 {
@@ -626,4 +681,48 @@ section {
 .page-post-install .question[hidden],
 .page-post-install .actions[hidden] {
   display: none;
+}
+
+.page-stack-reviewer .container {
+  max-width: 980px;
+}
+
+.page-stack-reviewer header {
+  padding: 48px 24px 32px;
+}
+
+.page-stack-reviewer h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.page-stack-reviewer p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.page-stack-reviewer .media-placeholder {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  background: rgba(31, 111, 235, 0.08);
+  color: var(--muted);
+  padding: 18px;
+  min-height: 180px;
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  font-size: 0.95rem;
+}
+
+.page-stack-reviewer .media-placeholder code {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 720px) {
+  .nav-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

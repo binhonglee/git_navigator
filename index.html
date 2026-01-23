@@ -6,7 +6,7 @@
     <title>Git Navigator</title>
     <meta
       name="description"
-      content="Git Navigator is a VS Code extension for visual Git operations: commit graph, drag-and-drop rebase, conflict resolution, and more."
+      content="Git Navigator is an IDE extension for visual Git operations: commit graph, drag-and-drop rebase, conflict resolution, and more."
     />
     <meta property="og:title" content="Git Navigator" />
     <meta
@@ -21,12 +21,21 @@
     <link rel="stylesheet" href="static/site.css" />
   </head>
   <body class="page-index">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
     <header>
       <div class="container hero">
         <div>
           <h1>Git Navigator</h1>
           <p>
-            Git Navigator is a VS Code extension that puts Git actions on a visual
+            Git Navigator is an IDE extension that puts Git actions on a visual
             canvas and keeps Git simple so you can focus on the code. Drag, click,
             and resolve without leaving your editor.
           </p>
@@ -35,13 +44,22 @@
               class="button"
               href="https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator"
             >
-              VS Code Marketplace
+              VS Code
             </a>
             <a
-              class="button"
+              class="button secondary"
+              href="cursor:extension/binhonglee.git-navigator"
+            >
+              Cursor
+            </a>
+            <a class="button secondary" href="antigravity:extension/binhonglee.git-navigator">
+              Antigravity
+            </a>
+            <a
+              class="button secondary"
               href="https://open-vsx.org/extension/binhonglee/git-navigator"
             >
-              Open VSX
+              Open VSX listing
             </a>
           </div>
         </div>
@@ -79,7 +97,7 @@
             </figure>
             <div class="showcase-text">
               <h3>Drag-and-drop rebase</h3>
-              <p>Reorder commits visually and preview results before applying.</p>
+              <p>Reorder commits visually and move a single branch or a full stack.</p>
             </div>
           </div>
           <div class="showcase-item">
@@ -89,10 +107,20 @@
             </figure>
             <div class="showcase-text">
               <h3>Commit control</h3>
-              <p>Split commits, stage line-by-line, amend, or uncommit without CLI hops.</p>
+              <p>Split commits, stage line-by-line, amend, cherry-pick, or uncommit without CLI hops.</p>
             </div>
           </div>
           <div class="showcase-item reverse">
+            <figure>
+              <video src="static/cherrypick.mp4" autoplay muted loop playsinline data-zoom></video>
+              <figcaption>Cherry-pick a commit to another branch in seconds.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Cherry-pick in branch mode</h3>
+              <p>Apply specific commits to another branch without leaving the graph.</p>
+            </div>
+          </div>
+          <div class="showcase-item">
             <figure>
               <video src="static/conflict.mp4" autoplay muted loop playsinline data-zoom></video>
               <figcaption>Resolve conflicts with block-level actions.</figcaption>
@@ -102,7 +130,7 @@
               <p>Resolve conflicts with clear actions and block-level choices.</p>
             </div>
           </div>
-          <div class="showcase-item">
+          <div class="showcase-item reverse">
             <figure>
               <video
                 src="static/create-branch-anywhere.mp4"
@@ -116,7 +144,17 @@
             </figure>
             <div class="showcase-text">
               <h3>Branches & tags</h3>
-              <p>Create, delete, and manage branches and tags without leaving the graph.</p>
+              <p>Create, fast-forward, and clean up merged branches and tags without leaving the graph.</p>
+            </div>
+          </div>
+          <div class="showcase-item">
+            <figure>
+              <video src="static/push-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+              <figcaption>Stack push overlay for safe stacked workflows.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Stack push overlay</h3>
+              <p>Push stacked branches with a clear preview of what will move.</p>
             </div>
           </div>
           <div class="showcase-item reverse">
@@ -126,7 +164,21 @@
             </figure>
             <div class="showcase-text">
               <h3>Provider metadata</h3>
-              <p>Surface PR/MR status and CI checks from GitHub, GitLab, or Bitbucket.</p>
+              <p>Surface PR/MR status and CI checks from GitHub, GitLab, Bitbucket, or Gitea.</p>
+            </div>
+          </div>
+          <div class="showcase-item">
+            <figure>
+              <img src="static/stack-graph.png" alt="Stack vs branch mode in Git Navigator" data-zoom />
+              <figcaption>See the difference between stack and branch mode.</figcaption>
+            </figure>
+            <div class="showcase-text">
+              <h3>Stack vs branch mode</h3>
+              <p style="padding-bottom: 20px;">
+                Compare stacked workflows with traditional branching, and learn when to use
+                each mode.
+              </p>
+              <a class="button secondary" href="stack.html">Read the guide</a>
             </div>
           </div>
         </div>
@@ -137,10 +189,13 @@
       <div class="container">
         <h2 class="section-title">Requirements</h2>
         <div class="requirements">
-          <span class="badge">VS Code 1.85+</span>
+          <span class="badge">VS Code (or Cursor, Antigravity etc.) 1.85+</span>
           <span class="badge">Any Git repository</span>
           <span class="badge">No extra dependencies</span>
         </div>
+        <p class="carousel-hint">
+          New to stacked workflows? <a href="stack.html">Read the stack vs branch mode guide</a>.
+        </p>
       </div>
     </section>
 
@@ -150,6 +205,17 @@
         <div class="carousel" aria-label="Changelog updates">
           <!-- CHANGELOG_CARDS_START -->
           <!-- Auto-generated by scripts/update-site.js -->
+          <article class="carousel-card">
+            <h3>0.1.0 · 2026-01-23</h3>
+            <ul>
+              <li>Stack mode with stack-aware rebase/amend and stack/base labels</li>
+              <li>Branch mode with branch-only rebase/amend and detached HEAD banner</li>
+              <li>Stack push overlay for stacked workflows</li>
+              <li>New hover actions for checkout, fast-forward, and delete merged branches</li>
+              <li>Cherry-pick commits in branch mode</li>
+              <li>Gitea metadata support</li>
+            </ul>
+          </article>
           <article class="carousel-card">
             <h3>0.0.4 · 2026-01-13</h3>
             <ul>

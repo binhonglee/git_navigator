@@ -19,6 +19,12 @@ See your entire project history at a glance with an interactive, tree-based comm
 
 **One-click checkout** - Simply click any commit to check it out and explore your project's history.
 
+### 🧭 Stack mode and Branch mode
+![stack_vs_branch](static/stack-graph.png)
+
+Choose between traditional branch mode and stack mode for stacked PR workflows. Stack mode keeps descendant commits aligned when you amend or rebase; branch mode keeps operations scoped to the current branch.
+Learn more in the [Stack vs Branch Mode guide](https://gitnav.xyz/stack.html).
+
 ### 🔄 Drag-and-Drop Rebase
 <video src="static/rebase.mp4" controls muted autoplay loop></video>
 
@@ -47,6 +53,7 @@ No more hunting for `<<<<<<<` markers. Git Navigator provides a dedicated confli
 ![branch_and_tag](static/branch_and_tag.png)
 
 - Create branches and tags anywhere with click selection (from graph)
+- Fast-forward branches and delete merged branches from the hover menu
 - Delete branches with optional force
 - View orphaned refs (disconnected branches/tags) that need attention
 
@@ -55,6 +62,7 @@ No more hunting for `<<<<<<<` markers. Git Navigator provides a dedicated confli
 Stay in sync with your team effortlessly:
 - **Push** changes with a single click
 - **Force push** when needed (with confirmation)
+- **Stack push overlay** for stacked workflows
 - **Pull** with automatic rebase
 - **Fetch** from remotes or fetch-and-rebase in one action
 - **Push to specific commit** - Share work at any point in history
@@ -82,10 +90,12 @@ Surface PR/MR and CI status alongside commits with opt-in metadata:
 - GitHub via GitHub App device login
 - GitLab via personal access token
 - Bitbucket Cloud via API token
+- Gitea via access token
 
 ### 🎯 Advanced Git Operations
 - **Split commits** - Break a large commit into smaller, focused commits by selecting individual hunks
 - **Merge commits** - Combine multiple commits into one with a custom message
+- **Cherry-pick commits** - Apply commits onto another branch in branch mode
 - **Uncommit** - Undo the last commit and return changes to working directory
 - **Fetch and checkout** - Get and switch to remote branches
 - **History (reflog)** - View recent HEAD movements to recover lost work

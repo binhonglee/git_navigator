@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0] - 2026-01-23
+### Added
+- Stack mode with stack-aware rebase/amend and stack/base labels
+- Branch mode with branch-only rebase/amend and detached HEAD banner
+- Stack push overlay for stacked workflows
+- New hover actions for checkout, fast-forward, and delete merged branches
+- Cherry-pick commits in branch mode
+- Gitea metadata support
+
+### Changed
+- Refine changes overlay polish (hunk breakdown, hover highlights, spacing)
+
 ## [0.0.4] - 2026-01-13
 ### Added
 - GitHub App device login for optional metadata sign-in
