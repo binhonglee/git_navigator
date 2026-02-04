@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.1] - 2026-02-04
+### Added
+- Open remote branch links directly from badges
+- Allow local-only rewrites on the default branch
+- Mark resolved action in conflict UI
+- Stack push now shows a Done state
+
+### Fixed
+- Skip metadata fetch for local-only HEAD
+- Exclude patch selection base from stage/unstage picks
+- Indeterminate checkbox background styling
+- Rename handling in commit files list and uncommitted changes
+- Unstage both sides of renames
+- Suppress push dialog when up-to-date and show push bar for diverged branches
+- Surface push failures in the dialog
+- Enter now creates and checks out a branch
+- Include all stages for partial files
+
 ## [0.1.0] - 2026-01-23
 ### Added
 - Stack mode with stack-aware rebase/amend and stack/base labels

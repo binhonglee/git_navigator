@@ -45,10 +45,7 @@ if (current) {
 }
 
 const limit = Number(process.env.CHANGELOG_LIMIT || 6);
-const selected = entries.slice(0, limit).map(entry => ({
-  ...entry,
-  items: entry.items.slice(0, 6),
-}));
+const selected = entries.slice(0, limit);
 
 if (selected.length === 0) {
   throw new Error("No changelog entries found.");

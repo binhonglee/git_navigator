@@ -1,5 +1,8 @@
 # Git Navigator
 
+[![Open VSX Downloads](https://img.shields.io/open-vsx/dt/binhonglee/git-navigator?label=Open%20VSX%20Downloads)](https://open-vsx.org/extension/binhonglee/git-navigator)
+[![VS Code Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/binhonglee.git-navigator?label=VS%20Code%20Marketplace%20Installs)](https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator)
+
 ![](static/landing.png)
 
 **Transform your Git workflow with an intuitive, visual interface that makes complex operations simple.**
