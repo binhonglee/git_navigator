@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.1] - 2026-02-13
+### Added
+- Worktree defaults settings management
+- Support for ignored-path defaults and optional symlink setup in worktree creation
+- Worktree dialog options for ignored entries and command-based flows
+- Worktree label menu with workspace-aware actions
+
+### Changed
+- Refined ignored-entry list styling in the worktree dialog
+- Updated test mocks to match navigator lifecycle behavior
+
+### Fixed
+- Prevent duplicate navigator auto-open across multiple windows
+
 ## [0.2.0] - 2026-02-10
 ### Added
 - End-to-end linked worktree support across Git service, panel actions, and webview state
