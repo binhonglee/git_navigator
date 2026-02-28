@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.2] - 2026-02-28
+### Added
+- Favorite branches support with persistence and active-branch computation
+- Favorite toggle controls in refs overlay and graph badges (star icon + menu action)
+- Pull action dropdown with multiple pull modes
+- Sidebar update-message editing flow with rewrite engine
+- Support for initial commits in empty repositories
+- New stash-history and worktrees overlays in the header menu
+- Performance settings for `maxActiveBranches` and `maxTags`, plus a Settings shortcut in overflow
+
+### Changed
+- Reworked header actions into a compact overflow-first layout with combined overlays
+- Split refs menu into Branches, Tags, and Worktrees entries
+- Switched webview branch resolution to worktree-based lookup and removed `currentBranch` state plumbing
+- Optimized branch/tag fetching for large repositories
+
+### Fixed
+- Simplified pull UI behavior when on the default branch
+- Improved git repository detection for nested workspace folders
+
 ## [0.2.1] - 2026-02-13
 ### Added
 - Worktree defaults settings management

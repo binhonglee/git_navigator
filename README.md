@@ -1,7 +1,6 @@
 # Git Navigator
 
-[![Open VSX Downloads](https://img.shields.io/open-vsx/dt/binhonglee/git-navigator?label=Open%20VSX%20Downloads)](https://open-vsx.org/extension/binhonglee/git-navigator)
-[![VS Code Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/binhonglee.git-navigator?label=VS%20Code%20Marketplace%20Installs)](https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator)
+[![Downloads](https://img.shields.io/open-vsx/dt/binhonglee/git-navigator?label=Downloads)](https://open-vsx.org/extension/binhonglee/git-navigator)
 
 ![](static/landing.png)
 
@@ -17,6 +16,7 @@ Git Navigator brings the power of Git into a beautiful, interactive visualizatio
 See your entire project history at a glance with an interactive, tree-based commit visualization. The graph shows:
 - Parent-child relationships between commits
 - Branch and tag labels displayed inline
+- Favorite branches that stay visible when starred
 - "You are here" indicator for your current position
 - Orphaned branches highlighted for easy cleanup
 
@@ -40,6 +40,7 @@ Take control of your commits with granular precision:
 - **Stage/unstage files** with one click
 - **Line-level selection** - Include or exclude specific code blocks from your commits
 - **Amend** - Update the last commit with additional changes
+- **Update message** - Edit commit messages from the sidebar with rewrite support
 - **Uncommit** - Remove the last commit completely
 
 ### ⚔️ Visual Conflict Resolution
@@ -56,6 +57,7 @@ No more hunting for `<<<<<<<` markers. Git Navigator provides a dedicated confli
 ![branch_and_tag](static/branch_and_tag.png)
 
 - Create branches and tags anywhere with click selection (from graph)
+- Favorite important branches to keep them visible in the graph
 - Fast-forward branches and delete merged branches from the hover menu
 - Delete branches with optional force
 - View orphaned refs (disconnected branches/tags) that need attention
@@ -66,9 +68,15 @@ Stay in sync with your team effortlessly:
 - **Push** changes with a single click
 - **Force push** when needed (with confirmation)
 - **Stack push overlay** for stacked workflows
-- **Pull** with automatic rebase
+- **Pull action dropdown** with multiple pull modes
 - **Fetch** from remotes or fetch-and-rebase in one action
 - **Push to specific commit** - Share work at any point in history
+
+### ⚡ Performance Controls
+
+Tune graph rendering for large repositories:
+- Set **max active branches** and **max tags** limits in Settings
+- Open Git Navigator settings directly from the overflow menu
 
 ### 🧹 Stash Management
 <video src="static/stash.mp4" controls muted autoplay loop></video>
@@ -99,6 +107,7 @@ Surface PR/MR and CI status alongside commits with opt-in metadata:
 - **Split commits** - Break a large commit into smaller, focused commits by selecting individual hunks
 - **Merge commits** - Combine multiple commits into one with a custom message
 - **Cherry-pick commits** - Apply commits onto another branch in branch mode
+- **Initial commit support** - Create the first commit in empty repositories
 - **Uncommit** - Undo the last commit and return changes to working directory
 - **Fetch and checkout** - Get and switch to remote branches
 - **History (reflog)** - View recent HEAD movements to recover lost work
