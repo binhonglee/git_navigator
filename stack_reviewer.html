@@ -6,7 +6,7 @@
     <title>Stack Reviewer - Git Navigator</title>
     <meta
       name="description"
-      content="Stack Reviewer provides a deterministic stacked PR view on GitHub pull requests."
+      content="Stack Reviewer is a browser extension that adds a deterministic stacked PR view to GitHub pull requests."
     />
     <link rel="icon" href="static/icon.png" type="image/png" />
     <link rel="stylesheet" href="static/site.css" />
@@ -22,49 +22,109 @@
       </div>
     </nav>
     <header>
-      <div class="container">
-        <h1>Stack Reviewer</h1>
-        <p>Deterministic stacked PR view on GitHub pull requests.</p>
-        <p>
-          Stack Reviewer is a companion browser extension for Git Navigator. It shows a
-          clear, stable view of stacked pull requests so reviewers can understand
-          ordering and dependencies at a glance.
-        </p>
+      <div class="container hero">
+        <div>
+          <p class="eyebrow">Browser extension for GitHub pull requests</p>
+          <h1>Stack Reviewer</h1>
+          <p class="lead">Review stacked PRs in the right order, every time.</p>
+          <p>
+            Stack Reviewer embeds a sidebar panel directly into GitHub pull requests,
+            showing the full stack, highlighting the current PR, and keeping everything
+            in sync as you review. Works with any stacking tool: Git Navigator, jj,
+            spr, or your own workflow.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button"
+              href="https://chromewebstore.google.com/detail/stack-reviewer/jkhipgioimbjjnafnchofhaijfplpncc"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download for Chrome
+            </a>
+            <a class="button secondary" href="index.html">Back to Git Navigator</a>
+          </div>
+        </div>
+        <div class="card hero-note">
+          <h3>The problem</h3>
+          <p>
+            GitHub buries stacked PRs in branch names and scattered links. Reviewers
+            waste time piecing together the order instead of reviewing code. Stack
+            Reviewer surfaces the full context in the sidebar so you always know
+            where you are.
+          </p>
+        </div>
       </div>
     </header>
 
     <section>
-      <div class="container grid">
+      <div class="container">
         <div class="card">
-          <h3>Deterministic stack view</h3>
-          <p>
-            Always shows the same stack order for a given PR so reviewers can follow the
-            expected sequence without guesswork.
-          </p>
-        </div>
-        <div class="card">
-          <h3>In the PR sidebar</h3>
-          <p>
-            Adds a compact panel next to the GitHub conversation so you can reference the
-            stack without leaving the review flow.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Current PR highlighted</h3>
-          <p>
-            Highlights the PR you are reviewing and shows the base reference for context.
-          </p>
+          <h2>What you get</h2>
+          <ul>
+            <li><strong>Clear ordering</strong> — see every PR in the stack and how they relate</li>
+            <li><strong>Current PR highlighted</strong> — always know which one you're reviewing</li>
+            <li><strong>No context switching</strong> — stays in the GitHub sidebar, not a separate tab</li>
+            <li><strong>Private repo support</strong> — sign in with GitHub when needed</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <h2 class="section-title">Visual preview (placeholder)</h2>
+        <h2 class="section-title">See it in action</h2>
         <div class="card">
-          <div class="media-placeholder">
-            Stack Reviewer panel in a GitHub PR
-            <code>static/stack-reviewer.png</code>
+          <figure class="media-frame">
+            <video
+              src="static/stack-reviewer-main.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              data-zoom
+            ></video>
+            <figcaption>
+              The sidebar panel stays visible as you navigate the pull request.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="grid media-gallery">
+          <div class="card">
+            <figure class="media-frame">
+              <img
+                src="static/stack-reviewer-preview.jpg"
+                alt="Stack Reviewer sidebar on a GitHub pull request"
+                data-zoom
+              />
+              <figcaption>
+                Stack order visible at a glance in the pull request sidebar.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="card">
+            <figure class="media-frame">
+              <img
+                src="static/stack-reviewer-review.jpg"
+                alt="Stack Reviewer with the active pull request highlighted"
+                data-zoom
+              />
+              <figcaption>
+                Stack navigation panel stays visible while reviewing code.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="card">
+            <figure class="media-frame">
+              <img
+                src="static/stack-reviewer-conflict.jpg"
+                alt="GitHub pull request page with a conflicting stack change"
+                data-zoom
+              />
+              <figcaption>
+                Detects potential stack conflicts even when GitHub doesn't surface them.
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -75,16 +135,16 @@
         <h2 class="section-title">How it works</h2>
         <div class="card">
           <p>
-            Open any GitHub pull request. Stack Reviewer injects a panel in the sidebar
-            and loads the stack for that PR.
+            Open any GitHub pull request. Stack Reviewer automatically detects the stack
+            and displays it in the sidebar.
           </p>
           <p>
-            If the repo is private or restricted, you may be prompted to sign in with
-            GitHub in the extension popup.
+            The panel highlights your current position, shows what comes before and after,
+            and maintains a consistent order so you can review the stack sequentially.
           </p>
           <p>
-            If branching is detected, Stack Reviewer falls back to a linear path so the
-            review order stays clear and deterministic.
+            For private repositories, sign in via the extension popup. If the stack has
+            branches, Stack Reviewer picks a linear path to keep the review order clear.
           </p>
         </div>
       </div>
@@ -92,13 +152,33 @@
 
     <section>
       <div class="container">
-        <h2 class="section-title">Permissions & data</h2>
+        <h2 class="section-title">Privacy & permissions</h2>
         <div class="card">
           <p>
-            Stack Reviewer runs as a browser extension on GitHub pull request pages and
-            uses the GitHub API to fetch stack information. It does not require any
-            Git Navigator server.
+            Stack Reviewer runs entirely in your browser. It calls the GitHub API directly
+            to fetch stack data—no intermediate server, no data collection. Your code and
+            review activity stay between you and GitHub.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card cta-card">
+          <h2>Get started in seconds</h2>
+          <p>
+            Install the extension, open any stacked PR on GitHub, and the sidebar panel
+            appears automatically. No configuration required.
+          </p>
+          <a
+            class="button"
+            href="https://chromewebstore.google.com/detail/stack-reviewer/jkhipgioimbjjnafnchofhaijfplpncc"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Install from Chrome Web Store
+          </a>
         </div>
       </div>
     </section>
