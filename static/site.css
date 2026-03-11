@@ -121,6 +121,34 @@ section {
   color: var(--accent);
 }
 
+.site-footer {
+  margin-top: 40px;
+  padding: 28px 24px 40px;
+  border-top: 1px solid var(--border);
+}
+
+.site-footer .footer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-footer .footer-link:hover {
+  color: var(--text);
+}
+
+.site-footer .button {
+  padding: 10px 16px;
+}
+
 .section-title {
   font-size: 1.4rem;
   margin-bottom: 24px;
@@ -313,11 +341,6 @@ section {
   background: var(--surface);
   border: 1px solid var(--border);
   font-weight: 600;
-}
-
-.page-index footer {
-  padding: 32px 24px 56px;
-  color: var(--muted);
 }
 
 .overlay {
