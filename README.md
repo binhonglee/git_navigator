@@ -43,6 +43,14 @@ Take control of your commits with granular precision:
 - **Update message** - Edit commit messages from the sidebar with rewrite support
 - **Uncommit** - Remove the last commit completely
 
+### 🤖 AI Assistance
+<video src="static/ai-split-and-commit.mp4" controls muted autoplay loop></video>
+
+Use your editor's language model support for commit workflows:
+- **Generate commit messages** from the current diff
+- **Plan split commits** before rewriting a large change
+- **Stay local-first** - Git Navigator does not require its own backend for AI features
+
 ### ⚔️ Visual Conflict Resolution
 <video src="static/conflict.mp4" controls muted autoplay loop></video>
 
@@ -105,8 +113,10 @@ Surface PR/MR and CI status alongside commits with opt-in metadata:
 
 ### 🎯 Advanced Git Operations
 - **Split commits** - Break a large commit into smaller, focused commits by selecting individual hunks
+- **AI split planning** - Ask AI to suggest how a large change should be divided
 - **Merge commits** - Combine multiple commits into one with a custom message
 - **Cherry-pick commits** - Apply commits onto another branch in branch mode
+- **AI commit messages** - Draft commit messages from the current staged changes
 - **Initial commit support** - Create the first commit in empty repositories
 - **Uncommit** - Undo the last commit and return changes to working directory
 - **Fetch and checkout** - Get and switch to remote branches

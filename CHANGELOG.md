@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.3.0] - 2026-03-18
+### Added
+- AI commit message generation UI and settings
+- AI-powered split commit planning
+- VS Code language model integration for commit message workflows
+
+### Changed
+- Batched git commit fetching for faster commit parsing
+- Smarter hunk-level patch truncation with file prioritization for AI workflows
+- Split commit overlay status placement polish
+- Codex integration now uses JSONL output without temporary file handling
+
+### Fixed
+- Correct line number offsets in remaining patches
+- Show files correctly for initial commits
+- Dedupe partial files when calculating uncommitted graph height
+- Refresh stash overlay after updates
+- Close stash overlay after pop
+- Restore stash overlay actions after reopen
+
 ## [0.2.2] - 2026-02-28
 ### Added
 - Favorite branches support with persistence and active-branch computation
