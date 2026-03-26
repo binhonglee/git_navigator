@@ -883,7 +883,81 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .page-stack-reviewer .media-gallery .card:last-child {
-    grid-column: auto;
+.page-stack-reviewer .media-gallery .card:last-child {
+  grid-column: auto;
   }
+}
+
+.page-tauri-alpha .container {
+  max-width: 1120px;
+}
+
+.page-tauri-alpha header {
+  padding: 72px 24px 56px;
+}
+
+.page-tauri-alpha .hero {
+  display: grid;
+  gap: 36px;
+  justify-items: center;
+  text-align: center;
+}
+
+.page-tauri-alpha .eyebrow {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-tauri-alpha h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  letter-spacing: -0.04em;
+}
+
+.page-tauri-alpha .lead {
+  margin: 0 0 16px;
+  color: var(--text);
+  font-size: 1.3rem;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.page-tauri-alpha p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.page-tauri-alpha .hero-copy {
+  max-width: 720px;
+}
+
+.page-tauri-alpha .button {
+  margin-top: 12px;
+  min-width: 200px;
+}
+
+.page-tauri-alpha .hero-shot,
+.page-tauri-alpha .hero-shot picture {
+  display: block;
+  margin: 0;
+  width: 100%;
+  max-width: 1080px;
+}
+
+.page-tauri-alpha .hero-shot img {
+  display: block;
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(12, 18, 28, 0.16);
+}
+
+.page-tauri-alpha figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
