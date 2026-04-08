@@ -313,10 +313,21 @@ section {
 .page-index .hero-desktop-shot img {
   display: block;
   width: 100%;
-  border-radius: 24px;
+  border-radius: 0;
   box-shadow: none;
   border: none;
   background: transparent;
+}
+
+.page-index .hero-desktop-shot picture.is-windows-shot {
+  padding: 18px;
+  display: block;
+}
+
+.page-index .hero-desktop-shot picture.is-windows-shot img {
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(12, 18, 28, 0.14);
+  background: var(--surface);
 }
 
 .page-index .section-title {
@@ -1086,6 +1097,18 @@ section {
   width: 100%;
   border-radius: 24px;
   box-shadow: 0 24px 60px rgba(12, 18, 28, 0.16);
+}
+
+.page-tauri-alpha .hero-shot picture.is-windows-shot {
+  padding: 18px;
+  display: block;
+}
+
+.page-tauri-alpha .hero-shot picture.is-windows-shot img {
+  border-radius: 0;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(12, 18, 28, 0.14);
+  background: var(--surface);
 }
 
 .page-tauri-alpha figcaption {

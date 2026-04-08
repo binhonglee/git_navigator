@@ -12,7 +12,7 @@
     content="Local-first visual Git operations as a standalone desktop app or inside your favorite IDE." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gitnav.xyz/" />
-  <meta property="og:image" content="https://gitnav.xyz/static/tauri-app-dark.png" />
+  <meta property="og:image" content="https://gitnav.xyz/static/tauri_dark_macos.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <script>
     document.documentElement.classList.add("js");
@@ -87,9 +87,15 @@
         </div>
       </div>
       <figure class="hero-media hero-desktop-shot">
-        <picture>
-          <source srcset="static/tauri-app-dark.png" media="(prefers-color-scheme: dark)" />
-          <img src="static/tauri-app-light.png" alt="Git Navigator desktop application screenshot" />
+        <picture
+          data-hero-shot
+          data-light-macos="static/tauri_light_macos.png"
+          data-dark-macos="static/tauri_dark_macos.png"
+          data-light-windows="static/tauri_light_windows.png"
+          data-dark-windows="static/tauri_dark_windows.png"
+        >
+          <source srcset="static/tauri_dark_macos.png" media="(prefers-color-scheme: dark)" />
+          <img src="static/tauri_light_macos.png" alt="Git Navigator desktop application screenshot" />
         </picture>
       </figure>
     </div>

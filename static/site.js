@@ -59,9 +59,6 @@
 })();
 
 (() => {
-  const primaryDownload = document.querySelector("[data-primary-download]");
-  if (!primaryDownload) return;
-
   const platform = (() => {
     const ua = navigator.userAgent || "";
     const userAgentDataPlatform = navigator.userAgentData?.platform || "";
@@ -75,6 +72,28 @@
   })();
 
   if (!platform) return;
+
+  document.querySelectorAll("[data-hero-shot]").forEach((picture) => {
+    picture.classList.remove("is-windows-shot");
+
+    if (platform !== "windows") return;
+
+    const source = picture.querySelector("source");
+    const img = picture.querySelector("img");
+
+    if (source && picture.dataset.darkWindows) {
+      source.srcset = picture.dataset.darkWindows;
+    }
+
+    if (img && picture.dataset.lightWindows) {
+      img.src = picture.dataset.lightWindows;
+    }
+
+    picture.classList.add("is-windows-shot");
+  });
+
+  const primaryDownload = document.querySelector("[data-primary-download]");
+  if (!primaryDownload) return;
 
   const url = primaryDownload.dataset[`url${platform[0].toUpperCase()}${platform.slice(1)}`];
   const label = primaryDownload.dataset[`label${platform[0].toUpperCase()}${platform.slice(1)}`];
