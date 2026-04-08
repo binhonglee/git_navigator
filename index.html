@@ -1,233 +1,256 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Git Navigator</title>
-    <meta
-      name="description"
-      content="Git Navigator is an IDE extension for visual Git operations, AI-assisted commit workflows, drag-and-drop rebase, conflict resolution, and more."
-    />
-    <meta property="og:title" content="Git Navigator" />
-    <meta
-      property="og:description"
-      content="Local-first visual Git operations inside your editor."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://gitnav.xyz/" />
-    <meta property="og:image" content="https://gitnav.xyz/static/landing.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
-  </head>
-  <body class="page-index">
-    <nav class="site-nav">
-      <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
-        <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
-        </div>
-      </div>
-    </nav>
-    <header>
-      <div class="container hero">
-        <div>
-          <h1>Git Navigator</h1>
-          <p>
-            Git Navigator is an IDE extension that puts Git actions on a visual
-            canvas and keeps Git simple so you can focus on the code. Drag, click,
-            resolve, and use AI-assisted commit workflows without leaving your editor.
-          </p>
-          <div class="hero-actions">
-            <a
-              class="button"
-              href="https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator"
-            >
-              VS Code
-            </a>
-            <a
-              class="button secondary"
-              href="cursor:extension/binhonglee.git-navigator"
-            >
-              Cursor
-            </a>
-            <a class="button secondary" href="antigravity:extension/binhonglee.git-navigator">
-              Antigravity
-            </a>
-            <a
-              class="button secondary"
-              href="https://open-vsx.org/extension/binhonglee/git-navigator"
-            >
-              Open VSX listing
-            </a>
-          </div>
-        </div>
-        <div class="hero-media">
-          <img src="static/landing.png" alt="Git Navigator overview" />
-        </div>
-      </div>
-    </header>
 
-    <section>
-      <div class="container">
-        <h2 class="section-title">Why Git Navigator?</h2>
-        <div class="showcase">
-          <div class="showcase-item">
-            <figure>
-              <video
-                src="static/commit-graph.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-                data-zoom
-              ></video>
-              <figcaption>Interactive commit graph with branch and tag labels.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Focused commit graph</h3>
-              <p>See branches, tags, favorites, and history at a glance with a clean, readable graph.</p>
-            </div>
-          </div>
-          <div class="showcase-item reverse">
-            <figure>
-              <video src="static/rebase-stack.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Drag commits to rebase visually.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Drag-and-drop rebase</h3>
-              <p>Reorder commits visually and move a single branch or a full stack.</p>
-            </div>
-          </div>
-          <div class="showcase-item">
-            <figure>
-              <video src="static/uncommitted.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Stage, unstage, and split commits with precision.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Commit control</h3>
-              <p>Split commits, stage line-by-line, amend, cherry-pick, or uncommit without CLI hops.</p>
-            </div>
-          </div>
-          <div class="showcase-item reverse">
-            <figure>
-              <video src="static/ai-split-and-commit.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Use AI to plan split commits and draft commit messages.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>AI-assisted commit workflows</h3>
-              <p>Plan split commits and generate commit messages with your editor's language model.</p>
-            </div>
-          </div>
-          <div class="showcase-item">
-            <figure>
-              <video src="static/conflict.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Resolve conflicts with block-level actions.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Conflict resolution</h3>
-              <p>Resolve conflicts with clear actions and block-level choices.</p>
-            </div>
-          </div>
-          <div class="showcase-item reverse">
-            <figure>
-              <video
-                src="static/create-branch-anywhere.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-                data-zoom
-              ></video>
-              <figcaption>Create branches and tags directly from the graph.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Branches & tags</h3>
-              <p>Create, favorite, fast-forward, and clean up branches and tags without leaving the graph.</p>
-            </div>
-          </div>
-          <div class="showcase-item">
-            <figure>
-              <video src="static/push-stack.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Stack push overlay for safe stacked workflows.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Stack push overlay</h3>
-              <p>Choose pull behavior from a dropdown, then push stacked branches with a clear preview.</p>
-            </div>
-          </div>
-          <div class="showcase-item reverse">
-            <figure>
-              <video src="static/switch-worktree.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Switch active worktrees without leaving the graph.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Worktree-aware workflow</h3>
-              <p>See active worktree context and run Git actions against the correct checkout.</p>
-            </div>
-          </div>
-          <div class="showcase-item">
-            <figure>
-              <video src="static/add-and-delete-worktree.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Create and delete linked worktrees with built-in safety checks.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Linked worktree management</h3>
-              <p>Create, clean up, and manage linked worktrees directly from Git Navigator.</p>
-            </div>
-          </div>
-          <div class="showcase-item reverse">
-            <figure>
-              <video src="static/gitlab-mr-ci.mp4" autoplay muted loop playsinline data-zoom></video>
-              <figcaption>Optional PR/MR and CI status in the commit list.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Provider metadata</h3>
-              <p>Surface PR/MR status and CI checks from GitHub, GitLab, Bitbucket, or Gitea.</p>
-            </div>
-          </div>
-          <div class="showcase-item">
-            <figure>
-              <img src="static/stack-graph.png" alt="Stack vs branch mode in Git Navigator" data-zoom />
-              <figcaption>See the difference between stack and branch mode.</figcaption>
-            </figure>
-            <div class="showcase-text">
-              <h3>Stack vs branch mode</h3>
-              <p style="padding-bottom: 20px;">
-                Compare stacked workflows with traditional branching, and learn when to use
-                each mode.
-              </p>
-              <a class="button secondary" href="stack.html">Read the guide</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Git Navigator</title>
+  <meta name="description"
+    content="Git Navigator is available as a standalone desktop app or inside your favorite IDE for visual Git operations, AI-assisted commit workflows, drag-and-drop rebase, conflict resolution, and more." />
+  <meta property="og:title" content="Git Navigator" />
+  <meta property="og:description"
+    content="Local-first visual Git operations as a standalone desktop app or inside your favorite IDE." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gitnav.xyz/" />
+  <meta property="og:image" content="https://gitnav.xyz/static/tauri-app-dark.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+  <link rel="icon" href="static/icon.png" type="image/png" />
+  <link rel="stylesheet" href="static/site.css" />
+</head>
 
-    <section>
-      <div class="container">
-        <h2 class="section-title">Requirements</h2>
-        <div class="requirements">
-          <span class="badge">VS Code (or Cursor, Antigravity etc.) 1.85+</span>
-          <span class="badge">Any Git repository</span>
-          <span class="badge">No extra dependencies</span>
-        </div>
-        <p class="carousel-hint">
-          New to stacked workflows? <a href="stack.html">Read the stack vs branch mode guide</a>.
+<body class="page-index">
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a class="nav-brand" href="index.html">Git Navigator</a>
+      <div class="nav-links">
+        <a href="stack.html">Branch vs Stack mode</a>
+        <a href="stack_reviewer.html">Stack Reviewer</a>
+      </div>
+    </div>
+  </nav>
+  <header>
+    <div class="container hero hero-desktop">
+      <div class="hero-copy">
+        <p class="eyebrow">Desktop app + IDE extension</p>
+        <h1>Git Navigator</h1>
+        <p class="lead">Available as a standalone desktop app or inside your favorite IDE.</p>
+        <p>
+          Rebase, resolve conflicts, manage stacks and worktrees, and use
+          AI-assisted commit workflows in Git Navigator Desktop or the editor
+          extension for VS Code, Cursor, and other compatible IDEs.
         </p>
-        <p class="carousel-hint">
-          Working on a large repo? Tune <code>maxActiveBranches</code> and <code>maxTags</code> in Settings.
-        </p>
+        <div class="hero-actions">
+          <a class="button hero-download" href="https://github.com/binhonglee/git_navigator/releases/latest"
+            data-primary-download data-default-label="Download desktop app"
+            data-url-macos="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.1_aarch64.dmg"
+            data-label-macos="Download for macOS (Apple Silicon)"
+            data-url-windows="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.1_x64.msi"
+            data-label-windows="Download for Windows (x64)">
+            Download desktop app
+          </a>
+        </div>
+        <div class="hero-platforms" aria-label="Download and install options">
+          <a class="platform-button"
+            href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.1_aarch64.dmg"
+            data-platform="macos" title="macOS (Apple Silicon)" aria-label="Download for macOS (Apple Silicon)">
+            <picture>
+              <source srcset="static/logo-apple-dark.svg" media="(prefers-color-scheme: dark)" />
+              <img src="static/logo-apple-light.svg" alt="" />
+            </picture>
+          </a>
+          <a class="platform-button"
+            href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.1_x64.msi"
+            data-platform="windows" title="Windows (x64)" aria-label="Download for Windows (x64)">
+            <picture>
+              <source srcset="static/logo-windows-dark.svg" media="(prefers-color-scheme: dark)" />
+              <img src="static/logo-windows-light.svg" alt="" />
+            </picture>
+          </a>
+          <a class="platform-button" href="https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator"
+            title="Install in VS Code" aria-label="Install in VS Code">
+            <img src="static/logo-vscode.svg" alt="" />
+          </a>
+          <a class="platform-button" href="cursor:extension/binhonglee.git-navigator" title="Install in Cursor"
+            aria-label="Install in Cursor">
+            <picture>
+              <source srcset="static/logo-cursor-dark.svg" media="(prefers-color-scheme: dark)" />
+              <img src="static/logo-cursor-light.svg" alt="" />
+            </picture>
+          </a>
+          <a class="platform-button" href="antigravity:extension/binhonglee.git-navigator"
+            title="Install in Antigravity" aria-label="Install in Antigravity">
+            <img src="static/logo-antigravity.png" alt="" />
+          </a>
+        </div>
       </div>
-    </section>
+      <figure class="hero-media hero-desktop-shot">
+        <picture>
+          <source srcset="static/tauri-app-dark.png" media="(prefers-color-scheme: dark)" />
+          <img src="static/tauri-app-light.png" alt="Git Navigator desktop application screenshot" />
+        </picture>
+      </figure>
+    </div>
+  </header>
 
-    <section>
-      <div class="container whats-new">
-        <h2 class="section-title">What's new</h2>
-        <div class="carousel" aria-label="Changelog updates">
-          <!-- CHANGELOG_CARDS_START -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Why Git Navigator?</h2>
+      <div class="showcase">
+        <div class="showcase-item">
+          <figure>
+            <video src="static/commit-graph.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Interactive commit graph with branch and tag labels.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Focused commit graph</h3>
+            <p>See branches, tags, favorites, and history at a glance with a clean, readable graph.</p>
+          </div>
+        </div>
+        <div class="showcase-item reverse">
+          <figure>
+            <video src="static/rebase-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Drag commits to rebase visually.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Drag-and-drop rebase</h3>
+            <p>Reorder commits visually and move a single branch or a full stack.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <figure>
+            <video src="static/uncommitted.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Stage, unstage, and split commits with precision.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Commit control</h3>
+            <p>Split commits, stage line-by-line, amend, cherry-pick, or uncommit without CLI hops.</p>
+          </div>
+        </div>
+        <div class="showcase-item reverse">
+          <figure>
+            <video src="static/ai-split-and-commit.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Use AI to plan split commits and draft commit messages.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>AI-assisted commit workflows</h3>
+            <p>Plan split commits and generate commit messages with your editor's language model.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <figure>
+            <video src="static/conflict.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Resolve conflicts with block-level actions.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Conflict resolution</h3>
+            <p>Resolve conflicts with clear actions and block-level choices.</p>
+          </div>
+        </div>
+        <div class="showcase-item reverse">
+          <figure>
+            <video src="static/create-branch-anywhere.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Create branches and tags directly from the graph.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Branches & tags</h3>
+            <p>Create, favorite, fast-forward, and clean up branches and tags without leaving the graph.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <figure>
+            <video src="static/push-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Stack push overlay for safe stacked workflows.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Stack push overlay</h3>
+            <p>Choose pull behavior from a dropdown, then push stacked branches with a clear preview.</p>
+          </div>
+        </div>
+        <div class="showcase-item reverse">
+          <figure>
+            <video src="static/switch-worktree.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Switch active worktrees without leaving the graph.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Worktree-aware workflow</h3>
+            <p>See active worktree context and run Git actions against the correct checkout.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <figure>
+            <video src="static/add-and-delete-worktree.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Create and delete linked worktrees with built-in safety checks.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Linked worktree management</h3>
+            <p>Create, clean up, and manage linked worktrees directly from Git Navigator.</p>
+          </div>
+        </div>
+        <div class="showcase-item reverse">
+          <figure>
+            <video src="static/gitlab-mr-ci.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Optional PR/MR and CI status in the commit list.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Provider metadata</h3>
+            <p>Surface PR/MR status and CI checks from GitHub, GitLab, Bitbucket, or Gitea.</p>
+          </div>
+        </div>
+        <div class="showcase-item">
+          <figure>
+            <video src="static/stash.mp4" autoplay muted loop playsinline data-zoom></video>
+            <figcaption>Expandable stash and reflog details with per-file diffs.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Stash & reflog details</h3>
+            <p>Inspect stash entries and reflog history in more detail, then drill into per-file diffs without leaving
+              the overlay.</p>
+          </div>
+        </div>
+        <div class="showcase-item reverse">
+          <figure>
+            <img src="static/stack-graph.png" alt="Stack vs branch mode in Git Navigator" data-zoom />
+            <figcaption>See the difference between stack and branch mode.</figcaption>
+          </figure>
+          <div class="showcase-text">
+            <h3>Stack vs branch mode</h3>
+            <p style="padding-bottom: 20px;">
+              Compare stacked workflows with traditional branching, and learn when to use
+              each mode.
+            </p>
+            <a class="button secondary" href="stack.html">Read the guide</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container whats-new">
+      <h2 class="section-title">What's new</h2>
+      <div class="carousel" aria-label="Changelog updates">
+        <!-- CHANGELOG_CARDS_START -->
           <!-- Auto-generated by scripts/update-site.js -->
+          <article class="carousel-card">
+            <h3>0.3.1 · 2026-04-08</h3>
+            <ul>
+              <li>Split the shared webview/runtime so the VS Code extension and desktop app can ship side by side</li>
+              <li>Normalize filesystem and worktree path handling more reliably across hosts</li>
+              <li>Initial release of Git Navigator Desktop for macOS and Windows</li>
+              <li>Expandable stash entries with per-file diff viewing in the stash overlay</li>
+              <li>Expandable reflog entries with commit metadata and diff viewing</li>
+              <li>Worktree-scoped history view in the stash overlay</li>
+              <li>Forge auth cards and GitHub device flow status in Settings</li>
+              <li>Better worktree status refresh behavior and path matching in VS Code</li>
+              <li>Overlay scrolling and keyboard handling in the shared webview shell</li>
+              <li>Split-commit routing and worktree panel scrolling in shared overlay layouts</li>
+              <li>Release cleanup and test hardening around the shared webview/runtime split</li>
+            </ul>
+          </article>
           <article class="carousel-card">
             <h3>0.3.0 · 2026-03-18</h3>
             <ul>
@@ -316,46 +339,30 @@
               <li>Include all stages for partial files</li>
             </ul>
           </article>
-          <article class="carousel-card">
-            <h3>0.1.0 · 2026-01-23</h3>
-            <ul>
-              <li>Stack mode with stack-aware rebase/amend and stack/base labels</li>
-              <li>Branch mode with branch-only rebase/amend and detached HEAD banner</li>
-              <li>Stack push overlay for stacked workflows</li>
-              <li>New hover actions for checkout, fast-forward, and delete merged branches</li>
-              <li>Cherry-pick commits in branch mode</li>
-              <li>Gitea metadata support</li>
-              <li>Refine changes overlay polish (hunk breakdown, hover highlights, spacing)</li>
-            </ul>
-          </article>
 <!-- CHANGELOG_CARDS_END -->
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <a
-          class="footer-link"
-          href="https://github.com/binhonglee/git_navigator"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub
-        </a>
-        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
-      </div>
-    </footer>
-
-    <div class="overlay" id="media-overlay" aria-hidden="true">
-      <div class="overlay-content">
-        <button class="overlay-close" type="button" aria-label="Close media">
-          x
-        </button>
-        <div class="overlay-body"></div>
       </div>
     </div>
+  </section>
 
-    <script src="static/site.js"></script>
-  </body>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">
+        GitHub
+      </a>
+      <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+    </div>
+  </footer>
+
+  <div class="overlay" id="media-overlay" aria-hidden="true">
+    <div class="overlay-content">
+      <button class="overlay-close" type="button" aria-label="Close media">
+        x
+      </button>
+      <div class="overlay-body"></div>
+    </div>
+  </div>
+
+  <script src="static/site.js"></script>
+</body>
+
 </html>

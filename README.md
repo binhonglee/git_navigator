@@ -6,7 +6,17 @@
 
 **Transform your Git workflow with an intuitive, visual interface that makes complex operations simple.**
 
-Git Navigator brings the power of Git into a beautiful, interactive visualization directly in VS Code. Whether you're managing commits, resolving conflicts, or rebasing branches, everything is just a click or drag away.
+Git Navigator brings the power of Git into a beautiful, interactive visualization directly in VS Code and compatible editors. Whether you're managing commits, resolving conflicts, or rebasing branches, everything is just a click or drag away. Git Navigator is also available as a standalone desktop app for the same core workflows outside the editor.
+
+## ⬇️ Install
+
+### Desktop app
+- macOS (Apple Silicon): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.1_aarch64.dmg)
+- Windows (x64): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.1_x64.msi)
+
+### Editor extension
+- VS Code Marketplace: [Install](https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator)
+- Open VSX: [Install](https://open-vsx.org/extension/binhonglee/git-navigator)
 
 ## ✨ Features
 
@@ -93,6 +103,8 @@ Quickly save and restore work-in-progress:
 - Create stashes with optional messages
 - Include untracked files
 - Pop and drop stashes as needed
+- Expand stash entries to inspect file lists and per-file diffs
+- View stash history in the context of the active worktree
 
 ### 📊 Commit Analytics
 <video src="static/commit.mp4" controls muted autoplay loop></video>
@@ -110,6 +122,7 @@ Surface PR/MR and CI status alongside commits with opt-in metadata:
 - GitLab via personal access token
 - Bitbucket Cloud via API token
 - Gitea via access token
+- Forge auth cards and sign-in status in Settings
 
 ### 🎯 Advanced Git Operations
 - **Split commits** - Break a large commit into smaller, focused commits by selecting individual hunks
@@ -120,7 +133,7 @@ Surface PR/MR and CI status alongside commits with opt-in metadata:
 - **Initial commit support** - Create the first commit in empty repositories
 - **Uncommit** - Undo the last commit and return changes to working directory
 - **Fetch and checkout** - Get and switch to remote branches
-- **History (reflog)** - View recent HEAD movements to recover lost work
+- **History (reflog)** - View recent HEAD movements to recover lost work, then expand entries for commit metadata and diffs
 
 ## 💡 Use Cases
 

@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.3.1] - 2026-04-08
+### Shared
+- Split the shared webview/runtime so the VS Code extension and desktop app can ship side by side
+- Normalize filesystem and worktree path handling more reliably across hosts
+
+### Desktop
+- Initial release of Git Navigator Desktop for macOS and Windows
+
+### Extension
+- Expandable stash entries with per-file diff viewing in the stash overlay
+- Expandable reflog entries with commit metadata and diff viewing
+- Worktree-scoped history view in the stash overlay
+- Forge auth cards and GitHub device flow status in Settings
+- Better worktree status refresh behavior and path matching in VS Code
+
+### Fixed
+- Overlay scrolling and keyboard handling in the shared webview shell
+- Split-commit routing and worktree panel scrolling in shared overlay layouts
+- Release cleanup and test hardening around the shared webview/runtime split
+
 ## [0.3.0] - 2026-03-18
 ### Added
 - AI commit message generation UI and settings

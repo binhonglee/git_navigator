@@ -57,3 +57,42 @@
     }
   });
 })();
+
+(() => {
+  const primaryDownload = document.querySelector("[data-primary-download]");
+  if (!primaryDownload) return;
+
+  const platform = (() => {
+    const ua = navigator.userAgent || "";
+    const userAgentDataPlatform = navigator.userAgentData?.platform || "";
+    const legacyPlatform = navigator.platform || "";
+    const source = `${ua} ${userAgentDataPlatform} ${legacyPlatform}`.toLowerCase();
+
+    if (source.includes("mac")) return "macos";
+    if (source.includes("win")) return "windows";
+    if (source.includes("linux")) return "linux";
+    return null;
+  })();
+
+  if (!platform) return;
+
+  const url = primaryDownload.dataset[`url${platform[0].toUpperCase()}${platform.slice(1)}`];
+  const label = primaryDownload.dataset[`label${platform[0].toUpperCase()}${platform.slice(1)}`];
+
+  if (url) {
+    primaryDownload.href = url;
+  }
+
+  if (label) {
+    primaryDownload.textContent = label;
+    primaryDownload.setAttribute("aria-label", label);
+  }
+
+  document.querySelectorAll(`.platform-button[data-platform="${platform}"]`).forEach((button) => {
+    button.hidden = true;
+    button.classList.add("is-hidden-platform");
+    button.style.display = "none";
+    button.setAttribute("aria-hidden", "true");
+    button.setAttribute("tabindex", "-1");
+  });
+})();
