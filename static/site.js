@@ -71,8 +71,6 @@
     return null;
   })();
 
-  if (!platform) return;
-
   document.querySelectorAll("[data-hero-shot]").forEach((picture) => {
     picture.classList.remove("is-windows-shot");
 
@@ -94,6 +92,17 @@
 
   const primaryDownload = document.querySelector("[data-primary-download]");
   if (!primaryDownload) return;
+
+  const primaryActions = primaryDownload.closest(".hero-actions");
+  const supportedPrimaryPlatform = platform === "macos" || platform === "windows";
+
+  if (!supportedPrimaryPlatform) {
+    return;
+  }
+
+  if (primaryActions) {
+    primaryActions.classList.add("is-visible");
+  }
 
   const url = primaryDownload.dataset[`url${platform[0].toUpperCase()}${platform.slice(1)}`];
   const label = primaryDownload.dataset[`label${platform[0].toUpperCase()}${platform.slice(1)}`];

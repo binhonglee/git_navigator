@@ -224,7 +224,7 @@ section {
   padding-bottom: 10px;
 }
 
-.js .page-index .hero-actions {
+.js .page-index .hero-actions.is-visible {
   display: flex;
 }
 
