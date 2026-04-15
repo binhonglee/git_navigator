@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.3.3] - 2026-04-15
+### Shared
+- Make stash and reflog rows fully clickable in the history overlays
+- Keep branch and tag dropdown menus accessible when commit details are expanded
+
+### Desktop
+- Bundle Git with app builds and switch the desktop app to use the bundled Git backend instead of libgit2
+- Add a repository picker button in the app bar title area
+- Split bundled Git config into per-platform files for macOS and Windows releases
+
+### Extension
+- Prevent structured slogx logging from starting in production builds
+
+### Fixed
+- Skip duplicate desktop poll refreshes after command-triggered refreshes
+
+## [0.3.2] - 2026-04-08
+### Extension
+- Restore bundled webview assets in published VS Code packages
+
 ## [0.3.1] - 2026-04-08
 ### Shared
 - Split the shared webview/runtime so the VS Code extension and desktop app can ship side by side
