@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.4] - 2026-04-29
+### Added
+- Tag management UI with remote state tracking
+- Open on Remote action for local branches
+- Fast-forward local main to origin/main after fetchAndRebase
+
+### Fixed
+- Show push failure dialog for `commitAndPush`
+- Follow git semantics for branch safety check
+- Mark worktree branches with identical tips as safe to delete
+- Show push bar for new branches even when commits exist on remote
+- Use origin/main as stack base when ahead of local main
+
 ## [0.3.3] - 2026-04-15
 ### Shared
 - Make stash and reflog rows fully clickable in the history overlays
