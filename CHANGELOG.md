@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.3.5] - 2026-06-04
+### Desktop
+- Add a Files explorer activity with worktree groups, file status badges, and file, diff, conflict, and blame views
+- Add file search with automatic folder expansion for matching paths and git-grep content search
+- Add CodeMirror-powered file viewing and editing with optimistic concurrency checks
+- Replace inline file editing with a focused modal edit overlay
+- Reveal files in the Files activity with Cmd/Ctrl-click from uncommitted changes
+- Add multi-window support for working across multiple repositories
+- Add an empty-state clone flow for opening a repository from a fresh desktop window
+- Surface backend command failures through in-app toasts and show loading overlays during long-running Git operations
+
+### Shared
+- Add Git identity settings for viewing and editing `user.name`, `user.email`, and `remote.origin.url`
+- Add SSH key management in Settings
+- Add in-app SSH commit signing setup for both the desktop app and editor extension
+- Render commit bodies as Markdown in the info sidebar
+- Show force-delete confirmation when branch deletion fails
+- Set upstream automatically when pushing a branch without tracking
+- Forward file explorer responses correctly for secondary worktrees
+
+### Fixed
+- Make rebase and cherry-pick continue work in the desktop app
+- Repair desktop commit split and stacked-branch rebase flows
+- Make drag-and-drop rebase work more reliably with a wider drop zone
+- Cascade stack-mode amend onto descendant branches in the desktop app
+- Silence background forge metadata refresh failures in the desktop app
+- Fix file explorer scroll, resize, submodule, syntax highlighting, and preview handling issues
+
 ## [0.3.4] - 2026-04-29
 ### Added
 - Tag management UI with remote state tracking

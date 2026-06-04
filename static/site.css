@@ -367,6 +367,17 @@ section {
   cursor: pointer;
 }
 
+.page-index .feature-gallery {
+  display: grid;
+  gap: 10px;
+}
+
+.page-index .feature-gallery-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .page-index figcaption {
   margin-top: 8px;
   color: var(--muted);

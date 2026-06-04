@@ -34,7 +34,7 @@
         openOverlay(zoomVideo);
       } else {
         const zoomImage = document.createElement("img");
-        zoomImage.src = media.src;
+        zoomImage.src = media.currentSrc || media.src;
         zoomImage.alt = media.alt || "Expanded view";
         openOverlay(zoomImage);
       }
@@ -64,7 +64,12 @@
     const userAgentDataPlatform = navigator.userAgentData?.platform || "";
     const legacyPlatform = navigator.platform || "";
     const source = `${ua} ${userAgentDataPlatform} ${legacyPlatform}`.toLowerCase();
+    const isIOS =
+      /iphone|ipad|ipod/.test(source) ||
+      (legacyPlatform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const isAndroid = source.includes("android");
 
+    if (isIOS || isAndroid) return null;
     if (source.includes("mac")) return "macos";
     if (source.includes("win")) return "windows";
     if (source.includes("linux")) return "linux";
@@ -78,23 +83,28 @@
 
     const source = picture.querySelector("source");
     const img = picture.querySelector("img");
+    let switchedToWindows = false;
 
     if (source && picture.dataset.darkWindows) {
       source.srcset = picture.dataset.darkWindows;
+      switchedToWindows = true;
     }
 
     if (img && picture.dataset.lightWindows) {
       img.src = picture.dataset.lightWindows;
+      switchedToWindows = true;
     }
 
-    picture.classList.add("is-windows-shot");
+    if (switchedToWindows && picture.dataset.frameWindows === "true") {
+      picture.classList.add("is-windows-shot");
+    }
   });
 
   const primaryDownload = document.querySelector("[data-primary-download]");
   if (!primaryDownload) return;
 
   const primaryActions = primaryDownload.closest(".hero-actions");
-  const supportedPrimaryPlatform = platform === "macos" || platform === "windows";
+  const supportedPrimaryPlatform = platform === "macos" || platform === "windows" || platform === "linux";
 
   if (!supportedPrimaryPlatform) {
     return;

@@ -6,7 +6,7 @@
     <title>Git Navigator Desktop App</title>
     <meta
       name="description"
-      content="Git Navigator Desktop is a native desktop app for visual Git operations on macOS and Windows."
+      content="Git Navigator Desktop is a native desktop app for browsing files, editing safely, and running visual Git operations on macOS and Windows."
     />
     <link rel="icon" href="static/icon.png" type="image/png" />
     <link rel="stylesheet" href="static/site.css" />
@@ -17,25 +17,26 @@
         <div class="hero-copy">
           <p class="eyebrow">Desktop app</p>
           <h1>Git Navigator</h1>
-          <p class="lead">A native desktop build of Git Navigator.</p>
+          <p class="lead">A native Git workspace for history and files.</p>
           <p>
-            Initial desktop release. Download for macOS (Apple Silicon) or Windows (x64).
+            Browse repository files, inspect diffs and blame, edit files with stale-write
+            protection, clone repositories, configure SSH signing, and run visual Git
+            operations without leaving the desktop app.
           </p>
           <div class="hero-actions">
-            <a class="button" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.3_aarch64.dmg">Download for macOS</a>
-            <a class="button secondary" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.3_x64.msi">Download for Windows</a>
+            <a class="button" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.5_aarch64.dmg">Download for macOS</a>
+            <a class="button secondary" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.5_x64.msi">Download for Windows</a>
+            <a class="button secondary" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.5_amd64.deb">Download for Linux</a>
           </div>
         </div>
         <figure class="hero-shot">
           <picture
             data-hero-shot
-            data-light-macos="static/tauri_light_macos.png"
-            data-dark-macos="static/tauri_dark_macos.png"
-            data-light-windows="static/tauri_light_windows.png"
-            data-dark-windows="static/tauri_dark_windows.png"
+            data-light-macos="static/desktop-files-light.png"
+            data-dark-macos="static/desktop-files-dark.png"
           >
-            <source srcset="static/tauri_dark_macos.png" media="(prefers-color-scheme: dark)" />
-            <img src="static/tauri_light_macos.png" alt="Git Navigator desktop application screenshot" />
+            <source srcset="static/desktop-files-dark.png" media="(prefers-color-scheme: dark)" />
+            <img src="static/desktop-files-light.png" alt="Git Navigator desktop file explorer screenshot" />
           </picture>
         </figure>
       </div>
