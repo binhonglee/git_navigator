@@ -163,7 +163,8 @@ section {
   padding: 0;
 }
 
-.page-index .container {
+.page-index .container,
+.page-doc .container {
   max-width: 1080px;
 }
 
@@ -682,7 +683,8 @@ section {
   font-size: 0.9rem;
 }
 
-.page-stack .media-frame {
+.page-stack .media-frame,
+.page-doc .media-frame {
   border-radius: 12px;
   border: 1px solid var(--border);
   background: #0f1116;
@@ -690,7 +692,9 @@ section {
 }
 
 .page-stack .media-frame img,
-.page-stack .media-frame video {
+.page-stack .media-frame video,
+.page-doc .media-frame img,
+.page-doc .media-frame video {
   display: block;
   width: 100%;
   height: auto;
@@ -1122,8 +1126,17 @@ section {
   background: var(--surface);
 }
 
-.page-tauri-alpha figcaption {
+.page-tauri-alpha figcaption,
+.page-doc figcaption {
   margin-top: 10px;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+/* Docs suite pages. Each per-feature page also gets a .page-<slug> class
+   for one-off overrides; .container width, .media-frame styling, and
+   figcaption rules are folded into the existing rules above so this scope
+   only carries what's genuinely doc-suite-specific. */
+.page-doc figure {
+  margin: 0;
 }
