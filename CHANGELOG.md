@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.3.6] - 2026-06-16
+### Desktop
+- Add a rendered Preview view to the Files explorer for Markdown and HTML files, defaulting documents to Preview
+- Render HTML previews in a sandboxed iframe with scripts disabled by default and an opt-in, isolated "Enable scripts" toggle
+- Resolve repo-relative assets in the preview: Markdown images and HTML stylesheets/images/scripts are inlined as data URIs from the worktree
+- Turn the Files explorer branch label into a real worktree selector that drives the tree and stays in sync with the backend's active worktree
+- Add an "Open in terminal" action to worktree rows
+- Prompt to restart after an app update finishes installing, with a "Restart now" action in the settings panel and app bar, and short-circuit further update checks while a restart is pending
+- Sign the bundled `git` Mach-O binaries during macOS bundling so Developer ID builds pass Gatekeeper
+- Add a Mac App Store build pipeline (entitlements, Info.plist, provisioning profile, Tauri overrides, `tauri:build-appstore:mac` script) gated behind the `mac-app-store` Cargo feature, which omits the in-app auto-updater
+- Add a Microsoft Store MSIX build pipeline behind a `store-distribution` Cargo feature; both store flavors share a `store-managed-updates` path that hides the in-app updater and shows a store-managed message in its place
+- Add a Linux Tauri bundle configuration
+
+### Shared
+- Render images, GFM tables, and task lists in Markdown (commit bodies and the file Preview), with syntax-highlighted fenced code blocks in the desktop app
+- Show a push/sync indicator on local branch badges in the graph (ahead/behind counts, an in-sync check, or an "unpublished" glyph) so a branch sharing a commit with its remote still reveals whether it has been pushed
+- Cmd/Ctrl-click a commit's file row to open the file in the Files explorer instead of the diff view
+
+### Fixed
+- Make file-content search results clickable and jump to the matched line in the desktop app
+- Sync the local default branch after a pull-rebase onto origin in the desktop app
+- Eliminate git-status "lock shock" and stale background-worktree UI when concurrent git operations briefly hold the index lock
+- Allow `GIT_EDITOR` to flow through to `continueRebase` in the VS Code extension so rebase continuations no longer break the editor environment
+- Make the desktop discard action delete staged/new files instead of returning an error
+
 ## [0.3.5] - 2026-06-04
 ### Desktop
 - Add a Files explorer activity with worktree groups, file status badges, and file, diff, conflict, and blame views
