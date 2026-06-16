@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Intelligent Commit Management - Git Navigator</title>
+    <meta name="description" content="Stage, unstage, amend, and split uncommitted changes from a single panel in Git Navigator — line-by-line, with the same view the graph already shows you." />
+    <meta name="keywords" content="git uncommitted changes, git staging area visual, git split commit ui, git amend gui, git navigator" />
+    <link rel="canonical" href="https://gitnav.xyz/uncommitted-changes.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Intelligent Commit Management - Git Navigator" />
+    <meta property="og:description" content="Stage, unstage, amend, and split uncommitted changes from a single panel in Git Navigator — line-by-line, with the same view the graph already shows you." />
+    <meta property="og:url" content="https://gitnav.xyz/uncommitted-changes.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/uncommitted-changes.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Intelligent Commit Management - Git Navigator" />
+    <meta name="twitter:description" content="Stage, unstage, amend, and split uncommitted changes from a single panel in Git Navigator — line-by-line, with the same view the graph already shows you." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/uncommitted-changes.png" />
+
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="static/site.css" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Intelligent Commit Management",
+  "description": "Stage, unstage, amend, and split uncommitted changes from a single panel in Git Navigator — line-by-line, with the same view the graph already shows you.",
+  "mainEntityOfPage": "https://gitnav.xyz/uncommitted-changes.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/uncommitted-changes.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the uncommitted-changes panel show untracked files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Staged, unstaged, and untracked files are all listed in the same panel, so the panel matches what `git status` would tell you on the command line."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I stage individual lines or hunks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Open a file from the panel to see its diff and stage or unstage specific hunks. Anything you leave unstaged stays in the working tree for a later commit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I split a large commit into smaller ones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choose Split on the current commit. Git Navigator opens the commit's changes in the panel so you can stage hunks into a series of focused commits, or ask AI to suggest a split first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when I uncommit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uncommit removes the most recent commit and returns its changes to the working tree, so they show up in the uncommitted-changes panel ready to be re-staged or rewritten."
+      }
+    }
+  ]
+}
+    </script>
+  </head>
+  <body class="page-doc page-uncommitted-changes">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container hero">
+        <h1>Stage, split, and amend without leaving the graph</h1>
+        <p>Git Navigator pins your uncommitted changes to the top of the graph in a dedicated panel. Staged, unstaged, and untracked files sit side by side, and every action — stage, unstage, amend, split, uncommit — is a click away on the same screen as the history they belong to.</p>
+        <p><a href="index.html">Back to the main page</a></p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <img src="static/uncommitted-changes.png" alt="Git Navigator showing the uncommitted changes panel above the commit graph, with staged, unstaged, and untracked files listed" data-zoom />
+            </div>
+            <figcaption>A dirty working tree as Git Navigator renders it: staged, unstaged, and untracked files grouped above the graph, ready to act on.</figcaption>
+          </figure>
+
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">What the panel gives you</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Staged, unstaged, and untracked side by side</h3>
+            <p>Files are grouped by where they sit in Git — index, working tree, untracked — so you never have to guess what <code>git commit</code> would actually include.</p>
+          </div>
+          <div class="card">
+            <h3>Stage by file or by hunk</h3>
+            <p>Stage and unstage whole files, or open the diff and pick the exact hunks you want in the next commit. The rest of the change keeps waiting in the working tree.</p>
+          </div>
+          <div class="card">
+            <h3>Amend the last commit</h3>
+            <p>Fold the current changes into the previous commit with one click, including updating its message — without typing a single <code>git commit --amend</code>.</p>
+          </div>
+          <div class="card">
+            <h3>Split a messy commit</h3>
+            <p>When the last commit grew three ideas wide, split it into focused commits from the panel itself — by file, by hunk, or with AI-suggested groupings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Cleaning up a working tree</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Open the panel.</strong> The uncommitted-changes panel renders automatically at the top of the graph whenever the working tree is dirty. There is no command to run.</li>
+            <li><strong>Decide what to stage.</strong> Click a file to stage it, or open the diff and stage individual hunks. Untracked files are listed in the same panel so nothing is missed by accident.</li>
+            <li><strong>Write the commit.</strong> Compose the message in the panel, or let Git Navigator draft one from the staged diff via your editor's language model.</li>
+            <li><strong>Amend, split, or uncommit.</strong> Need to fix the previous commit? Amend it from the panel. Need to split it apart? Choose Split. Need to undo it entirely? Uncommit and the changes return to the working tree.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Does the uncommitted-changes panel show untracked files?</h3>
+            <p>Yes. Staged, unstaged, and untracked files are all listed in the same panel, so the panel matches what `git status` would tell you on the command line.</p>
+          </div>
+          <div class="card">
+            <h3>Can I stage individual lines or hunks?</h3>
+            <p>Yes. Open a file from the panel to see its diff and stage or unstage specific hunks. Anything you leave unstaged stays in the working tree for a later commit.</p>
+          </div>
+          <div class="card">
+            <h3>How do I split a large commit into smaller ones?</h3>
+            <p>Choose Split on the current commit. Git Navigator opens the commit's changes in the panel so you can stage hunks into a series of focused commits, or ask AI to suggest a split first.</p>
+          </div>
+          <div class="card">
+            <h3>What happens when I uncommit?</h3>
+            <p>Uncommit removes the most recent commit and returns its changes to the working tree, so they show up in the uncommitted-changes panel ready to be re-staged or rewritten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Related guides</h2>
+        <div class="footer-inner">
+          <a class="button secondary" href="commit-graph.html">Visual Commit Graph</a>
+          <a class="button secondary" href="stack.html">Branch vs Stack mode</a>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+      </div>
+    </footer>
+
+    <div class="overlay" id="media-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close media">x</button>
+        <div class="overlay-body"></div>
+      </div>
+    </div>
+
+    <script src="static/site.js"></script>
+  </body>
+</html>

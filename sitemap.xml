@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://gitnav.xyz/</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/desktop.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/stack.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/stack_reviewer.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/commit-graph.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/uncommitted-changes.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/conflict-resolution.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/branches-and-tags.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/post_install.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/privacy.html</loc>
+  </url>
+</urlset>

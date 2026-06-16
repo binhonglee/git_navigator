@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visual Conflict Resolution - Git Navigator</title>
+    <meta name="description" content="Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view." />
+    <meta name="keywords" content="git conflict resolution, git merge conflict gui, visual git rebase conflict, three-way merge tool, git navigator" />
+    <link rel="canonical" href="https://gitnav.xyz/conflict-resolution.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Visual Conflict Resolution - Git Navigator" />
+    <meta property="og:description" content="Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view." />
+    <meta property="og:url" content="https://gitnav.xyz/conflict-resolution.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/conflict-resolution.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Visual Conflict Resolution - Git Navigator" />
+    <meta name="twitter:description" content="Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/conflict-resolution.png" />
+
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="static/site.css" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Visual Conflict Resolution",
+  "description": "Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view.",
+  "mainEntityOfPage": "https://gitnav.xyz/conflict-resolution.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/conflict-resolution.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Git Navigator handle conflicts from merge, rebase, and cherry-pick?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The conflict view detects merge, rebase, and cherry-pick states from the on-disk Git directory, so the same banner and actions cover all three operations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I resolve specific blocks instead of whole files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The conflict editor turns each conflict marker into its own block with explicit \"keep ours\", \"keep theirs\", and \"both\" actions, so you can pick the right side per block."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I want to abort the merge or rebase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use Abort from the conflict banner. Git Navigator runs the underlying `git merge --abort` or `git rebase --abort` and the working tree returns to its pre-operation state."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the conflict view work when I have linked worktrees?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The conflict banner is scoped to the active worktree, so a paused merge in one worktree does not block work in the others."
+      }
+    }
+  ]
+}
+    </script>
+  </head>
+  <body class="page-doc page-conflict-resolution">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container hero">
+        <h1>Resolve conflicts without hunting for conflict markers</h1>
+        <p>When a merge, rebase, or cherry-pick stops on a conflict, Git Navigator replaces the graph with a focused conflict view. No more digging for <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> markers by hand — every conflicted file is listed in one place, every block has a one-click <em>keep ours / keep theirs / both</em> choice, and the rest of your repository stays one tab away.</p>
+        <p><a href="index.html">Back to the main page</a></p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <img src="static/conflict-resolution.png" alt="Git Navigator showing the conflict banner with a list of conflicted files after a paused merge" data-zoom />
+            </div>
+            <figcaption>A real paused merge as Git Navigator renders it: the conflict banner names what is in progress, the conflicted file is listed, and the resolution actions are one click away.</figcaption>
+          </figure>
+
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">How Git Navigator handles a conflict</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>A conflict banner you cannot miss</h3>
+            <p>As soon as Git pauses on a conflict, Git Navigator replaces the graph with a banner that names what is in progress — merge, rebase, cherry-pick, or stash apply — and the files that need attention.</p>
+          </div>
+          <div class="card">
+            <h3>Block-level &quot;ours / theirs / both&quot;</h3>
+            <p>Each conflict marker becomes a block in the editor with explicit actions, so you can keep one side, take the other, or merge them by hand without re-typing the file.</p>
+          </div>
+          <div class="card">
+            <h3>Whole-file shortcuts when you know</h3>
+            <p>Sometimes the answer is "always keep mine for this file." Use <em>Keep Ours</em>, <em>Keep Theirs</em>, or <em>Delete</em> on the file itself and move on.</p>
+          </div>
+          <div class="card">
+            <h3>Abort or continue in one place</h3>
+            <p>When you are done, continue the merge or rebase from the same banner. Decided it was a mistake? Abort, and the working tree returns to where it was before.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Walking through a conflict</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Start the operation as normal.</strong> Drag a branch onto another to rebase, run a merge, or cherry-pick a commit. Git Navigator only takes over the view when Git itself stops.</li>
+            <li><strong>Open the conflict banner.</strong> The banner appears at the top of the graph with the conflict type and the list of conflicted files. Click a file to jump straight to its conflicts.</li>
+            <li><strong>Resolve block by block.</strong> Pick <em>Keep Ours</em>, <em>Keep Theirs</em>, or <em>Both</em> on each conflict block, or edit the file directly when the right answer is a hand-merge.</li>
+            <li><strong>Continue or abort.</strong> Once every block is resolved, continue the merge or rebase from the banner. If anything goes wrong, abort and the working tree returns to its pre-conflict state.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Does Git Navigator handle conflicts from merge, rebase, and cherry-pick?</h3>
+            <p>Yes. The conflict view detects merge, rebase, and cherry-pick states from the on-disk Git directory, so the same banner and actions cover all three operations.</p>
+          </div>
+          <div class="card">
+            <h3>Can I resolve specific blocks instead of whole files?</h3>
+            <p>Yes. The conflict editor turns each conflict marker into its own block with explicit "keep ours", "keep theirs", and "both" actions, so you can pick the right side per block.</p>
+          </div>
+          <div class="card">
+            <h3>What if I want to abort the merge or rebase?</h3>
+            <p>Use Abort from the conflict banner. Git Navigator runs the underlying `git merge --abort` or `git rebase --abort` and the working tree returns to its pre-operation state.</p>
+          </div>
+          <div class="card">
+            <h3>Does the conflict view work when I have linked worktrees?</h3>
+            <p>Yes. The conflict banner is scoped to the active worktree, so a paused merge in one worktree does not block work in the others.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Related guides</h2>
+        <div class="footer-inner">
+          <a class="button secondary" href="commit-graph.html">Visual Commit Graph</a>
+          <a class="button secondary" href="stack.html">Branch vs Stack mode</a>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+      </div>
+    </footer>
+
+    <div class="overlay" id="media-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close media">x</button>
+        <div class="overlay-body"></div>
+      </div>
+    </div>
+
+    <script src="static/site.js"></script>
+  </body>
+</html>

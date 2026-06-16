@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visual Commit Graph - Git Navigator</title>
+    <meta name="description" content="Explore your entire Git history as an interactive graph in Git Navigator. See branches, tags, merges, and your current position at a glance, and check out any commit with one click." />
+    <meta name="keywords" content="git commit graph, visual git history, git branch visualization, git navigator" />
+    <link rel="canonical" href="https://gitnav.xyz/commit-graph.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Visual Commit Graph - Git Navigator" />
+    <meta property="og:description" content="Explore your entire Git history as an interactive graph in Git Navigator. See branches, tags, merges, and your current position at a glance, and check out any commit with one click." />
+    <meta property="og:url" content="https://gitnav.xyz/commit-graph.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/commit-graph.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Visual Commit Graph - Git Navigator" />
+    <meta name="twitter:description" content="Explore your entire Git history as an interactive graph in Git Navigator. See branches, tags, merges, and your current position at a glance, and check out any commit with one click." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/commit-graph.png" />
+
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="static/site.css" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Visual Commit Graph",
+  "description": "Explore your entire Git history as an interactive graph in Git Navigator. See branches, tags, merges, and your current position at a glance, and check out any commit with one click.",
+  "mainEntityOfPage": "https://gitnav.xyz/commit-graph.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/commit-graph.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is this different from running git log --graph?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "git log --graph prints an ASCII tree in your terminal that you can only read. Git Navigator renders the same topology as an interactive graph you can act on — click a commit to check it out, drag to rebase, and see branch and tag labels drawn inline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the graph show all branches at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The graph lays out your branches as parallel lanes so you can see the full topology — mainline, feature branches, merges, and tags — in a single view, with your current position highlighted."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I check out a commit from the graph?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Click any commit in the graph to check it out. Git Navigator moves the current-commit highlight to the new HEAD so you always know where you are."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the commit graph available in both the VS Code extension and the desktop app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Visual Commit Graph is part of the shared Git Navigator product surface and works the same way in the VS Code extension and the standalone desktop app."
+      }
+    }
+  ]
+}
+    </script>
+  </head>
+  <body class="page-doc page-commit-graph">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container hero">
+        <h1>See your whole history at a glance</h1>
+        <p>The Visual Commit Graph turns <code>git log</code> into a living, interactive map of your repository. Branches, tags, and merges are laid out as a tree so you can read history the way you think about it — and act on it directly.</p>
+        <p><a href="index.html">Back to the main page</a></p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <img src="static/commit-graph.png" alt="Git Navigator showing an interactive commit graph with multiple branches, a tag, and a merge commit" data-zoom />
+            </div>
+            <figcaption>A real repository rendered by Git Navigator: the mainline, two feature branches, the v1.0 tag, and a merge node — all in one view.</figcaption>
+          </figure>
+
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">What the graph shows you</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Branch &amp; tag labels inline</h3>
+            <p>Refs are drawn right on the commits they point to, so you never lose track of where a branch tip or release tag actually sits.</p>
+          </div>
+          <div class="card">
+            <h3>Current commit highlight</h3>
+            <p>Git Navigator gives the commit at <code>HEAD</code> a larger, ringed dot and a tinted row, so where you are sits one glance away from anything else on the graph.</p>
+          </div>
+          <div class="card">
+            <h3>Merge &amp; parent lines</h3>
+            <p>Parent–child relationships are drawn as lanes, making merges, forks, and divergence obvious instead of inferred.</p>
+          </div>
+          <div class="card">
+            <h3>Favorites stay pinned</h3>
+            <p>Star the branches you care about and they stay visible even when the rest of the graph scrolls away.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Reading and using the graph</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Open a repository.</strong> Point Git Navigator at any folder with a <code>.git</code> directory. The full commit graph renders immediately — no command to run.</li>
+            <li><strong>Follow the lanes.</strong> Each vertical lane is a line of development. Where lanes split, history diverged; where they join, a merge happened.</li>
+            <li><strong>Find your position.</strong> The commit at <code>HEAD</code> is drawn with a larger, ringed dot and a tinted row, so spotting where you are is one glance. Branch and tag labels sit on the commits they reference.</li>
+            <li><strong>Check out any commit.</strong> Click a commit to check it out and explore that point in history. The current-commit highlight follows you to the new <code>HEAD</code>.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>How is this different from running git log --graph?</h3>
+            <p>git log --graph prints an ASCII tree in your terminal that you can only read. Git Navigator renders the same topology as an interactive graph you can act on — click a commit to check it out, drag to rebase, and see branch and tag labels drawn inline.</p>
+          </div>
+          <div class="card">
+            <h3>Does the graph show all branches at once?</h3>
+            <p>Yes. The graph lays out your branches as parallel lanes so you can see the full topology — mainline, feature branches, merges, and tags — in a single view, with your current position highlighted.</p>
+          </div>
+          <div class="card">
+            <h3>Can I check out a commit from the graph?</h3>
+            <p>Click any commit in the graph to check it out. Git Navigator moves the current-commit highlight to the new HEAD so you always know where you are.</p>
+          </div>
+          <div class="card">
+            <h3>Is the commit graph available in both the VS Code extension and the desktop app?</h3>
+            <p>Yes. The Visual Commit Graph is part of the shared Git Navigator product surface and works the same way in the VS Code extension and the standalone desktop app.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Related guides</h2>
+        <div class="footer-inner">
+          <a class="button secondary" href="stack.html">Branch vs Stack mode</a>
+          <a class="button secondary" href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+      </div>
+    </footer>
+
+    <div class="overlay" id="media-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close media">x</button>
+        <div class="overlay-body"></div>
+      </div>
+    </div>
+
+    <script src="static/site.js"></script>
+  </body>
+</html>
