@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drag-and-drop Rebase - Git Navigator</title>
+    <meta name="description" content="Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply." />
+    <meta name="keywords" content="git rebase gui, drag and drop git rebase, visual git rebase, interactive rebase ui, git navigator" />
+    <link rel="canonical" href="https://gitnav.xyz/drag-and-drop-rebase.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Drag-and-drop Rebase - Git Navigator" />
+    <meta property="og:description" content="Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply." />
+    <meta property="og:url" content="https://gitnav.xyz/drag-and-drop-rebase.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/drag-and-drop-rebase-stack-step-01.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Drag-and-drop Rebase - Git Navigator" />
+    <meta name="twitter:description" content="Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/drag-and-drop-rebase-stack-step-01.png" />
+
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="static/site.css" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Drag-and-drop Rebase",
+  "description": "Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply.",
+  "mainEntityOfPage": "https://gitnav.xyz/drag-and-drop-rebase.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/drag-and-drop-rebase-stack-step-01.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the rebase happen as soon as I drop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Dropping opens a preview only — the graph shows what the rebase would do, and you have to click Rebase to apply it. Cancel restores the original topology with no changes to the repo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I drop on an invalid target?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Git Navigator rejects drops onto the current parent, an ancestor, the commit itself, or a placeholder — the preview never opens, so you can't accidentally produce an empty rebase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between dragging in stack mode and branch mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In stack mode, dragging a commit moves all of its descendants along with it as a stack. In branch mode, only the targeted branch tip moves, keeping the rest of the graph stable. The walkthrough on this page shows both — use the Stack mode / Branch mode toggle to compare them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does drag rebase handle conflicts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If the rebase produces conflicts, Git Navigator pauses on its conflict view (see the Visual Conflict Resolution page) with every conflicted file listed and block-level keep-ours / keep-theirs / both actions."
+      }
+    }
+  ]
+}
+    </script>
+  </head>
+  <body class="page-doc page-drag-and-drop-rebase">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container hero">
+        <h1>Rebase by dragging — see the result before you commit</h1>
+        <p>Git Navigator turns <code>git rebase --onto</code> into a direct manipulation: grab the commit you want to move, drop it on its new parent, and the graph previews exactly where every descendant will land. Confirm to apply, or cancel and nothing changes.</p>
+        <p><a href="index.html">Back to the main page</a></p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <img src="static/drag-and-drop-rebase-stack-step-01.png" alt="Git Navigator showing the commit graph before a drag-and-drop rebase in stack mode" data-zoom />
+            </div>
+            <figcaption>Start with the full graph open — every commit is draggable.</figcaption>
+          </figure>
+
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">How rebase feels in Git Navigator</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Drag any commit onto any other</h3>
+            <p>Pick the commit you want to move, drop it on its new parent. No <code>git rebase --onto</code>, no interactive editor, no commit ranges to type.</p>
+          </div>
+          <div class="card">
+            <h3>Preview before you commit</h3>
+            <p>The graph re-renders the moment you drop with the proposed new topology drawn in place. You can confirm or cancel — nothing touches your repo until you say so.</p>
+          </div>
+          <div class="card">
+            <h3>Stack mode moves descendants too</h3>
+            <p>In stack mode, dragging a commit moves all of its descendants along with it. In branch mode, only the targeted branch is affected. The walkthrough below shows both — flip the toggle to compare.</p>
+          </div>
+          <div class="card">
+            <h3>Safe rejection of invalid targets</h3>
+            <p>Dropping a commit on its own ancestor, current parent, or itself is rejected — the preview never opens, so you can't accidentally produce an empty rebase.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Walkthrough</h2>
+        <div class="walkthrough-modes" role="tablist" aria-label="Walkthrough modes">
+          <button type="button" class="walkthrough-mode-btn is-active" role="tab" aria-selected="true" data-target="stack">Stack mode</button>
+          <button type="button" class="walkthrough-mode-btn" role="tab" aria-selected="false" data-target="branch">Branch mode</button>
+        </div>
+        <ol class="walkthrough" data-mode="stack">
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-stack-step-01.png" alt="Step 1 — Open the repository in stack mode — Git Navigator draws every commit as a draggable row, including each commit's descend" data-zoom />
+              </div>
+              <figcaption><strong>Step 1.</strong> Open the repository in stack mode — Git Navigator draws every commit as a draggable row, including each commit's descendants under it.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-stack-step-02.png" alt="Step 2 — Find the commit you want to move. Here we're relocating the uuid bump onto an earlier commit so the graph stays tidy." data-zoom />
+              </div>
+              <figcaption><strong>Step 2.</strong> Find the commit you want to move. Here we're relocating the uuid bump onto an earlier commit so the graph stays tidy.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-stack-step-03.png" alt="Step 3 — Drag it onto its new parent. In stack mode the dragged commit takes its descendants along — every affected row is re-dra" data-zoom />
+              </div>
+              <figcaption><strong>Step 3.</strong> Drag it onto its new parent. In stack mode the dragged commit takes its descendants along — every affected row is re-drawn in its new position before you commit.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-stack-step-04.png" alt="Step 4 — Review the preview. Rebase applies it; Cancel restores the original topology and nothing touches the repo." data-zoom />
+              </div>
+              <figcaption><strong>Step 4.</strong> Review the preview. Rebase applies it; Cancel restores the original topology and nothing touches the repo.</figcaption>
+            </figure>
+          </li>
+        </ol>
+        <ol class="walkthrough" data-mode="branch" hidden>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-branch-step-01.png" alt="Step 1 — Open the repository in branch mode — non-tip commits collapse into placeholders, and each branch is a row you can move a" data-zoom />
+              </div>
+              <figcaption><strong>Step 1.</strong> Open the repository in branch mode — non-tip commits collapse into placeholders, and each branch is a row you can move as a unit. Here the feature/refresh-readme branch sits as a single tip alongside main.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-branch-step-02.png" alt="Step 2 — Find the branch tip you want to rebase. Branch mode treats it as the head of a movable range." data-zoom />
+              </div>
+              <figcaption><strong>Step 2.</strong> Find the branch tip you want to rebase. Branch mode treats it as the head of a movable range.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-branch-step-03.png" alt="Step 3 — Drag the feature tip onto main. Branch mode rebases just that branch — the rest of the graph stays exactly where it was." data-zoom />
+              </div>
+              <figcaption><strong>Step 3.</strong> Drag the feature tip onto main. Branch mode rebases just that branch — the rest of the graph stays exactly where it was.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <img src="static/drag-and-drop-rebase-branch-step-04.png" alt="Step 4 — Confirm to land the branch on its new base, or cancel and the feature branch snaps back to where it started." data-zoom />
+              </div>
+              <figcaption><strong>Step 4.</strong> Confirm to land the branch on its new base, or cancel and the feature branch snaps back to where it started.</figcaption>
+            </figure>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Step by step</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Open the graph.</strong> Git Navigator renders every commit as a draggable row — there is no separate "interactive rebase" mode to enter.</li>
+            <li><strong>Pick the commit (or branch tip).</strong> In stack mode, click any commit to grab it and its descendants. In branch mode, grab a branch tip to move just that branch.</li>
+            <li><strong>Drop on the new parent.</strong> Drag onto another commit. Git Navigator builds a preview of the rebased graph and renders it in place of the live one.</li>
+            <li><strong>Confirm or cancel.</strong> Click <em>Rebase</em> to apply, or <em>Cancel</em> to back out. The repo is only touched once you confirm.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Does the rebase happen as soon as I drop?</h3>
+            <p>No. Dropping opens a preview only — the graph shows what the rebase would do, and you have to click Rebase to apply it. Cancel restores the original topology with no changes to the repo.</p>
+          </div>
+          <div class="card">
+            <h3>What if I drop on an invalid target?</h3>
+            <p>Git Navigator rejects drops onto the current parent, an ancestor, the commit itself, or a placeholder — the preview never opens, so you can't accidentally produce an empty rebase.</p>
+          </div>
+          <div class="card">
+            <h3>What's the difference between dragging in stack mode and branch mode?</h3>
+            <p>In stack mode, dragging a commit moves all of its descendants along with it as a stack. In branch mode, only the targeted branch tip moves, keeping the rest of the graph stable. The walkthrough on this page shows both — use the Stack mode / Branch mode toggle to compare them.</p>
+          </div>
+          <div class="card">
+            <h3>Does drag rebase handle conflicts?</h3>
+            <p>Yes. If the rebase produces conflicts, Git Navigator pauses on its conflict view (see the Visual Conflict Resolution page) with every conflicted file listed and block-level keep-ours / keep-theirs / both actions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Related guides</h2>
+        <div class="footer-inner">
+          <a class="button secondary" href="commit-graph.html">Visual Commit Graph</a>
+          <a class="button secondary" href="stack.html">Branch vs Stack mode</a>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+      </div>
+    </footer>
+
+    <div class="overlay" id="media-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close media">x</button>
+        <div class="overlay-body"></div>
+      </div>
+    </div>
+
+    <script src="static/site.js"></script>
+    <script>
+      // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
+      // hide the others. Scoped to this page; site.js is untouched.
+      document.querySelectorAll('.walkthrough-modes').forEach(group => {
+        const tabs = Array.from(group.querySelectorAll('.walkthrough-mode-btn'));
+        const lists = Array.from(group.parentElement.querySelectorAll('.walkthrough[data-mode]'));
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const target = tab.dataset.target;
+            tabs.forEach(t => {
+              const active = t.dataset.target === target;
+              t.classList.toggle('is-active', active);
+              t.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+            lists.forEach(list => {
+              list.toggleAttribute('hidden', list.dataset.mode !== target);
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
