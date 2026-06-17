@@ -1140,3 +1140,61 @@ section {
 .page-doc figure {
   margin: 0;
 }
+
+.page-doc .walkthrough {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 24px;
+}
+
+.page-doc .walkthrough li {
+  counter-increment: step;
+}
+
+.page-doc .walkthrough figure {
+  margin: 0;
+}
+
+.page-doc .walkthrough figcaption {
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+.page-doc .walkthrough-modes {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.page-doc .walkthrough-mode-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.page-doc .walkthrough-mode-btn.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.page-doc .walkthrough-mode-btn:not(.is-active):hover {
+  color: var(--text);
+}
+
+.page-doc .walkthrough[hidden] {
+  display: none;
+}
