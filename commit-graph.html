@@ -97,7 +97,10 @@
       <div class="container">
           <figure>
             <div class="media-frame">
-              <img src="static/commit-graph.png" alt="Git Navigator showing an interactive commit graph with multiple branches, a tag, and a merge commit" data-zoom />
+              <picture>
+                <source srcset="static/commit-graph-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="static/commit-graph.png" alt="Git Navigator showing an interactive commit graph with multiple branches, a tag, and a merge commit" data-zoom />
+              </picture>
             </div>
             <figcaption>A real repository rendered by Git Navigator: the mainline, two feature branches, the v1.0 tag, and a merge node — all in one view.</figcaption>
           </figure>
