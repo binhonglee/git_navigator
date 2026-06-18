@@ -97,7 +97,10 @@
       <div class="container">
           <figure>
             <div class="media-frame">
-              <img src="static/conflict-resolution.png" alt="Git Navigator showing the conflict banner with a list of conflicted files after a paused merge" data-zoom />
+              <picture>
+                <source srcset="static/conflict-resolution-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="static/conflict-resolution.png" alt="Git Navigator showing the conflict banner with a list of conflicted files after a paused merge" data-zoom />
+              </picture>
             </div>
             <figcaption>A real paused merge as Git Navigator renders it: the conflict banner names what is in progress, the conflicted file is listed, and the resolution actions are one click away.</figcaption>
           </figure>
