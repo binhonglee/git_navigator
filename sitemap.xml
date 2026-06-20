@@ -43,6 +43,12 @@
     <loc>https://gitnav.xyz/fetch.html</loc>
   </url>
   <url>
+    <loc>https://gitnav.xyz/stash.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/reflog.html</loc>
+  </url>
+  <url>
     <loc>https://gitnav.xyz/post_install.html</loc>
   </url>
   <url>
