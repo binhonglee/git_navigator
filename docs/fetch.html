@@ -6,14 +6,14 @@
     <title>Fetch - Git Navigator</title>
     <meta name="description" content="Fetch from any remote ref with explicit follow-up: stop at fetch, rebase onto the new ref, or check it out as a local branch. One toolbar, one input, three behaviours." />
     <meta name="keywords" content="git fetch gui, fetch and rebase, fetch and checkout, git fetch only, fetch dropdown, git navigator" />
-    <link rel="canonical" href="https://gitnav.xyz/fetch.html" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/fetch.html" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Git Navigator" />
     <meta property="og:title" content="Fetch - Git Navigator" />
     <meta property="og:description" content="Fetch from any remote ref with explicit follow-up: stop at fetch, rebase onto the new ref, or check it out as a local branch. One toolbar, one input, three behaviours." />
-    <meta property="og:url" content="https://gitnav.xyz/fetch.html" />
+    <meta property="og:url" content="https://gitnav.xyz/docs/fetch.html" />
     <meta property="og:image" content="https://gitnav.xyz/static/fetch-rebase-step-01.png" />
 
     <!-- Twitter -->
@@ -22,15 +22,15 @@
     <meta name="twitter:description" content="Fetch from any remote ref with explicit follow-up: stop at fetch, rebase onto the new ref, or check it out as a local branch. One toolbar, one input, three behaviours." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/fetch-rebase-step-01.png" />
 
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Fetch",
   "description": "Fetch from any remote ref with explicit follow-up: stop at fetch, rebase onto the new ref, or check it out as a local branch. One toolbar, one input, three behaviours.",
-  "mainEntityOfPage": "https://gitnav.xyz/fetch.html",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/fetch.html",
   "about": "Git Navigator",
   "image": "https://gitnav.xyz/static/fetch-rebase-step-01.png"
 }
@@ -85,12 +85,60 @@
     </script>
   </head>
   <body class="page-doc page-fetch">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html" aria-current="page">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html">Stash</a></li>
+          <li><a href="file-explorer.html">File Explorer</a></li>
+          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
     <nav class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
         <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
         </div>
       </div>
     </nav>
@@ -98,7 +146,7 @@
       <div class="container hero">
         <h1>Fetch, rebase, or checkout — pick the follow-up</h1>
         <p>Git Navigator's fetch control is an action picker plus a free-form ref input. Type the ref, pick what to do, hit Go. No second-guessing whether <code>git fetch</code> moved your working tree (it didn't), or remembering the <code>git checkout -b ... --track</code> incantation.</p>
-        <p><a href="index.html">Back to the main page</a></p>
+        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -106,8 +154,8 @@
           <figure>
             <div class="media-frame">
               <picture>
-                <source srcset="static/fetch-rebase-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/fetch-rebase-step-01.png" alt="Git Navigator showing the fetch dropdown action picker, ref input, and Go button at the top of the commit graph" data-zoom />
+                <source srcset="../static/fetch-rebase-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/fetch-rebase-step-01.png" alt="Git Navigator showing the fetch dropdown action picker, ref input, and Go button at the top of the commit graph" data-zoom />
               </picture>
             </div>
             <figcaption>The fetch control reads as a sentence: action picker (defaults to Rebase), ref input (origin/main by default), Go button to run it.</figcaption>
@@ -151,8 +199,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-rebase-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-rebase-step-01.png" alt="Step 1 — The fetch control sits next to the pull button. Three pieces: an action picker on the left (defaulting to Rebase), a ref" data-zoom />
+                  <source srcset="../static/fetch-rebase-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-rebase-step-01.png" alt="Step 1 — The fetch control sits next to the pull button. Three pieces: an action picker on the left (defaulting to Rebase), a ref" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> The fetch control sits next to the pull button. Three pieces: an action picker on the left (defaulting to Rebase), a ref input in the middle (placeholder shows the action's typical target), and a Go button on the right.</figcaption>
@@ -162,8 +210,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-rebase-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-rebase-step-02.png" alt="Step 2 — Type the branch name you want to rebase onto — here main to bring the current branch up to date with the remote's defaul" data-zoom />
+                  <source srcset="../static/fetch-rebase-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-rebase-step-02.png" alt="Step 2 — Type the branch name you want to rebase onto — here main to bring the current branch up to date with the remote's defaul" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> Type the branch name you want to rebase onto — here <code>main</code> to bring the current branch up to date with the remote's default. Git Navigator prepends the remote (origin) automatically, so the input stays terse.</figcaption>
@@ -173,8 +221,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-rebase-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-rebase-step-03.png" alt="Step 3 — Hit Go and Git Navigator runs git fetch origin then git rebase origin/main on the current branch. The graph re-renders w" data-zoom />
+                  <source srcset="../static/fetch-rebase-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-rebase-step-03.png" alt="Step 3 — Hit Go and Git Navigator runs git fetch origin then git rebase origin/main on the current branch. The graph re-renders w" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Hit Go and Git Navigator runs <code>git fetch origin</code> then <code>git rebase origin/main</code> on the current branch. The graph re-renders with the new history in place.</figcaption>
@@ -186,8 +234,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-checkout-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-checkout-step-01.png" alt="Step 1 — To switch what Go means, open the action dropdown. Three rows — Rebase (the default), Checkout, and Fetch only — each pi" data-zoom />
+                  <source srcset="../static/fetch-checkout-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-checkout-step-01.png" alt="Step 1 — To switch what Go means, open the action dropdown. Three rows — Rebase (the default), Checkout, and Fetch only — each pi" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> To switch what Go means, open the action dropdown. Three rows — Rebase (the default), Checkout, and Fetch only — each pinned to its typical placeholder so the input hints at what to type.</figcaption>
@@ -197,8 +245,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-checkout-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-checkout-step-02.png" alt="Step 2 — Fetch + Checkout brings in a remote branch and checks it out as a new local branch tracking the upstream — perfect for p" data-zoom />
+                  <source srcset="../static/fetch-checkout-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-checkout-step-02.png" alt="Step 2 — Fetch + Checkout brings in a remote branch and checks it out as a new local branch tracking the upstream — perfect for p" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> <em>Fetch + Checkout</em> brings in a remote branch and checks it out as a new local branch tracking the upstream — perfect for picking up a teammate's in-progress work without remembering the <code>checkout -b --track</code> dance.</figcaption>
@@ -208,8 +256,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-checkout-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-checkout-step-03.png" alt="Step 3 — The label flips to Checkout and the input's placeholder updates to origin/feature as a hint — same field, different sema" data-zoom />
+                  <source srcset="../static/fetch-checkout-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-checkout-step-03.png" alt="Step 3 — The label flips to Checkout and the input's placeholder updates to origin/feature as a hint — same field, different sema" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> The label flips to <em>Checkout</em> and the input's placeholder updates to <code>origin/feature</code> as a hint — same field, different semantic.</figcaption>
@@ -219,8 +267,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-checkout-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-checkout-step-04.png" alt="Step 4 — Type the branch name to land on — here incoming-spike, a teammate's spike branch that only exists on origin. The clean f" data-zoom />
+                  <source srcset="../static/fetch-checkout-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-checkout-step-04.png" alt="Step 4 — Type the branch name to land on — here incoming-spike, a teammate's spike branch that only exists on origin. The clean f" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> Type the branch name to land on — here <code>incoming-spike</code>, a teammate's spike branch that only exists on origin. The clean field re-uses on every action change, so swapping between Rebase and Checkout is one click + one type.</figcaption>
@@ -230,8 +278,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-checkout-step-05-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-checkout-step-05.png" alt="Step 5 — Go runs git fetch origin then checks out feature/incoming-spike as a new local branch tracking origin/feature/incoming-s" data-zoom />
+                  <source srcset="../static/fetch-checkout-step-05-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-checkout-step-05.png" alt="Step 5 — Go runs git fetch origin then checks out feature/incoming-spike as a new local branch tracking origin/feature/incoming-s" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 5.</strong> Go runs <code>git fetch origin</code> then checks out <code>feature/incoming-spike</code> as a new local branch tracking <code>origin/feature/incoming-spike</code>. The graph swaps to the new branch and the active-worktree badge updates.</figcaption>
@@ -243,8 +291,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-fetch-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-fetch-step-01.png" alt="Step 1 — Fetch only is the safest mode: it updates refs from the remote you type but does nothing to your working tree or current" data-zoom />
+                  <source srcset="../static/fetch-fetch-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-fetch-step-01.png" alt="Step 1 — Fetch only is the safest mode: it updates refs from the remote you type but does nothing to your working tree or current" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> <em>Fetch only</em> is the safest mode: it updates refs from the remote you type but does nothing to your working tree or current branch. Great when you just want to see what's landed without committing to a rebase or checkout yet.</figcaption>
@@ -254,8 +302,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-fetch-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-fetch-step-02.png" alt="Step 2 — The label flips to Fetch and the placeholder simplifies to origin — a bare remote name is all you need when you're not n" data-zoom />
+                  <source srcset="../static/fetch-fetch-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-fetch-step-02.png" alt="Step 2 — The label flips to Fetch and the placeholder simplifies to origin — a bare remote name is all you need when you're not n" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The label flips to <em>Fetch</em> and the placeholder simplifies to <code>origin</code> — a bare remote name is all you need when you're not naming a specific ref.</figcaption>
@@ -265,8 +313,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-fetch-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-fetch-step-03.png" alt="Step 3 — Type the remote and Go runs a plain git fetch origin. The remote refs update in the graph — origin/* badges shift to the" data-zoom />
+                  <source srcset="../static/fetch-fetch-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-fetch-step-03.png" alt="Step 3 — Type the remote and Go runs a plain git fetch origin. The remote refs update in the graph — origin/* badges shift to the" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Type the remote and Go runs a plain <code>git fetch origin</code>. The remote refs update in the graph — origin/* badges shift to their new heads — but local branches and your working tree stay exactly where they were.</figcaption>
@@ -276,8 +324,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/fetch-fetch-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/fetch-fetch-step-04.png" alt="Step 4 — Same outcome as git fetch origin on the command line. Now you can see whether the rebase or checkout you were considerin" data-zoom />
+                  <source srcset="../static/fetch-fetch-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/fetch-fetch-step-04.png" alt="Step 4 — Same outcome as git fetch origin on the command line. Now you can see whether the rebase or checkout you were considerin" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> Same outcome as <code>git fetch origin</code> on the command line. Now you can see whether the rebase or checkout you were considering is worth the click.</figcaption>
@@ -349,7 +397,7 @@
       </div>
     </div>
 
-    <script src="static/site.js"></script>
+    <script src="../static/site.js"></script>
     <script>
       // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
       // hide the others. Scoped to this page; site.js is untouched.

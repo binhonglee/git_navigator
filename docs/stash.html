@@ -6,14 +6,14 @@
     <title>Stash - Git Navigator</title>
     <meta name="description" content="Stash uncommitted work in Git Navigator, inspect what a stash actually contains before popping, and pop it onto any linked worktree by switching the active-worktree radio first. Repo-global stashes, worktree-targeted pop." />
     <meta name="keywords" content="git stash gui, git stash pop, stash inspect diff, cross-worktree stash, visual git stash, git navigator" />
-    <link rel="canonical" href="https://gitnav.xyz/stash.html" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/stash.html" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Git Navigator" />
     <meta property="og:title" content="Stash - Git Navigator" />
     <meta property="og:description" content="Stash uncommitted work in Git Navigator, inspect what a stash actually contains before popping, and pop it onto any linked worktree by switching the active-worktree radio first. Repo-global stashes, worktree-targeted pop." />
-    <meta property="og:url" content="https://gitnav.xyz/stash.html" />
+    <meta property="og:url" content="https://gitnav.xyz/docs/stash.html" />
     <meta property="og:image" content="https://gitnav.xyz/static/stash-create-step-01.png" />
 
     <!-- Twitter -->
@@ -22,15 +22,15 @@
     <meta name="twitter:description" content="Stash uncommitted work in Git Navigator, inspect what a stash actually contains before popping, and pop it onto any linked worktree by switching the active-worktree radio first. Repo-global stashes, worktree-targeted pop." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/stash-create-step-01.png" />
 
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Stash",
   "description": "Stash uncommitted work in Git Navigator, inspect what a stash actually contains before popping, and pop it onto any linked worktree by switching the active-worktree radio first. Repo-global stashes, worktree-targeted pop.",
-  "mainEntityOfPage": "https://gitnav.xyz/stash.html",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/stash.html",
   "about": "Git Navigator",
   "image": "https://gitnav.xyz/static/stash-create-step-01.png"
 }
@@ -85,12 +85,60 @@
     </script>
   </head>
   <body class="page-doc page-stash">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html" aria-current="page">Stash</a></li>
+          <li><a href="file-explorer.html">File Explorer</a></li>
+          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
     <nav class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
         <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
         </div>
       </div>
     </nav>
@@ -98,7 +146,7 @@
       <div class="container hero">
         <h1>Stash, inspect, then pop onto whichever worktree you want</h1>
         <p>Git Navigator turns <code>git stash</code> into three explicit actions on the same overlay: create a stash from the uncommitted-changes panel, expand any stash inline to see its files and diffs before deciding, then pop onto the active worktree — which you choose with the active-worktree radio. Stashes are repo-global; the pop target follows your selection.</p>
-        <p><a href="index.html">Back to the main page</a></p>
+        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -106,8 +154,8 @@
           <figure>
             <div class="media-frame">
               <picture>
-                <source srcset="static/stash-create-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/stash-create-step-01.png" alt="Git Navigator showing the uncommitted-changes panel with the inline Stash button enabled" data-zoom />
+                <source srcset="../static/stash-create-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/stash-create-step-01.png" alt="Git Navigator showing the uncommitted-changes panel with the inline Stash button enabled" data-zoom />
               </picture>
             </div>
             <figcaption>Stash works from the uncommitted-changes panel: stage some files, hit Stash, and the changes move from the panel into the stash list.</figcaption>
@@ -151,8 +199,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-create-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-create-step-01.png" alt="Step 1 — The uncommitted-changes panel for the active worktree already shows the staged files. Whenever there's something staged," data-zoom />
+                  <source srcset="../static/stash-create-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-create-step-01.png" alt="Step 1 — The uncommitted-changes panel for the active worktree already shows the staged files. Whenever there's something staged," data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> The uncommitted-changes panel for the active worktree already shows the staged files. Whenever there's something staged, the inline <em>Stash</em> button at the right of the panel lights up — it stashes the staged set and clears the panel in one step.</figcaption>
@@ -162,8 +210,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-create-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-create-step-02.png" alt="Step 2 — The button is gated on a non-empty included set, so you don't accidentally stash nothing. Title-text reflects the gate: " data-zoom />
+                  <source srcset="../static/stash-create-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-create-step-02.png" alt="Step 2 — The button is gated on a non-empty included set, so you don't accidentally stash nothing. Title-text reflects the gate: " data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The button is gated on a non-empty included set, so you don't accidentally stash <em>nothing</em>. Title-text reflects the gate: "Stash included changes" when enabled, "No changes included to stash" when not.</figcaption>
@@ -173,8 +221,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-create-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-create-step-03.png" alt="Step 3 — Click and Git Navigator runs git stash push -m &quot;Stashed from included changes&quot; -- &amp;lt;files&amp;gt; for the included paths. " data-zoom />
+                  <source srcset="../static/stash-create-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-create-step-03.png" alt="Step 3 — Click and Git Navigator runs git stash push -m &quot;Stashed from included changes&quot; -- &amp;lt;files&amp;gt; for the included paths. " data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Click and Git Navigator runs <code>git stash push -m "Stashed from included changes" -- &lt;files&gt;</code> for the included paths. The panel clears (no more staged changes), and the new stash drops in at <code>stash@{0}</code> ready to be inspected from the Stash + History overlay.</figcaption>
@@ -186,8 +234,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-inspect-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-inspect-step-01.png" alt="Step 1 — Open More → Stash + History and the overlay shows every stash on the repo with its message and age — WIP: replay docs po" data-zoom />
+                  <source srcset="../static/stash-inspect-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-inspect-step-01.png" alt="Step 1 — Open More → Stash + History and the overlay shows every stash on the repo with its message and age — WIP: replay docs po" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> Open <em>More → Stash + History</em> and the overlay shows every stash on the repo with its message and age — <em>WIP: replay docs polish</em> sits at <code>stash@{0}</code>. The list updates whenever you stash, pop, or drop from anywhere else in the app.</figcaption>
@@ -197,8 +245,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-inspect-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-inspect-step-02.png" alt="Step 2 — Each row carries a chevron that expands inline — no jump to another view. You stay on the overlay, so popping or droppin" data-zoom />
+                  <source srcset="../static/stash-inspect-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-inspect-step-02.png" alt="Step 2 — Each row carries a chevron that expands inline — no jump to another view. You stay on the overlay, so popping or droppin" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> Each row carries a chevron that expands inline — no jump to another view. You stay on the overlay, so popping or dropping is always one click away while you're reading.</figcaption>
@@ -208,8 +256,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-inspect-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-inspect-step-03.png" alt="Step 3 — Expanding the row lists the files the stash touches. Click any of them and the same row reveals the diff for that file —" data-zoom />
+                  <source srcset="../static/stash-inspect-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-inspect-step-03.png" alt="Step 3 — Expanding the row lists the files the stash touches. Click any of them and the same row reveals the diff for that file —" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Expanding the row lists the files the stash touches. Click any of them and the same row reveals the diff for that file — Git Navigator runs <code>git stash show -p</code> for you, but inline.</figcaption>
@@ -219,8 +267,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-inspect-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-inspect-step-04.png" alt="Step 4 — The diff renders with the same hunk display the diff view uses elsewhere, so you can read the stash without leaving the " data-zoom />
+                  <source srcset="../static/stash-inspect-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-inspect-step-04.png" alt="Step 4 — The diff renders with the same hunk display the diff view uses elsewhere, so you can read the stash without leaving the " data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> The diff renders with the same hunk display the diff view uses elsewhere, so you can read the stash without leaving the overlay. Decide to pop, drop, or close — without committing to anything yet.</figcaption>
@@ -232,8 +280,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-pop-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-pop-step-01.png" alt="Step 1 — The stash sits at stash@{0} on the repo. The active worktree right now is slogx (main) — but we want the stash to land o" data-zoom />
+                  <source srcset="../static/stash-pop-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-pop-step-01.png" alt="Step 1 — The stash sits at stash@{0} on the repo. The active worktree right now is slogx (main) — but we want the stash to land o" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> The stash sits at <code>stash@{0}</code> on the repo. The active worktree right now is <code>slogx</code> (main) — but we want the stash to land on <code>slogx-streaming</code> instead. Click that worktree's radio to make it active.</figcaption>
@@ -243,8 +291,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-pop-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-pop-step-02.png" alt="Step 2 — Switching the active worktree re-targets the whole window: the graph, the uncommitted-changes panel, and — crucially for" data-zoom />
+                  <source srcset="../static/stash-pop-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-pop-step-02.png" alt="Step 2 — Switching the active worktree re-targets the whole window: the graph, the uncommitted-changes panel, and — crucially for" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> Switching the active worktree re-targets the whole window: the graph, the uncommitted-changes panel, and — crucially for this flow — the Stash + History overlay's pop target. The active-worktree badge moves to the streaming row.</figcaption>
@@ -254,8 +302,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-pop-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-pop-step-03.png" alt="Step 3 — Open the overlay and the stash list is the same — stashes are repo-global. The Pop button runs against whichever worktre" data-zoom />
+                  <source srcset="../static/stash-pop-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-pop-step-03.png" alt="Step 3 — Open the overlay and the stash list is the same — stashes are repo-global. The Pop button runs against whichever worktre" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Open the overlay and the stash list is the same — stashes are repo-global. The <em>Pop</em> button runs against whichever worktree is currently active, so the next click sends the stash to <code>slogx-streaming</code>.</figcaption>
@@ -265,8 +313,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/stash-pop-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/stash-pop-step-04.png" alt="Step 4 — Pop lands the stashed changes on the streaming worktree — its uncommitted-changes panel fills with the files you stashed" data-zoom />
+                  <source srcset="../static/stash-pop-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/stash-pop-step-04.png" alt="Step 4 — Pop lands the stashed changes on the streaming worktree — its uncommitted-changes panel fills with the files you stashed" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> Pop lands the stashed changes on the streaming worktree — its uncommitted-changes panel fills with the files you stashed earlier on main. The stash entry is gone from the list (pop, not apply); a Drop button next to Pop would have removed it without applying.</figcaption>
@@ -338,7 +386,7 @@
       </div>
     </div>
 
-    <script src="static/site.js"></script>
+    <script src="../static/site.js"></script>
     <script>
       // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
       // hide the others. Scoped to this page; site.js is untouched.

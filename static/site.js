@@ -119,3 +119,32 @@ const detectPlatform = () => {
   if (badge) badge.hidden = false;
   card.parentElement.prepend(card);
 })();
+
+(() => {
+  const toggle = document.querySelector(".sidebar-toggle");
+  if (!toggle) return;
+
+  const backdrop = document.querySelector(".sidebar-backdrop");
+
+  const setOpen = (open) => {
+    document.body.classList.toggle("sidebar-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+
+  toggle.addEventListener("click", () => {
+    setOpen(!document.body.classList.contains("sidebar-open"));
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener("click", () => setOpen(false));
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+
+  // Close the drawer after navigating via a sidebar link on narrow screens.
+  document.querySelectorAll(".docs-sidebar a").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+})();

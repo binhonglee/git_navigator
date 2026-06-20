@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stack vs Branch Mode - Git Navigator</title>
+    <meta
+      name="description"
+      content="Understand stack mode vs branch mode in Git Navigator"
+    />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
+  </head>
+  <body class="page-stack">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html" aria-current="page">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html">Stash</a></li>
+          <li><a href="file-explorer.html">File Explorer</a></li>
+          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container hero">
+        <h1>Branch mode vs Stack mode</h1>
+        <p>
+          Git Navigator can treat your recent work as <strong>independent branches</strong>
+          or as a <strong>stack</strong> of commits. The difference matters when you edit
+          history. This page explains and compare how both options work.
+        </p>
+        <p><a href="../index.html">Back to the main page</a></p>
+      </div>
+    </header>
+
+    <section>
+      <div class="container grid">
+        <div class="card">
+          <h2>Branch mode</h2>
+          <p>
+            Think of each branch as its own lane. When you change a commit, Git Navigator
+            updates only the branch you are working on, and keeps the graph compact.
+          </p>
+          <pre class="diagram">main     A -> B -> C -> D
+          \
+feature    E -> F -> G (feature tip)
+
+
+amend F (branch mode):
+
+main     A -> B -> C -> D
+          \
+feature    E -> F -> G (feature tip)
+             \
+              F' (detached)</pre>
+          <p>Only the branch tip stays at G. The amended commit F' is not on the branch.</p>
+          <ul>
+            <li>Good when branches are shared or long-lived.</li>
+            <li>Changes stay local to the branch you touched.</li>
+            <li>Safer if you are not sure who else uses the commits.</li>
+            <li>Lower risk of surprising teammates or CI.</li>
+            <li>Less likely to require force-pushes on shared branches.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Stack mode</h2>
+          <p>
+            Think of your recent work as a stack of commits sitting on top of a base
+            branch (usually <strong>main</strong>). If you edit one commit, everything above it
+            in the stack is updated too, and the graph stays fully expanded.
+          </p>
+          <pre class="diagram">main     A -> B -> C -> D
+          \
+feature    E -> F -> G (feature tip)
+
+
+amend F (stack):
+
+main     A -> B -> C -> D
+          \
+feature    E -> F' -> G' (feature tip)</pre>
+          <p>G is rebased onto F' to create G', so the chain stays connected.</p>
+          <ul>
+            <li>Great for a series of small, dependent changes.</li>
+            <li>Keeps your stack consistent after reword, squash, or reorder.</li>
+            <li>Makes it easier to clean up history before sharing.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Visual comparisons</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Drag-and-drop Rebase</h3>
+            <figure>
+              <div class="comparison">
+                <div class="comparison-item">
+                  <span>Branch mode</span>
+                  <div class="media-frame">
+                    <video src="../static/rebase-branch.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>On branch mode, you drag the tip of a branch to rebase the branch and it's parent commits onto the new location. (Git automatically calculates the merge base.)</figcaption>
+                </div>
+                <div class="comparison-item">
+                  <span>Stack mode</span>
+                  <div class="media-frame">
+                    <video src="../static/rebase-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>On stack mode, you drag the base you want to rebase all of it's children and the entire descendant tree onto the new location. (All branch refs are updated with the rebase.)</figcaption>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="card">
+            <h3>Amend</h3>
+            <figure>
+              <div class="comparison">
+                <div class="comparison-item">
+                  <span>Branch mode</span>
+                  <div class="media-frame">
+                    <video src="../static/amend-branch.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Amending on branch mode creates a new branching commit</figcaption>
+                </div>
+                <div class="comparison-item">
+                  <span>Stack mode</span>
+                  <div class="media-frame">
+                    <video src="../static/amend-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Amending on stack mode automatically rebases the rest of the stack onto the new change</figcaption>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="card">
+            <h3>Push</h3>
+            <figure>
+              <div class="comparison">
+                <div class="comparison-item">
+                  <span>Branch mode</span>
+                  <div class="media-frame">
+                    <video src="../static/push-branch.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Pushing on branch mode pushes the selected branch to remote</figcaption>
+                </div>
+                <div class="comparison-item">
+                  <span>Stack mode</span>
+                  <div class="media-frame">
+                    <video src="../static/push-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Pushing on stack mode requires each commit on the stack to be a named branch before it can be pushed.</figcaption>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="card">
+            <h3>Cherrypick</h3>
+            <figure>
+              <div class="comparison">
+                <div class="comparison-item">
+                  <span>Branch mode</span>
+                  <div class="media-frame">
+                    <video src="../static/cherrypick.mp4" autoplay muted loop playsinline data-zoom></video>
+                  </div>
+                  <figcaption>Cherrypicking on branch mode cherrypicks the selected commit(s) to the target branch</figcaption>
+                </div>
+                <div class="comparison-item">
+                  <span>Stack mode</span>
+                  <figcaption>Cherrypick is unsupported on stack mode</figcaption>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="card">
+            <h3>Graph View</h3>
+            <figure>
+              <div class="comparison">
+                <div class="comparison-item">
+                  <span>Branch mode</span>
+                  <div class="media-frame">
+                    <img
+                      src="../static/branch-graph.png"
+                      alt="Branch mode compact graph view"
+                      data-zoom
+                    />
+                  </div>
+                  <figcaption>Compact graph view</figcaption>
+                </div>
+                <div class="comparison-item">
+                  <span>Stack mode</span>
+                  <div class="media-frame">
+                    <img src="../static/stack-graph.png" alt="Stack mode full graph view" data-zoom />
+                  </div>
+                  <figcaption>Full graph with stack highlights</figcaption>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">What actually changes when you edit a commit</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Branch mode</h3>
+            <p>
+              Only the branch tip you are on is rewritten. Other branches that happen
+              to include that commit are left alone.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Stack mode</h3>
+            <p>
+              Git Navigator rewrites the commit and then updates any descendant
+              branches so they continue to point to the rewritten history.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">How to choose</h2>
+        <div class="card">
+          <p>
+            Stack workflows usually review commits one by one, so going back to amend an
+            earlier commit is normal. Branch-mode workflows usually review the branch as a
+            whole, so you typically add new commits instead of rewriting old ones.
+          </p>
+          <ul class="tips">
+            <li>Use <strong>branch mode</strong> if you are working on a shared or long-lived branch.</li>
+            <li>Use <strong>stack</strong> if you are building a short sequence of commits that depend on each other.</li>
+            <li>If you plan to rewrite history often (amend, squash, reorder), stack mode is smoother.</li>
+            <li>If you are unsure, start with branch mode. You can switch later.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid">
+        <div class="card">
+          <h2>How Git Navigator uses stack mode</h2>
+          <p>
+            Stack mode is stored per repository. Git Navigator uses a base reference
+            (by default, your default branch) and treats commits from that base to your
+            current work as one stack.
+          </p>
+          <p>
+            When you amend, rebase, or squash in stack mode, Git Navigator updates the
+            rest of the stack so everything stays connected and consistent.
+          </p>
+        </div>
+        <div class="card">
+          <h2>If you are new to Git</h2>
+          <p>
+            You do not have to pick a mode permanently. The safest mental model is:
+            branch mode is "change only what I can see," and stack is "change this and
+            everything built on top of it."
+          </p>
+          <p>
+            If you are still unsure, ask a teammate which workflow your project expects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">[Advanced] Detailed comparison</h2>
+
+        <div class="card">
+          <h3>Graph visualization</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Branch mode</th>
+                <th>Stack mode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Commits shown</td>
+                <td>Branch tips only (collapsed view)</td>
+                <td>Full graph</td>
+              </tr>
+              <tr>
+                <td>Collapsed commits</td>
+                <td>Expandable placeholder (like default branch)</td>
+                <td>All visible</td>
+              </tr>
+              <tr>
+                <td>Visual highlighting</td>
+                <td>No stack highlighting</td>
+                <td>Stack commits highlighted, base marked</td>
+              </tr>
+              <tr>
+                <td>Stack badges</td>
+                <td>Hidden</td>
+                <td>Show stack depth badges</td>
+              </tr>
+              <tr>
+                <td>Default branch ancestors</td>
+                <td>Collapsed (placeholder)</td>
+                <td>Collapsed (placeholder)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Drag-and-drop behavior</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Branch mode</th>
+                <th>Stack mode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>What you drag</td>
+                <td>Branch tip</td>
+                <td>Base of a subtree</td>
+              </tr>
+              <tr>
+                <td>What moves</td>
+                <td>Single branch</td>
+                <td>Entire subtree</td>
+              </tr>
+              <tr>
+                <td>Preview shows</td>
+                <td>One branch rebasing</td>
+                <td>Subtree moving with all affected branches</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Operations</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Operation</th>
+                <th>Branch mode</th>
+                <th>Stack mode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Amend</td>
+                <td>Current commit only</td>
+                <td>Updates the stack above it</td>
+              </tr>
+              <tr>
+                <td>Push</td>
+                <td>Single branch push</td>
+                <td>Multi-branch stack push</td>
+              </tr>
+              <tr>
+                <td>Squash</td>
+                <td>Current branch only</td>
+                <td>Squashes a stack and keeps it connected</td>
+              </tr>
+              <tr>
+                <td>Split</td>
+                <td>Only allowed on branch tips</td>
+                <td>Allowed on any stack commit</td>
+              </tr>
+              <tr>
+                <td>Rebase</td>
+                <td>One branch at a time</td>
+                <td>Moves the stack together</td>
+              </tr>
+              <tr>
+                <td>Conflict resolution</td>
+                <td>Same UI, standard rebase flow</td>
+                <td>Same UI, stack-aware rebase flow</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a
+          class="footer-link"
+          href="https://github.com/binhonglee/git_navigator"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+      </div>
+    </footer>
+
+    <div class="overlay" id="media-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close media">
+          x
+        </button>
+        <div class="overlay-body"></div>
+      </div>
+    </div>
+
+    <script src="../static/site.js"></script>
+  </body>
+</html>

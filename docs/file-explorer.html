@@ -6,14 +6,14 @@
     <title>File Explorer - Git Navigator</title>
     <meta name="description" content="Browse a worktree-scoped file tree with status badges, jump into diffs or syntax-highlighted file views, and find paths or content with the built-in search — without leaving Git Navigator." />
     <meta name="keywords" content="git file explorer, worktree file tree gui, git status sidebar, git grep gui, codemirror diff viewer, git navigator" />
-    <link rel="canonical" href="https://gitnav.xyz/file-explorer.html" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/file-explorer.html" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Git Navigator" />
     <meta property="og:title" content="File Explorer - Git Navigator" />
     <meta property="og:description" content="Browse a worktree-scoped file tree with status badges, jump into diffs or syntax-highlighted file views, and find paths or content with the built-in search — without leaving Git Navigator." />
-    <meta property="og:url" content="https://gitnav.xyz/file-explorer.html" />
+    <meta property="og:url" content="https://gitnav.xyz/docs/file-explorer.html" />
     <meta property="og:image" content="https://gitnav.xyz/static/file-explorer-browse-step-01.png" />
 
     <!-- Twitter -->
@@ -22,15 +22,15 @@
     <meta name="twitter:description" content="Browse a worktree-scoped file tree with status badges, jump into diffs or syntax-highlighted file views, and find paths or content with the built-in search — without leaving Git Navigator." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/file-explorer-browse-step-01.png" />
 
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "File Explorer",
   "description": "Browse a worktree-scoped file tree with status badges, jump into diffs or syntax-highlighted file views, and find paths or content with the built-in search — without leaving Git Navigator.",
-  "mainEntityOfPage": "https://gitnav.xyz/file-explorer.html",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/file-explorer.html",
   "about": "Git Navigator",
   "image": "https://gitnav.xyz/static/file-explorer-browse-step-01.png"
 }
@@ -85,12 +85,60 @@
     </script>
   </head>
   <body class="page-doc page-file-explorer">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html">Stash</a></li>
+          <li><a href="file-explorer.html" aria-current="page">File Explorer</a></li>
+          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
     <nav class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
         <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
         </div>
       </div>
     </nav>
@@ -98,7 +146,7 @@
       <div class="container hero">
         <h1>Browse, search, and diff — without leaving your repo</h1>
         <p>Git Navigator's Files activity is a worktree-scoped tree with built-in <em>git status</em> badges, CodeMirror-powered file and diff views, and a search box that flips between filename filter and <code>git grep</code> with a single click. Same window, same worktree context, no terminal.</p>
-        <p><a href="index.html">Back to the main page</a></p>
+        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -106,8 +154,8 @@
           <figure>
             <div class="media-frame">
               <picture>
-                <source srcset="static/file-explorer-browse-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/file-explorer-browse-step-01.png" alt="Git Navigator File Explorer showing a worktree-scoped tree with status badges on modified files" data-zoom />
+                <source srcset="../static/file-explorer-browse-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/file-explorer-browse-step-01.png" alt="Git Navigator File Explorer showing a worktree-scoped tree with status badges on modified files" data-zoom />
               </picture>
             </div>
             <figcaption>The explorer header summarises dirty files for the active worktree; each row carries an inline status badge.</figcaption>
@@ -151,8 +199,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-browse-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-browse-step-01.png" alt="Step 1 — The Files activity opens a worktree-scoped tree alongside the graph. The header counts modifications across the whole re" data-zoom />
+                  <source srcset="../static/file-explorer-browse-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-browse-step-01.png" alt="Step 1 — The Files activity opens a worktree-scoped tree alongside the graph. The header counts modifications across the whole re" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> The Files activity opens a worktree-scoped tree alongside the graph. The header counts modifications across the whole repo (<em>M</em>, <em>A</em>, <em>?</em>), and each row carries an inline badge so dirty files stand out at a glance.</figcaption>
@@ -162,8 +210,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-browse-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-browse-step-02.png" alt="Step 2 — App.tsx has been edited — the inline M badge mirrors the uncommitted-changes panel from the graph, but at file granulari" data-zoom />
+                  <source srcset="../static/file-explorer-browse-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-browse-step-02.png" alt="Step 2 — App.tsx has been edited — the inline M badge mirrors the uncommitted-changes panel from the graph, but at file granulari" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> App.tsx has been edited — the inline <em>M</em> badge mirrors the uncommitted-changes panel from the graph, but at file granularity. The badge colour matches the status: modified, added, untracked, or conflicted.</figcaption>
@@ -173,8 +221,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-browse-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-browse-step-03.png" alt="Step 3 — Selecting a file with changes opens it straight into the diff view — hunks line up against the file as it was at HEAD. C" data-zoom />
+                  <source srcset="../static/file-explorer-browse-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-browse-step-03.png" alt="Step 3 — Selecting a file with changes opens it straight into the diff view — hunks line up against the file as it was at HEAD. C" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Selecting a file with changes opens it straight into the diff view — hunks line up against the file as it was at HEAD. Clean files default to the file view; conflicted files default to the conflict resolver.</figcaption>
@@ -184,8 +232,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-browse-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-browse-step-04.png" alt="Step 4 — A clean code file — no badge. Selecting one of these jumps the preview pane into a CodeMirror file view instead of a dif" data-zoom />
+                  <source srcset="../static/file-explorer-browse-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-browse-step-04.png" alt="Step 4 — A clean code file — no badge. Selecting one of these jumps the preview pane into a CodeMirror file view instead of a dif" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> A clean code file — no badge. Selecting one of these jumps the preview pane into a CodeMirror file view instead of a diff.</figcaption>
@@ -195,8 +243,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-browse-step-05-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-browse-step-05.png" alt="Step 5 — Code renders with project-appropriate syntax highlighting, line numbers, and live reflow when the tree pane is resized. " data-zoom />
+                  <source srcset="../static/file-explorer-browse-step-05-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-browse-step-05.png" alt="Step 5 — Code renders with project-appropriate syntax highlighting, line numbers, and live reflow when the tree pane is resized. " data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 5.</strong> Code renders with project-appropriate syntax highlighting, line numbers, and live reflow when the tree pane is resized. The view-mode strip lets you flip into Blame from the same selection.</figcaption>
@@ -206,8 +254,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-browse-step-06-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-browse-step-06.png" alt="Step 6 — Markdown and HTML files open straight into a rendered Preview by default — headings, lists, blockquotes, inline code, ev" data-zoom />
+                  <source srcset="../static/file-explorer-browse-step-06-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-browse-step-06.png" alt="Step 6 — Markdown and HTML files open straight into a rendered Preview by default — headings, lists, blockquotes, inline code, ev" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 6.</strong> Markdown and HTML files open straight into a rendered Preview by default — headings, lists, blockquotes, inline code, everything — with the raw source still one click away on the view-mode strip. Same story for HTML, with a sandboxed iframe and an opt-in to enable scripts.</figcaption>
@@ -219,8 +267,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-search-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-search-step-01.png" alt="Step 1 — The search box at the top of the explorer has two modes: a filename filter (the default, labelled Aa) and a content sear" data-zoom />
+                  <source srcset="../static/file-explorer-search-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-search-step-01.png" alt="Step 1 — The search box at the top of the explorer has two modes: a filename filter (the default, labelled Aa) and a content sear" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> The search box at the top of the explorer has two modes: a <strong>filename filter</strong> (the default, labelled <em>Aa</em>) and a <strong>content search</strong> (labelled <em>abc</em>) that runs <code>git grep</code> against the worktree.</figcaption>
@@ -230,8 +278,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-search-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-search-step-02.png" alt="Step 2 — Click into the search box to start typing. Filename mode is the cheapest path to &quot;where is the file I'm thinking of?&quot;." data-zoom />
+                  <source srcset="../static/file-explorer-search-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-search-step-02.png" alt="Step 2 — Click into the search box to start typing. Filename mode is the cheapest path to &quot;where is the file I'm thinking of?&quot;." data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> Click into the search box to start typing. Filename mode is the cheapest path to "where is the file I'm thinking of?".</figcaption>
@@ -241,8 +289,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-search-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-search-step-03.png" alt="Step 3 — Filename filter narrows the tree to entries whose path matches, with ancestors auto-expanded so each hit stays in contex" data-zoom />
+                  <source srcset="../static/file-explorer-search-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-search-step-03.png" alt="Step 3 — Filename filter narrows the tree to entries whose path matches, with ancestors auto-expanded so each hit stays in contex" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Filename filter narrows the tree to entries whose path matches, with ancestors auto-expanded so each hit stays in context. The summary in the explorer header updates to reflect what's left.</figcaption>
@@ -252,8 +300,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-search-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-search-step-04.png" alt="Step 4 — Flip the Aa toggle to switch into content search. The toggle is reversible — the query is preserved so you don't have to" data-zoom />
+                  <source srcset="../static/file-explorer-search-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-search-step-04.png" alt="Step 4 — Flip the Aa toggle to switch into content search. The toggle is reversible — the query is preserved so you don't have to" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> Flip the <em>Aa</em> toggle to switch into content search. The toggle is reversible — the query is preserved so you don't have to re-type it.</figcaption>
@@ -263,8 +311,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-search-step-05-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-search-step-05.png" alt="Step 5 — The same query re-runs as a git grep against the worktree's tracked files. Results group by file with line and column hi" data-zoom />
+                  <source srcset="../static/file-explorer-search-step-05-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-search-step-05.png" alt="Step 5 — The same query re-runs as a git grep against the worktree's tracked files. Results group by file with line and column hi" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 5.</strong> The same query re-runs as a <code>git grep</code> against the worktree's tracked files. Results group by file with line and column hits inline — click a line to open the file at that exact location, or the file header to open it in the default view.</figcaption>
@@ -276,8 +324,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-edit-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-edit-step-01.png" alt="Step 1 — Any editable file — text, non-binary, under the size limit — gets an Edit button on the file-view toolbar. The button is" data-zoom />
+                  <source srcset="../static/file-explorer-edit-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-edit-step-01.png" alt="Step 1 — Any editable file — text, non-binary, under the size limit — gets an Edit button on the file-view toolbar. The button is" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> Any editable file — text, non-binary, under the size limit — gets an <em>Edit</em> button on the file-view toolbar. The button is hidden for files Git Navigator can't safely round-trip (binary, lossy, or oversized).</figcaption>
@@ -287,8 +335,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-edit-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-edit-step-02.png" alt="Step 2 — The edit overlay opens with the same CodeMirror engine — same syntax highlighting, theme, and scroll position you had in" data-zoom />
+                  <source srcset="../static/file-explorer-edit-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-edit-step-02.png" alt="Step 2 — The edit overlay opens with the same CodeMirror engine — same syntax highlighting, theme, and scroll position you had in" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The edit overlay opens with the same CodeMirror engine — same syntax highlighting, theme, and scroll position you had in the read-only view. Cmd/Ctrl+S saves; Esc closes (with a discard confirmation if there are unsaved changes).</figcaption>
@@ -298,8 +346,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/file-explorer-edit-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/file-explorer-edit-step-03.png" alt="Step 3 — Save is gated on a stale-write check: Git Navigator hashed the on-disk bytes when the overlay opened, and Save refuses i" data-zoom />
+                  <source srcset="../static/file-explorer-edit-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/file-explorer-edit-step-03.png" alt="Step 3 — Save is gated on a stale-write check: Git Navigator hashed the on-disk bytes when the overlay opened, and Save refuses i" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Save is gated on a stale-write check: Git Navigator hashed the on-disk bytes when the overlay opened, and Save refuses if that hash no longer matches — so a concurrent edit from a teammate, an editor, or a tool run never gets silently overwritten. On a fresh hash it writes atomically (temp file + rename) and re-reads the new bytes.</figcaption>
@@ -371,7 +419,7 @@
       </div>
     </div>
 
-    <script src="static/site.js"></script>
+    <script src="../static/site.js"></script>
     <script>
       // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
       // hide the others. Scoped to this page; site.js is untouched.

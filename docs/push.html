@@ -6,14 +6,14 @@
     <title>Push - Git Navigator</title>
     <meta name="description" content="Push commits to your remote from Git Navigator without remembering the git command. Choose stack mode to push a specific chain of commits, or branch mode to push the whole branch — both from the same in-graph push bar." />
     <meta name="keywords" content="git push gui, git push stack, git push branch, visual git push, git push button, git navigator" />
-    <link rel="canonical" href="https://gitnav.xyz/push.html" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/push.html" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Git Navigator" />
     <meta property="og:title" content="Push - Git Navigator" />
     <meta property="og:description" content="Push commits to your remote from Git Navigator without remembering the git command. Choose stack mode to push a specific chain of commits, or branch mode to push the whole branch — both from the same in-graph push bar." />
-    <meta property="og:url" content="https://gitnav.xyz/push.html" />
+    <meta property="og:url" content="https://gitnav.xyz/docs/push.html" />
     <meta property="og:image" content="https://gitnav.xyz/static/push-stack-step-01.png" />
 
     <!-- Twitter -->
@@ -22,15 +22,15 @@
     <meta name="twitter:description" content="Push commits to your remote from Git Navigator without remembering the git command. Choose stack mode to push a specific chain of commits, or branch mode to push the whole branch — both from the same in-graph push bar." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/push-stack-step-01.png" />
 
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Push",
   "description": "Push commits to your remote from Git Navigator without remembering the git command. Choose stack mode to push a specific chain of commits, or branch mode to push the whole branch — both from the same in-graph push bar.",
-  "mainEntityOfPage": "https://gitnav.xyz/push.html",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/push.html",
   "about": "Git Navigator",
   "image": "https://gitnav.xyz/static/push-stack-step-01.png"
 }
@@ -85,12 +85,60 @@
     </script>
   </head>
   <body class="page-doc page-push">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html" aria-current="page">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html">Stash</a></li>
+          <li><a href="file-explorer.html">File Explorer</a></li>
+          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
     <nav class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
         <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
         </div>
       </div>
     </nav>
@@ -98,7 +146,7 @@
       <div class="container hero">
         <h1>Push from the graph — stack or branch, your choice</h1>
         <p>Git Navigator surfaces a push bar at the top of the graph the moment your branch is ahead of its remote. In stack mode you push the chain ending at the commit you selected; in branch mode you push the whole branch as a unit. Same fixture, same remote, different intent — flip the toggle to compare.</p>
-        <p><a href="index.html">Back to the main page</a></p>
+        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -106,8 +154,8 @@
           <figure>
             <div class="media-frame">
               <picture>
-                <source srcset="static/push-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/push-stack-step-01.png" alt="Git Navigator showing the push bar above the commit graph in stack mode, ready to push a feature branch to origin" data-zoom />
+                <source srcset="../static/push-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/push-stack-step-01.png" alt="Git Navigator showing the push bar above the commit graph in stack mode, ready to push a feature branch to origin" data-zoom />
               </picture>
             </div>
             <figcaption>The push bar appears automatically whenever your branch is ahead of its remote — the button reflects whichever mode the graph is in.</figcaption>
@@ -150,8 +198,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/push-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/push-stack-step-01.png" alt="Step 1 — A branch that's ahead of its remote gets a push bar pinned to the bottom of the graph. In stack mode it offers a single " data-zoom />
+                  <source srcset="../static/push-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/push-stack-step-01.png" alt="Step 1 — A branch that's ahead of its remote gets a push bar pinned to the bottom of the graph. In stack mode it offers a single " data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> A branch that's ahead of its remote gets a push bar pinned to the bottom of the graph. In stack mode it offers a single <em>Push stack</em> button, anchored to the commit you have selected — pick the tip and the bar pushes the whole stack; pick an earlier commit and it pushes the chain ending there.</figcaption>
@@ -161,8 +209,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/push-stack-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/push-stack-step-02.png" alt="Step 2 — The bar title — Stack push up to feature/push-demo — names what the click would push. Selecting an earlier commit in the" data-zoom />
+                  <source srcset="../static/push-stack-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/push-stack-step-02.png" alt="Step 2 — The bar title — Stack push up to feature/push-demo — names what the click would push. Selecting an earlier commit in the" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The bar title — <em>Stack push up to feature/push-demo</em> — names what the click would push. Selecting an earlier commit in the ahead range re-labels it to the chosen commit's hash, so the partial-stack case stays explicit.</figcaption>
@@ -172,8 +220,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/push-stack-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/push-stack-step-03.png" alt="Step 3 — Click and the Push Stack dialog opens. Stack mode treats each commit as a candidate branch — name the still-anonymous co" data-zoom />
+                  <source srcset="../static/push-stack-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/push-stack-step-03.png" alt="Step 3 — Click and the Push Stack dialog opens. Stack mode treats each commit as a candidate branch — name the still-anonymous co" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Click and the Push Stack dialog opens. Stack mode treats each commit as a candidate branch — name the still-anonymous commits and hit <em>Create</em> per row, then <em>Push selected</em> sends each one to <code>origin/&lt;branch&gt;</code>. Perfect for a one-commit-per-PR workflow.</figcaption>
@@ -185,8 +233,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/push-branch-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/push-branch-step-01.png" alt="Step 1 — In branch mode the graph collapses intermediate commits into placeholders — each branch is a single row plus its tip. Th" data-zoom />
+                  <source srcset="../static/push-branch-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/push-branch-step-01.png" alt="Step 1 — In branch mode the graph collapses intermediate commits into placeholders — each branch is a single row plus its tip. Th" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> In branch mode the graph collapses intermediate commits into placeholders — each branch is a single row plus its tip. The push bar follows the same shape but talks about <em>the branch</em>, not a chain: the button counts how many commits the push will carry.</figcaption>
@@ -196,8 +244,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/push-branch-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/push-branch-step-02.png" alt="Step 2 — The button reads Push 1 commit — everything feature/push-demo has ahead of origin/feature/push-demo. There's no partial-" data-zoom />
+                  <source srcset="../static/push-branch-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/push-branch-step-02.png" alt="Step 2 — The button reads Push 1 commit — everything feature/push-demo has ahead of origin/feature/push-demo. There's no partial-" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The button reads <em>Push 1 commit</em> — everything <code>feature/push-demo</code> has ahead of <code>origin/feature/push-demo</code>. There's no partial-stack option here; branch mode is "ship the whole branch" by design.</figcaption>
@@ -207,8 +255,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/push-branch-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/push-branch-step-03.png" alt="Step 3 — Same git push under the hood. New-branch pushes also wire the upstream (the equivalent of git push -u), so subsequent pu" data-zoom />
+                  <source srcset="../static/push-branch-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/push-branch-step-03.png" alt="Step 3 — Same git push under the hood. New-branch pushes also wire the upstream (the equivalent of git push -u), so subsequent pu" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Same <code>git push</code> under the hood. New-branch pushes also wire the upstream (the equivalent of <code>git push -u</code>), so subsequent pushes track the remote without a re-set.</figcaption>
@@ -280,7 +328,7 @@
       </div>
     </div>
 
-    <script src="static/site.js"></script>
+    <script src="../static/site.js"></script>
     <script>
       // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
       // hide the others. Scoped to this page; site.js is untouched.
