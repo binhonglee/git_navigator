@@ -6,14 +6,14 @@
     <title>Drag-and-drop Rebase - Git Navigator</title>
     <meta name="description" content="Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply." />
     <meta name="keywords" content="git rebase gui, drag and drop git rebase, visual git rebase, interactive rebase ui, git navigator" />
-    <link rel="canonical" href="https://gitnav.xyz/drag-and-drop-rebase.html" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/drag-and-drop-rebase.html" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Git Navigator" />
     <meta property="og:title" content="Drag-and-drop Rebase - Git Navigator" />
     <meta property="og:description" content="Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply." />
-    <meta property="og:url" content="https://gitnav.xyz/drag-and-drop-rebase.html" />
+    <meta property="og:url" content="https://gitnav.xyz/docs/drag-and-drop-rebase.html" />
     <meta property="og:image" content="https://gitnav.xyz/static/drag-and-drop-rebase-stack-step-01.png" />
 
     <!-- Twitter -->
@@ -22,15 +22,15 @@
     <meta name="twitter:description" content="Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/drag-and-drop-rebase-stack-step-01.png" />
 
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Drag-and-drop Rebase",
   "description": "Rebase commits visually in Git Navigator by dragging one commit onto another. See the preview before you commit, then confirm to apply.",
-  "mainEntityOfPage": "https://gitnav.xyz/drag-and-drop-rebase.html",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/drag-and-drop-rebase.html",
   "about": "Git Navigator",
   "image": "https://gitnav.xyz/static/drag-and-drop-rebase-stack-step-01.png"
 }
@@ -77,12 +77,60 @@
     </script>
   </head>
   <body class="page-doc page-drag-and-drop-rebase">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html" aria-current="page">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html">Stash</a></li>
+          <li><a href="file-explorer.html">File Explorer</a></li>
+          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
     <nav class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
         <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
         </div>
       </div>
     </nav>
@@ -90,7 +138,7 @@
       <div class="container hero">
         <h1>Rebase by dragging — see the result before you commit</h1>
         <p>Git Navigator turns <code>git rebase --onto</code> into a direct manipulation: grab the commit you want to move, drop it on its new parent, and the graph previews exactly where every descendant will land. Confirm to apply, or cancel and nothing changes.</p>
-        <p><a href="index.html">Back to the main page</a></p>
+        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -98,8 +146,8 @@
           <figure>
             <div class="media-frame">
               <picture>
-                <source srcset="static/drag-and-drop-rebase-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/drag-and-drop-rebase-stack-step-01.png" alt="Git Navigator showing the commit graph before a drag-and-drop rebase in stack mode" data-zoom />
+                <source srcset="../static/drag-and-drop-rebase-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/drag-and-drop-rebase-stack-step-01.png" alt="Git Navigator showing the commit graph before a drag-and-drop rebase in stack mode" data-zoom />
               </picture>
             </div>
             <figcaption>Start with the full graph open — every commit is draggable.</figcaption>
@@ -142,8 +190,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-stack-step-01.png" alt="Step 1 — Open the repository in stack mode — Git Navigator draws every commit as a draggable row, including each commit's descend" data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-stack-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-stack-step-01.png" alt="Step 1 — Open the repository in stack mode — Git Navigator draws every commit as a draggable row, including each commit's descend" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> Open the repository in stack mode — Git Navigator draws every commit as a draggable row, including each commit's descendants under it.</figcaption>
@@ -153,8 +201,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-stack-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-stack-step-02.png" alt="Step 2 — Find the commit you want to move. Here we're relocating the uuid bump onto an earlier commit so the graph stays tidy." data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-stack-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-stack-step-02.png" alt="Step 2 — Find the commit you want to move. Here we're relocating the uuid bump onto an earlier commit so the graph stays tidy." data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> Find the commit you want to move. Here we're relocating the uuid bump onto an earlier commit so the graph stays tidy.</figcaption>
@@ -164,8 +212,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-stack-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-stack-step-03.png" alt="Step 3 — Drag it onto its new parent. In stack mode the dragged commit takes its descendants along — every affected row is re-dra" data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-stack-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-stack-step-03.png" alt="Step 3 — Drag it onto its new parent. In stack mode the dragged commit takes its descendants along — every affected row is re-dra" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Drag it onto its new parent. In stack mode the dragged commit takes its descendants along — every affected row is re-drawn in its new position before you commit.</figcaption>
@@ -175,8 +223,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-stack-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-stack-step-04.png" alt="Step 4 — Review the preview. Rebase applies it; Cancel restores the original topology and nothing touches the repo." data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-stack-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-stack-step-04.png" alt="Step 4 — Review the preview. Rebase applies it; Cancel restores the original topology and nothing touches the repo." data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> Review the preview. Rebase applies it; Cancel restores the original topology and nothing touches the repo.</figcaption>
@@ -188,8 +236,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-branch-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-branch-step-01.png" alt="Step 1 — Open the repository in branch mode — non-tip commits collapse into placeholders, and each branch is a row you can move a" data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-branch-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-branch-step-01.png" alt="Step 1 — Open the repository in branch mode — non-tip commits collapse into placeholders, and each branch is a row you can move a" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> Open the repository in branch mode — non-tip commits collapse into placeholders, and each branch is a row you can move as a unit. Here the feature/refresh-readme branch sits as a single tip alongside main.</figcaption>
@@ -199,8 +247,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-branch-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-branch-step-02.png" alt="Step 2 — Find the branch tip you want to rebase. Branch mode treats it as the head of a movable range." data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-branch-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-branch-step-02.png" alt="Step 2 — Find the branch tip you want to rebase. Branch mode treats it as the head of a movable range." data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> Find the branch tip you want to rebase. Branch mode treats it as the head of a movable range.</figcaption>
@@ -210,8 +258,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-branch-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-branch-step-03.png" alt="Step 3 — Drag the feature tip onto main. Branch mode rebases just that branch — the rest of the graph stays exactly where it was." data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-branch-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-branch-step-03.png" alt="Step 3 — Drag the feature tip onto main. Branch mode rebases just that branch — the rest of the graph stays exactly where it was." data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Drag the feature tip onto main. Branch mode rebases just that branch — the rest of the graph stays exactly where it was.</figcaption>
@@ -221,8 +269,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/drag-and-drop-rebase-branch-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/drag-and-drop-rebase-branch-step-04.png" alt="Step 4 — Confirm to land the branch on its new base, or cancel and the feature branch snaps back to where it started." data-zoom />
+                  <source srcset="../static/drag-and-drop-rebase-branch-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/drag-and-drop-rebase-branch-step-04.png" alt="Step 4 — Confirm to land the branch on its new base, or cancel and the feature branch snaps back to where it started." data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> Confirm to land the branch on its new base, or cancel and the feature branch snaps back to where it started.</figcaption>
@@ -290,7 +338,7 @@
       </div>
     </div>
 
-    <script src="static/site.js"></script>
+    <script src="../static/site.js"></script>
     <script>
       // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
       // hide the others. Scoped to this page; site.js is untouched.

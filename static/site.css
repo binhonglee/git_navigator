@@ -1360,3 +1360,177 @@ section {
   color: var(--accent);
   font-weight: 600;
 }
+
+/* ===== Docs sidebar =====
+   Markup is injected into every page by scripts/build-nav.js. The rail is
+   position:fixed so it never has to wrap existing page content; on wide
+   screens the body is offset to make room, on narrow screens it collapses
+   into a toggle-driven drawer. */
+:root {
+  --sidebar-width: 280px;
+}
+
+.docs-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 18px 14px 48px;
+  z-index: 50;
+}
+
+.docs-sidebar .sidebar-head {
+  display: block;
+  padding: 6px 12px 18px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.docs-sidebar .sidebar-group {
+  margin-bottom: 18px;
+}
+
+.docs-sidebar .sidebar-group-title {
+  margin: 0 0 6px;
+  padding: 0 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.docs-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.docs-sidebar a {
+  display: block;
+  padding: 7px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.docs-sidebar a:hover {
+  background: rgba(31, 111, 235, 0.08);
+  color: var(--text);
+}
+
+.docs-sidebar a[aria-current="page"] {
+  background: rgba(31, 111, 235, 0.12);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 9px;
+  left: 12px;
+  z-index: 60;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(5, 7, 12, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Keep the media-zoom overlay above the sidebar layer. */
+.overlay {
+  z-index: 100;
+}
+
+/* Wide screens: persistent rail, page content offset to clear it. Scoped to
+   pages that actually carry the sidebar so the landing page (and any other
+   excluded page) keeps its full-width layout. */
+@media (min-width: 1080px) {
+  body:has(.docs-sidebar) {
+    padding-left: var(--sidebar-width);
+  }
+}
+
+/* Narrow screens: off-canvas drawer opened from a fixed toggle. */
+@media (max-width: 1079px) {
+  .docs-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: var(--shadow);
+  }
+
+  body.sidebar-open .docs-sidebar {
+    transform: translateX(0);
+  }
+
+  body.sidebar-open .sidebar-backdrop {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sidebar-toggle {
+    display: inline-flex;
+  }
+
+  /* Clear the fixed toggle, but only where a toggle exists. */
+  body:has(.sidebar-toggle) .nav-inner {
+    padding-left: 48px;
+  }
+}
+
+/* ===== Documentation landing (docs/index.html) =====
+   The topic cards are whole-card links, so strip the default underline and
+   give them a hover, and tile them responsively instead of one per row. */
+.page-docs-home .grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.page-docs-home a.card {
+  display: block;
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.page-docs-home a.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 24px rgba(12, 18, 28, 0.08);
+  transform: translateY(-1px);
+}
+
+.page-docs-home a.card h3 {
+  margin: 0 0 8px;
+}
+
+.page-docs-home a.card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}

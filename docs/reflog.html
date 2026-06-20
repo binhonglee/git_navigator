@@ -6,14 +6,14 @@
     <title>Reflog - Git Navigator</title>
     <meta name="description" content="Inspect Git's reflog visually in Git Navigator: scoped to the active worktree by default, or expanded to every worktree at once. Open any entry inline to see what it changed." />
     <meta name="keywords" content="git reflog gui, visual git reflog, reflog per worktree, reflog diff inline, undo with reflog, git navigator" />
-    <link rel="canonical" href="https://gitnav.xyz/reflog.html" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/reflog.html" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Git Navigator" />
     <meta property="og:title" content="Reflog - Git Navigator" />
     <meta property="og:description" content="Inspect Git's reflog visually in Git Navigator: scoped to the active worktree by default, or expanded to every worktree at once. Open any entry inline to see what it changed." />
-    <meta property="og:url" content="https://gitnav.xyz/reflog.html" />
+    <meta property="og:url" content="https://gitnav.xyz/docs/reflog.html" />
     <meta property="og:image" content="https://gitnav.xyz/static/reflog-active-step-01.png" />
 
     <!-- Twitter -->
@@ -22,15 +22,15 @@
     <meta name="twitter:description" content="Inspect Git's reflog visually in Git Navigator: scoped to the active worktree by default, or expanded to every worktree at once. Open any entry inline to see what it changed." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/reflog-active-step-01.png" />
 
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Reflog",
   "description": "Inspect Git's reflog visually in Git Navigator: scoped to the active worktree by default, or expanded to every worktree at once. Open any entry inline to see what it changed.",
-  "mainEntityOfPage": "https://gitnav.xyz/reflog.html",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/reflog.html",
   "about": "Git Navigator",
   "image": "https://gitnav.xyz/static/reflog-active-step-01.png"
 }
@@ -85,12 +85,60 @@
     </script>
   </head>
   <body class="page-doc page-reflog">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html" aria-current="page">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html">Stash</a></li>
+          <li><a href="file-explorer.html">File Explorer</a></li>
+          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
     <nav class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
         <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
         </div>
       </div>
     </nav>
@@ -98,7 +146,7 @@
       <div class="container hero">
         <h1>Reflog — scoped how you want it, expanded when you need it</h1>
         <p>The reflog is your safety net for everything Git history pretends never happened. Git Navigator puts it in the same Stash + History overlay as the rest of your repo movement, scoped to the active worktree by default, expandable to every worktree with one toggle, and inline-expandable to a diff per entry.</p>
-        <p><a href="index.html">Back to the main page</a></p>
+        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -106,8 +154,8 @@
           <figure>
             <div class="media-frame">
               <picture>
-                <source srcset="static/reflog-active-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/reflog-active-step-01.png" alt="Git Navigator showing the Recent History section of the Stash + History overlay, scoped to the active worktree" data-zoom />
+                <source srcset="../static/reflog-active-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/reflog-active-step-01.png" alt="Git Navigator showing the Recent History section of the Stash + History overlay, scoped to the active worktree" data-zoom />
               </picture>
             </div>
             <figcaption>The Recent History section lives in the same overlay as Stash, with a scope toggle at the top to flip between the active worktree and all worktrees.</figcaption>
@@ -151,8 +199,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-active-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-active-step-01.png" alt="Step 1 — Open More → Stash + History and the Recent History section lists the active worktree's reflog. Default scope is Active w" data-zoom />
+                  <source srcset="../static/reflog-active-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-active-step-01.png" alt="Step 1 — Open More → Stash + History and the Recent History section lists the active worktree's reflog. Default scope is Active w" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> Open <em>More → Stash + History</em> and the Recent History section lists the active worktree's reflog. Default scope is <em>Active worktree</em> — every row is a HEAD movement on the currently-active checkout (the slogx main worktree here).</figcaption>
@@ -162,8 +210,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-active-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-active-step-02.png" alt="Step 2 — The scope toggle at the top of the section is a two-button tab strip — Active worktree on the left, All worktrees on the" data-zoom />
+                  <source srcset="../static/reflog-active-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-active-step-02.png" alt="Step 2 — The scope toggle at the top of the section is a two-button tab strip — Active worktree on the left, All worktrees on the" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The scope toggle at the top of the section is a two-button tab strip — Active worktree on the left, All worktrees on the right. The active state is what you see; click the other to switch.</figcaption>
@@ -173,8 +221,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-active-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-active-step-03.png" alt="Step 3 — Each row carries the commit hash, the reflog action(s) — HEAD@{0}, HEAD@{1}, … — the reflog message, the date, and a Che" data-zoom />
+                  <source srcset="../static/reflog-active-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-active-step-03.png" alt="Step 3 — Each row carries the commit hash, the reflog action(s) — HEAD@{0}, HEAD@{1}, … — the reflog message, the date, and a Che" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Each row carries the commit hash, the reflog action(s) — <code>HEAD@{0}</code>, <code>HEAD@{1}</code>, … — the reflog message, the date, and a Checkout button that moves HEAD straight back to that commit.</figcaption>
@@ -186,8 +234,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-all-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-all-step-01.png" alt="Step 1 — The right tab on the scope toggle says All worktrees. Switching to it lets you see every linked worktree's reflog in the" data-zoom />
+                  <source srcset="../static/reflog-all-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-all-step-01.png" alt="Step 1 — The right tab on the scope toggle says All worktrees. Switching to it lets you see every linked worktree's reflog in the" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> The right tab on the scope toggle says <em>All worktrees</em>. Switching to it lets you see every linked worktree's reflog in the same list — useful when a commit has gone missing and you're not sure which checkout did the last thing to it.</figcaption>
@@ -197,8 +245,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-all-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-all-step-02.png" alt="Step 2 — The list re-renders to merge every worktree's reflog into one chronological view. The slogx-streaming and slogx-quicksta" data-zoom />
+                  <source srcset="../static/reflog-all-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-all-step-02.png" alt="Step 2 — The list re-renders to merge every worktree's reflog into one chronological view. The slogx-streaming and slogx-quicksta" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The list re-renders to merge every worktree's reflog into one chronological view. The slogx-streaming and slogx-quickstart linked worktrees contribute their own HEAD-movement entries from when they were checked out.</figcaption>
@@ -208,8 +256,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-all-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-all-step-03.png" alt="Step 3 — Each row now carries a small badge naming the worktree it came from — so the merged list stays readable and you can scan" data-zoom />
+                  <source srcset="../static/reflog-all-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-all-step-03.png" alt="Step 3 — Each row now carries a small badge naming the worktree it came from — so the merged list stays readable and you can scan" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Each row now carries a small badge naming the worktree it came from — so the merged list stays readable and you can scan for "where did this happen" by source rather than by date.</figcaption>
@@ -221,8 +269,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-expand-step-01-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-expand-step-01.png" alt="Step 1 — Every reflog row has a chevron at the left. Click it and the row expands inline — no jump to a separate view. The commit" data-zoom />
+                  <source srcset="../static/reflog-expand-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-expand-step-01.png" alt="Step 1 — Every reflog row has a chevron at the left. Click it and the row expands inline — no jump to a separate view. The commit" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 1.</strong> Every reflog row has a chevron at the left. Click it and the row expands inline — no jump to a separate view. The commit metadata loads first, then the file list.</figcaption>
@@ -232,8 +280,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-expand-step-02-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-expand-step-02.png" alt="Step 2 — The expanded panel shows the commit's author, date, parents, and full message at the top, then a list of the files the c" data-zoom />
+                  <source srcset="../static/reflog-expand-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-expand-step-02.png" alt="Step 2 — The expanded panel shows the commit's author, date, parents, and full message at the top, then a list of the files the c" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 2.</strong> The expanded panel shows the commit's author, date, parents, and full message at the top, then a list of the files the commit touched. Each file is itself expandable into the per-file diff.</figcaption>
@@ -243,8 +291,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-expand-step-03-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-expand-step-03.png" alt="Step 3 — Each file in the panel is itself an expandable row — click any of them and the diff for that file loads in place, using " data-zoom />
+                  <source srcset="../static/reflog-expand-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-expand-step-03.png" alt="Step 3 — Each file in the panel is itself an expandable row — click any of them and the diff for that file loads in place, using " data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 3.</strong> Each file in the panel is itself an expandable row — click any of them and the diff for that file loads in place, using the same hunk display the rest of the app uses.</figcaption>
@@ -254,8 +302,8 @@
             <figure>
               <div class="media-frame">
                 <picture>
-                  <source srcset="static/reflog-expand-step-04-dark.png" media="(prefers-color-scheme: dark)" />
-                  <img src="static/reflog-expand-step-04.png" alt="Step 4 — The per-file diff renders inline in the row, so the reflog overlay is now a one-stop shop: scope toggle at the top, comm" data-zoom />
+                  <source srcset="../static/reflog-expand-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/reflog-expand-step-04.png" alt="Step 4 — The per-file diff renders inline in the row, so the reflog overlay is now a one-stop shop: scope toggle at the top, comm" data-zoom />
                 </picture>
               </div>
               <figcaption><strong>Step 4.</strong> The per-file diff renders inline in the row, so the reflog overlay is now a one-stop shop: scope toggle at the top, commit metadata in the middle, the actual diff at the bottom. Close the row to collapse everything; the Checkout button on the entry stays one click away if you decide you want HEAD back at that commit.</figcaption>
@@ -327,7 +375,7 @@
       </div>
     </div>
 
-    <script src="static/site.js"></script>
+    <script src="../static/site.js"></script>
     <script>
       // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
       // hide the others. Scoped to this page; site.js is untouched.

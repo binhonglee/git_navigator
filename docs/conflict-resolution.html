@@ -6,14 +6,14 @@
     <title>Visual Conflict Resolution - Git Navigator</title>
     <meta name="description" content="Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view." />
     <meta name="keywords" content="git conflict resolution, git merge conflict gui, visual git rebase conflict, three-way merge tool, git navigator" />
-    <link rel="canonical" href="https://gitnav.xyz/conflict-resolution.html" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/conflict-resolution.html" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Git Navigator" />
     <meta property="og:title" content="Visual Conflict Resolution - Git Navigator" />
     <meta property="og:description" content="Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view." />
-    <meta property="og:url" content="https://gitnav.xyz/conflict-resolution.html" />
+    <meta property="og:url" content="https://gitnav.xyz/docs/conflict-resolution.html" />
     <meta property="og:image" content="https://gitnav.xyz/static/conflict-resolution.png" />
 
     <!-- Twitter -->
@@ -22,15 +22,15 @@
     <meta name="twitter:description" content="Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/conflict-resolution.png" />
 
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="stylesheet" href="static/site.css" />
+    <link rel="icon" href="../static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Visual Conflict Resolution",
   "description": "Resolve Git merge, rebase, and cherry-pick conflicts visually in Git Navigator. See every conflicted file, pick a side per block, and keep the rest of your work in view.",
-  "mainEntityOfPage": "https://gitnav.xyz/conflict-resolution.html",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/conflict-resolution.html",
   "about": "Git Navigator",
   "image": "https://gitnav.xyz/static/conflict-resolution.png"
 }
@@ -77,12 +77,60 @@
     </script>
   </head>
   <body class="page-doc page-conflict-resolution">
+    <!-- NAV_START -->
+    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="sidebar-backdrop"></div>
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <a class="sidebar-head" href="index.html">Documentation</a>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Getting started</p>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="../desktop.html">Desktop App</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Remotes &amp; sync</p>
+        <ul>
+          <li><a href="fetch.html">Fetch</a></li>
+          <li><a href="pull.html">Pull</a></li>
+          <li><a href="push.html">Push</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">History &amp; branches</p>
+        <ul>
+          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
+          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
+          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
+          <li><a href="worktrees.html">Linked Worktrees</a></li>
+          <li><a href="reflog.html">Reflog</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Stacked workflow</p>
+        <ul>
+          <li><a href="stack.html">Branch vs Stack mode</a></li>
+          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <p class="sidebar-group-title">Changes &amp; files</p>
+        <ul>
+          <li><a href="uncommitted-changes.html">Commit Management</a></li>
+          <li><a href="stash.html">Stash</a></li>
+          <li><a href="file-explorer.html">File Explorer</a></li>
+          <li><a href="conflict-resolution.html" aria-current="page">Conflict Resolution</a></li>
+        </ul>
+      </div>
+    </aside>
+    <!-- NAV_END -->
     <nav class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <a class="nav-brand" href="../index.html">Git Navigator</a>
         <div class="nav-links">
-          <a href="stack.html">Branch vs Stack mode</a>
-          <a href="stack_reviewer.html">Stack Reviewer</a>
+          <a href="index.html">Documentation</a>
+          <a href="../download.html">Download</a>
         </div>
       </div>
     </nav>
@@ -90,7 +138,7 @@
       <div class="container hero">
         <h1>Resolve conflicts without hunting for conflict markers</h1>
         <p>When a merge, rebase, or cherry-pick stops on a conflict, Git Navigator replaces the graph with a focused conflict view. No more digging for <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> markers by hand — every conflicted file is listed in one place, every block has a one-click <em>keep ours / keep theirs / both</em> choice, and the rest of your repository stays one tab away.</p>
-        <p><a href="index.html">Back to the main page</a></p>
+        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -98,8 +146,8 @@
           <figure>
             <div class="media-frame">
               <picture>
-                <source srcset="static/conflict-resolution-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/conflict-resolution.png" alt="Git Navigator showing the conflict banner with a list of conflicted files after a paused merge" data-zoom />
+                <source srcset="../static/conflict-resolution-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/conflict-resolution.png" alt="Git Navigator showing the conflict banner with a list of conflicted files after a paused merge" data-zoom />
               </picture>
             </div>
             <figcaption>A real paused merge as Git Navigator renders it: the conflict banner names what is in progress, the conflicted file is listed, and the resolution actions are one click away.</figcaption>
@@ -189,6 +237,6 @@
       </div>
     </div>
 
-    <script src="static/site.js"></script>
+    <script src="../static/site.js"></script>
   </body>
 </html>

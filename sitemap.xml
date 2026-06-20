@@ -10,46 +10,49 @@
     <loc>https://gitnav.xyz/desktop.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/stack.html</loc>
+    <loc>https://gitnav.xyz/docs/</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/stack_reviewer.html</loc>
+    <loc>https://gitnav.xyz/docs/stack.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/commit-graph.html</loc>
+    <loc>https://gitnav.xyz/docs/stack_reviewer.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/uncommitted-changes.html</loc>
+    <loc>https://gitnav.xyz/docs/commit-graph.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/conflict-resolution.html</loc>
+    <loc>https://gitnav.xyz/docs/uncommitted-changes.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/branches-and-tags.html</loc>
+    <loc>https://gitnav.xyz/docs/conflict-resolution.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/drag-and-drop-rebase.html</loc>
+    <loc>https://gitnav.xyz/docs/branches-and-tags.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/worktrees.html</loc>
+    <loc>https://gitnav.xyz/docs/drag-and-drop-rebase.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/file-explorer.html</loc>
+    <loc>https://gitnav.xyz/docs/worktrees.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/push.html</loc>
+    <loc>https://gitnav.xyz/docs/file-explorer.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/pull.html</loc>
+    <loc>https://gitnav.xyz/docs/push.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/fetch.html</loc>
+    <loc>https://gitnav.xyz/docs/pull.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/stash.html</loc>
+    <loc>https://gitnav.xyz/docs/fetch.html</loc>
   </url>
   <url>
-    <loc>https://gitnav.xyz/reflog.html</loc>
+    <loc>https://gitnav.xyz/docs/stash.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/docs/reflog.html</loc>
   </url>
   <url>
     <loc>https://gitnav.xyz/post_install.html</loc>
