@@ -58,23 +58,25 @@
   });
 })();
 
-(() => {
-  const platform = (() => {
-    const ua = navigator.userAgent || "";
-    const userAgentDataPlatform = navigator.userAgentData?.platform || "";
-    const legacyPlatform = navigator.platform || "";
-    const source = `${ua} ${userAgentDataPlatform} ${legacyPlatform}`.toLowerCase();
-    const isIOS =
-      /iphone|ipad|ipod/.test(source) ||
-      (legacyPlatform === "MacIntel" && navigator.maxTouchPoints > 1);
-    const isAndroid = source.includes("android");
+const detectPlatform = () => {
+  const ua = navigator.userAgent || "";
+  const userAgentDataPlatform = navigator.userAgentData?.platform || "";
+  const legacyPlatform = navigator.platform || "";
+  const source = `${ua} ${userAgentDataPlatform} ${legacyPlatform}`.toLowerCase();
+  const isIOS =
+    /iphone|ipad|ipod/.test(source) ||
+    (legacyPlatform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const isAndroid = source.includes("android");
 
-    if (isIOS || isAndroid) return null;
-    if (source.includes("mac")) return "macos";
-    if (source.includes("win")) return "windows";
-    if (source.includes("linux")) return "linux";
-    return null;
-  })();
+  if (isIOS || isAndroid) return null;
+  if (source.includes("mac")) return "macos";
+  if (source.includes("win")) return "windows";
+  if (source.includes("linux")) return "linux";
+  return null;
+};
+
+(() => {
+  const platform = detectPlatform();
 
   document.querySelectorAll("[data-hero-shot]").forEach((picture) => {
     picture.classList.remove("is-windows-shot");
@@ -99,38 +101,21 @@
       picture.classList.add("is-windows-shot");
     }
   });
+})();
 
-  const primaryDownload = document.querySelector("[data-primary-download]");
-  if (!primaryDownload) return;
+(() => {
+  const page = document.querySelector("[data-download-page]");
+  if (!page) return;
 
-  const primaryActions = primaryDownload.closest(".hero-actions");
-  const supportedPrimaryPlatform = platform === "macos" || platform === "windows" || platform === "linux";
+  const platform = detectPlatform();
+  if (!platform) return;
 
-  if (!supportedPrimaryPlatform) {
-    return;
-  }
+  // Highlight the card for the visitor's OS and float it to the front.
+  const card = page.querySelector(`.platform-card[data-os="${platform}"]`);
+  if (!card) return;
 
-  if (primaryActions) {
-    primaryActions.classList.add("is-visible");
-  }
-
-  const url = primaryDownload.dataset[`url${platform[0].toUpperCase()}${platform.slice(1)}`];
-  const label = primaryDownload.dataset[`label${platform[0].toUpperCase()}${platform.slice(1)}`];
-
-  if (url) {
-    primaryDownload.href = url;
-  }
-
-  if (label) {
-    primaryDownload.textContent = label;
-    primaryDownload.setAttribute("aria-label", label);
-  }
-
-  document.querySelectorAll(`.platform-button[data-platform="${platform}"]`).forEach((button) => {
-    button.hidden = true;
-    button.classList.add("is-hidden-platform");
-    button.style.display = "none";
-    button.setAttribute("aria-hidden", "true");
-    button.setAttribute("tabindex", "-1");
-  });
+  card.classList.add("is-recommended");
+  const badge = card.querySelector(".platform-badge");
+  if (badge) badge.hidden = false;
+  card.parentElement.prepend(card);
 })();

@@ -11,9 +11,10 @@ Git Navigator brings the power of Git into a beautiful, interactive visualizatio
 ## ⬇️ Install
 
 ### Desktop app
-- macOS (Apple Silicon): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.5_aarch64.dmg)
-- Windows (x64): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.5_x64.msi)
-- Linux (.deb, x64): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.5_amd64.deb)
+Pick how to install on the [download page](https://gitnav.xyz/download.html):
+- macOS: [Mac App Store](https://apps.apple.com/us/app/git-navigator/id6777530415) or direct `.dmg`
+- Windows: [Microsoft Store](https://apps.microsoft.com/detail/9nqcrg5v83cb) or direct `.msi`
+- Linux: direct `.deb` / `.AppImage`
 
 ### Editor extension
 - VS Code Marketplace: [Install](https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator)
