@@ -34,6 +34,15 @@
     <loc>https://gitnav.xyz/file-explorer.html</loc>
   </url>
   <url>
+    <loc>https://gitnav.xyz/push.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/pull.html</loc>
+  </url>
+  <url>
+    <loc>https://gitnav.xyz/fetch.html</loc>
+  </url>
+  <url>
     <loc>https://gitnav.xyz/post_install.html</loc>
   </url>
   <url>

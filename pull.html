@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pull - Git Navigator</title>
+    <meta name="description" content="Pull from your remote with the right strategy: rebase against the default branch, rebase against the current branch's upstream, or merge. Three dropdown items, three explicit behaviours — no guessing what &lt;code&gt;git pull&lt;/code&gt; will do." />
+    <meta name="keywords" content="git pull gui, git pull rebase, git pull merge, pull dropdown, pull upstream, git navigator" />
+    <link rel="canonical" href="https://gitnav.xyz/pull.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Pull - Git Navigator" />
+    <meta property="og:description" content="Pull from your remote with the right strategy: rebase against the default branch, rebase against the current branch's upstream, or merge. Three dropdown items, three explicit behaviours — no guessing what &lt;code&gt;git pull&lt;/code&gt; will do." />
+    <meta property="og:url" content="https://gitnav.xyz/pull.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/pull-default-step-01.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pull - Git Navigator" />
+    <meta name="twitter:description" content="Pull from your remote with the right strategy: rebase against the default branch, rebase against the current branch's upstream, or merge. Three dropdown items, three explicit behaviours — no guessing what &lt;code&gt;git pull&lt;/code&gt; will do." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/pull-default-step-01.png" />
+
+    <link rel="icon" href="static/icon.png" type="image/png" />
+    <link rel="stylesheet" href="static/site.css" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Pull",
+  "description": "Pull from your remote with the right strategy: rebase against the default branch, rebase against the current branch's upstream, or merge. Three dropdown items, three explicit behaviours — no guessing what <code>git pull</code> will do.",
+  "mainEntityOfPage": "https://gitnav.xyz/pull.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/pull-default-step-01.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why doesn't the dropdown chevron show on main?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the default branch there's only one meaningful pull strategy (fetch + integrate the upstream), so Git Navigator hides the toggle to keep the toolbar uncluttered. The split button collapses into a single-click pull. The chevron returns the moment you check out a non-default branch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between Pull - main and Pull (merge) - main?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both target the same remote branch (origin/main), but the strategy differs: Pull - main runs a fetch + rebase (current branch is replayed on top of origin/main), while Pull (merge) - main runs a fetch + merge (a merge commit lands in your history). Pick rebase for a linear history, merge for an explicit integration record."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Git Navigator remember my last-used pull mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Within a session, yes — picking a row from the dropdown updates the main button's label and that's what the next click runs. Switching branches resets the default to Pull - {default-branch}."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if pulling produces a conflict?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Git Navigator pauses on its conflict view with every conflicted file listed and block-level keep-ours / keep-theirs / both actions. Once resolved, the rebase or merge continues automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I pull from a specific ref that isn't my upstream?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — use the Fetch control next to the pull button. Type any ref (like origin/release/0.0.x), pick Fetch + Rebase, and Git Navigator runs git fetch + git rebase {ref} against your current branch."
+      }
+    }
+  ]
+}
+    </script>
+  </head>
+  <body class="page-doc page-pull">
+    <nav class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="index.html">Git Navigator</a>
+        <div class="nav-links">
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container hero">
+        <h1>Pull, with the strategy you actually want</h1>
+        <p>Git Navigator's pull button is a split control: the primary action is a one-click pull, and the dropdown reveals three explicit strategies. Rebase against the default branch to keep a long-lived feature on top of main; rebase against the current branch's upstream for a routine sync; or merge if your team prefers merge commits on long-lived integration branches.</p>
+        <p><a href="index.html">Back to the main page</a></p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <picture>
+                <source srcset="static/pull-default-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="static/pull-default-step-01.png" alt="Git Navigator showing the pull split button at the top of the commit graph, ready to rebase against the default branch" data-zoom />
+              </picture>
+            </div>
+            <figcaption>The pull button names its current target — here, the default branch — so you always know what the next click will do.</figcaption>
+          </figure>
+
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Three pull modes, one button</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Default-rebase keeps features on top of main</h3>
+            <p>The primary mode (<em>Pull - main</em>) fetches and rebases the current branch onto <code>origin/main</code>. Perfect for long-lived feature branches that need to stay current with the default branch.</p>
+          </div>
+          <div class="card">
+            <h3>Current-rebase syncs the upstream</h3>
+            <p>When your branch already has a remote counterpart that's ahead of you, <em>Pull - {branch}</em> runs <code>git pull --rebase</code> against that upstream. Routine catch-up, no surprises.</p>
+          </div>
+          <div class="card">
+            <h3>Merge for integration branches</h3>
+            <p><em>Pull (merge) - main</em> brings the default branch in with a merge commit — useful when your team prefers an explicit merge for long-lived integration branches over a rewritten history.</p>
+          </div>
+          <div class="card">
+            <h3>Toggle visible only when there's a choice</h3>
+            <p>On the default branch (<code>main</code>) the dropdown chevron is hidden — there's nothing to choose between. The moment you check out a feature branch, the chevron appears with the three modes ready to pick.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Walkthrough</h2>
+        <div class="walkthrough-modes" role="tablist" aria-label="Walkthrough modes">
+          <button type="button" class="walkthrough-mode-btn is-active" role="tab" aria-selected="true" data-target="default">Default-rebase</button>
+          <button type="button" class="walkthrough-mode-btn" role="tab" aria-selected="false" data-target="current">Current-rebase</button>
+          <button type="button" class="walkthrough-mode-btn" role="tab" aria-selected="false" data-target="merge">Merge default</button>
+        </div>
+        <ol class="walkthrough" data-mode="default">
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-default-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-default-step-01.png" alt="Step 1 — On a non-default branch — here feature/pull-demo — the pull split button names its current target. The default mode is P" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 1.</strong> On a non-default branch — here <code>feature/pull-demo</code> — the pull split button names its current target. The default mode is <em>Pull - main</em>: fetch + rebase the current branch onto <code>origin/main</code>.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-default-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-default-step-02.png" alt="Step 2 — Clicking the main button runs that exact strategy — no need to open the dropdown if the default is what you want. The la" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 2.</strong> Clicking the main button runs that exact strategy — no need to open the dropdown if the default is what you want. The label always tells you what the next click will do.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-default-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-default-step-03.png" alt="Step 3 — Git Navigator runs git fetch then git rebase origin/main — your feature branch lands on top of the latest default. The g" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 3.</strong> Git Navigator runs <code>git fetch</code> then <code>git rebase origin/main</code> — your feature branch lands on top of the latest default. The graph re-renders with the new topology in place.</figcaption>
+            </figure>
+          </li>
+        </ol>
+        <ol class="walkthrough" data-mode="current" hidden>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-current-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-current-step-01.png" alt="Step 1 — To switch strategies, open the dropdown next to the pull button. The chevron appears whenever you're on a non-default br" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 1.</strong> To switch strategies, open the dropdown next to the pull button. The chevron appears whenever you're on a non-default branch — three rows, each labelled with the git command behind it.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-current-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-current-step-02.png" alt="Step 2 — The middle row — Pull - feature/pull-demo — runs git pull --rebase against the current branch's own upstream. Use this w" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 2.</strong> The middle row — <em>Pull - feature/pull-demo</em> — runs <code>git pull --rebase</code> against the current branch's own upstream. Use this when your feature has a remote counterpart that's drifted ahead of you (a teammate pushed, or a CI bot updated it).</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-current-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-current-step-03.png" alt="Step 3 — Picking a row updates the main button's label and target — it doesn't pull yet. The label now reads Pull - feature/pull-" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 3.</strong> Picking a row updates the main button's label and target — it doesn't pull yet. The label now reads <em>Pull - feature/pull-demo</em> so a subsequent click will run the current-rebase strategy against the upstream.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-current-step-04-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-current-step-04.png" alt="Step 4 — The actual pull: git pull --rebase on the current branch's upstream. The graph fast-forwards (or rebases) onto the new t" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 4.</strong> The actual pull: <code>git pull --rebase</code> on the current branch's upstream. The graph fast-forwards (or rebases) onto the new tip and the dropdown stays primed on this mode for the next time you sync.</figcaption>
+            </figure>
+          </li>
+        </ol>
+        <ol class="walkthrough" data-mode="merge" hidden>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-merge-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-merge-step-01.png" alt="Step 1 — The third row — Pull (merge) - main — runs git pull origin main (no --rebase). Picks this when your team prefers an expl" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 1.</strong> The third row — <em>Pull (merge) - main</em> — runs <code>git pull origin main</code> (no <code>--rebase</code>). Picks this when your team prefers an explicit merge commit on integration branches over a rewritten history.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-merge-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-merge-step-02.png" alt="Step 2 — The button label updates to Pull (merge) - main. The dropdown closes; the strategy choice persists on the button until y" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 2.</strong> The button label updates to <em>Pull (merge) - main</em>. The dropdown closes; the strategy choice persists on the button until you change it again.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="static/pull-merge-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="static/pull-merge-step-03.png" alt="Step 3 — Click and Git Navigator runs git pull origin main. The new graph shows the merge commit explicitly — useful when reviewe" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 3.</strong> Click and Git Navigator runs <code>git pull origin main</code>. The new graph shows the merge commit explicitly — useful when reviewers want to see where the integration happened rather than a fast-forward.</figcaption>
+            </figure>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Picking a pull strategy</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Check out your branch.</strong> The pull split button appears at the top of the graph. On the default branch the chevron is hidden (only one strategy makes sense); on a feature branch the dropdown opens up the three modes.</li>
+            <li><strong>Default-rebase keeps features fresh.</strong> Use <em>Pull - main</em> to fetch and rebase the current branch onto <code>origin/main</code>. A long-lived feature branch stays linear and current.</li>
+            <li><strong>Current-rebase syncs the upstream.</strong> Use <em>Pull - {branch}</em> when your branch has a remote counterpart that's ahead of you and you want a clean fast-forward / rebase.</li>
+            <li><strong>Merge for integration branches.</strong> Use <em>Pull (merge) - main</em> when your team prefers an explicit merge over a rebase. The merge commit shows up in the graph.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Why doesn't the dropdown chevron show on main?</h3>
+            <p>On the default branch there's only one meaningful pull strategy (fetch + integrate the upstream), so Git Navigator hides the toggle to keep the toolbar uncluttered. The split button collapses into a single-click pull. The chevron returns the moment you check out a non-default branch.</p>
+          </div>
+          <div class="card">
+            <h3>What's the difference between Pull - main and Pull (merge) - main?</h3>
+            <p>Both target the same remote branch (<code>origin/main</code>), but the strategy differs: <em>Pull - main</em> runs a fetch + rebase (current branch is replayed on top of origin/main), while <em>Pull (merge) - main</em> runs a fetch + merge (a merge commit lands in your history). Pick rebase for a linear history, merge for an explicit integration record.</p>
+          </div>
+          <div class="card">
+            <h3>Does Git Navigator remember my last-used pull mode?</h3>
+            <p>Within a session, yes — picking a row from the dropdown updates the main button's label and that's what the next click runs. Switching branches resets the default to <em>Pull - {default-branch}</em>.</p>
+          </div>
+          <div class="card">
+            <h3>What happens if pulling produces a conflict?</h3>
+            <p>Git Navigator pauses on its <a href="conflict-resolution.html">conflict view</a> with every conflicted file listed and block-level keep-ours / keep-theirs / both actions. Once resolved, the rebase or merge continues automatically.</p>
+          </div>
+          <div class="card">
+            <h3>Can I pull from a specific ref that isn't my upstream?</h3>
+            <p>Yes — use the <a href="fetch.html">Fetch</a> control next to the pull button. Type any ref (like <code>origin/release/0.0.x</code>), pick <em>Fetch + Rebase</em>, and Git Navigator runs <code>git fetch</code> + <code>git rebase {ref}</code> against your current branch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Related guides</h2>
+        <div class="footer-inner">
+          <a class="button secondary" href="commit-graph.html">Visual Commit Graph</a>
+          <a class="button secondary" href="stack.html">Branch vs Stack mode</a>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+      </div>
+    </footer>
+
+    <div class="overlay" id="media-overlay" aria-hidden="true">
+      <div class="overlay-content">
+        <button class="overlay-close" type="button" aria-label="Close media">x</button>
+        <div class="overlay-body"></div>
+      </div>
+    </div>
+
+    <script src="static/site.js"></script>
+    <script>
+      // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
+      // hide the others. Scoped to this page; site.js is untouched.
+      document.querySelectorAll('.walkthrough-modes').forEach(group => {
+        const tabs = Array.from(group.querySelectorAll('.walkthrough-mode-btn'));
+        const lists = Array.from(group.parentElement.querySelectorAll('.walkthrough[data-mode]'));
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const target = tab.dataset.target;
+            tabs.forEach(t => {
+              const active = t.dataset.target === target;
+              t.classList.toggle('is-active', active);
+              t.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+            lists.forEach(list => {
+              list.toggleAttribute('hidden', list.dataset.mode !== target);
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
