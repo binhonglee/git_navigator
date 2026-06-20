@@ -242,7 +242,8 @@ section {
   gap: 12px;
 }
 
-.page-index .platform-button {
+.page-index .platform-button,
+.page-download .platform-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -256,14 +257,11 @@ section {
   transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
-.page-index .platform-button:hover {
+.page-index .platform-button:hover,
+.page-download .platform-button:hover {
   transform: translateY(-1px);
   border-color: rgba(31, 111, 235, 0.35);
   box-shadow: 0 12px 28px rgba(12, 18, 28, 0.1);
-}
-
-.page-index .platform-button.is-hidden-platform {
-  display: none !important;
 }
 
 .page-index .platform-button svg {
@@ -273,17 +271,21 @@ section {
 }
 
 .page-index .platform-button img,
-.page-index .platform-button picture {
+.page-index .platform-button picture,
+.page-download .platform-button img,
+.page-download .platform-button picture {
   width: 26px;
   height: 26px;
   display: block;
 }
 
-.page-index .platform-button img {
+.page-index .platform-button img,
+.page-download .platform-button img {
   object-fit: contain;
 }
 
-.page-index .platform-button picture img {
+.page-index .platform-button picture img,
+.page-download .platform-button picture img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -1197,4 +1199,164 @@ section {
 
 .page-doc .walkthrough[hidden] {
   display: none;
+}
+
+/* Download page: store-first picker. Reuses .button, .container,
+   .section-title, .lead, .platform-button. */
+.page-download header {
+  padding: 64px 24px 24px;
+}
+
+.page-download .container {
+  max-width: 920px;
+}
+
+.page-download .download-hero {
+  text-align: center;
+}
+
+.page-download .download-hero h1 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin: 0 0 12px;
+}
+
+.page-download .lead {
+  margin: 0 auto;
+  max-width: 640px;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.page-download .download-page {
+  display: grid;
+  gap: 44px;
+}
+
+.page-download .section-title {
+  font-size: 1.4rem;
+  margin: 0 0 8px;
+}
+
+.page-download .download-sub {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Per-platform cards — each leads with its recommended install method. */
+.page-download .platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.page-download .platform-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 16px rgba(12, 18, 28, 0.04);
+}
+
+.page-download .platform-card.is-recommended {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.page-download .platform-badge {
+  position: absolute;
+  top: -11px;
+  left: 24px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.page-download .platform-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.page-download .platform-card-head img,
+.page-download .platform-card-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: block;
+}
+
+.page-download .platform-card-titles h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.page-download .platform-card-titles p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.page-download .platform-card .button {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.page-download .platform-alt {
+  text-align: center;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.page-download .platform-alt:hover {
+  text-decoration: underline;
+}
+
+.page-download .platform-note {
+  margin: auto 0 0;
+  padding-top: 4px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Other ways to install */
+.page-download .download-other {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+}
+
+.page-download .download-subhead {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+}
+
+/* IDE extension buttons: .platform-button styling is shared with .page-index;
+   only the container alignment differs (left-aligned here, not centered). */
+.page-download .hero-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.page-download .download-foot {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.page-download .download-foot a {
+  color: var(--accent);
+  font-weight: 600;
 }

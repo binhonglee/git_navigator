@@ -6,6 +6,7 @@ const path = require("path");
 const repoRoot = path.resolve(__dirname, "..");
 const changelogPath = path.join(repoRoot, "CHANGELOG.md");
 const indexPath = path.join(repoRoot, "index.html");
+const downloadPath = path.join(repoRoot, "download.html");
 
 const changelog = fs.readFileSync(changelogPath, "utf8");
 const indexHtml = fs.readFileSync(indexPath, "utf8");
@@ -92,3 +93,23 @@ const nextHtml = indexHtml.replace(replaceRegex, replacement);
 fs.writeFileSync(indexPath, nextHtml);
 
 console.log(`Updated changelog cards with ${selected.length} entries.`);
+
+// Keep the download page pinned to the latest released version so the direct
+// GitHub asset URLs (which embed the version) never go stale. Guard on a
+// semver shape so a non-version heading can't rewrite the URLs to garbage.
+const latestVersion = selected[0].version;
+const semverPattern = /^\d+\.\d+\.\d+$/;
+
+if (semverPattern.test(latestVersion) && fs.existsSync(downloadPath)) {
+  const downloadHtml = fs.readFileSync(downloadPath, "utf8");
+  const nextDownloadHtml = downloadHtml
+    .replace(/(data-version-label>)[\d.]+(<)/g, `$1${latestVersion}$2`)
+    .replace(/Git\.Navigator_\d+\.\d+\.\d+_/g, `Git.Navigator_${latestVersion}_`);
+
+  if (nextDownloadHtml !== downloadHtml) {
+    fs.writeFileSync(downloadPath, nextDownloadHtml);
+    console.log(`Updated download.html to version ${latestVersion}.`);
+  } else {
+    console.log(`download.html already at version ${latestVersion}.`);
+  }
+}
