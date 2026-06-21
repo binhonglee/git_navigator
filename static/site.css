@@ -1,3 +1,66 @@
+/* Self-hosted webfonts (SIL Open Font License 1.1 — see static/fonts/*-OFL.txt) */
+/* Sora — body/UI */
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/sora-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/sora-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/sora-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/sora-700.woff2") format("woff2");
+}
+/* Fraunces — titles/headings */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/fraunces-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/fraunces-700.woff2") format("woff2");
+}
+/* Victor Mono — code (size-adjust trims it to match Sora's x-height) */
+@font-face {
+  font-family: "Victor Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  size-adjust: 85%;
+  src: url("fonts/victor-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Victor Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  size-adjust: 85%;
+  src: url("fonts/victor-600.woff2") format("woff2");
+}
+
 :root {
   color-scheme: light;
   --bg: #f6f7f8;
@@ -7,6 +70,10 @@
   --accent: #1f6feb;
   --border: #d7dbe0;
   --shadow: 0 14px 30px rgba(12, 18, 28, 0.08);
+  --font-sans: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mono: "Victor Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,10 +95,23 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
   color: var(--text);
   background: var(--bg);
   padding-bottom: 50px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
 }
 
 a {
@@ -640,8 +720,7 @@ section {
   border-radius: 10px;
   background: rgba(31, 111, 235, 0.08);
   border: 1px dashed var(--border);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
+  font-family: var(--font-mono);
   font-size: 0.95rem;
   color: var(--muted);
   white-space: pre;
