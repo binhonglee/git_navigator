@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<head>
+<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../static/site.css" />
+  <link rel="icon" href="../static/icon.png" type="image/png" />
     <title>File Explorer - Git Navigator</title>
     <meta name="description" content="Browse a worktree-scoped file tree with status badges, jump into diffs or syntax-highlighted file views, and find paths or content with the built-in search — without leaving Git Navigator." />
     <meta name="keywords" content="git file explorer, worktree file tree gui, git status sidebar, git grep gui, codemirror diff viewer, git navigator" />
@@ -22,10 +24,6 @@
     <meta name="twitter:description" content="Browse a worktree-scoped file tree with status badges, jump into diffs or syntax-highlighted file views, and find paths or content with the built-in search — without leaving Git Navigator." />
     <meta name="twitter:image" content="https://gitnav.xyz/static/file-explorer-browse-step-01.png" />
 
-    <link rel="icon" href="../static/icon.png" type="image/png" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="../static/fonts/sora-400.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="../static/fonts/fraunces-700.woff2" />
-    <link rel="stylesheet" href="../static/site.css" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -85,70 +83,109 @@
   ]
 }
     </script>
-  </head>
-  <body class="page-doc page-file-explorer">
-    <!-- NAV_START -->
-    <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <div class="sidebar-backdrop"></div>
-    <aside class="docs-sidebar" aria-label="Documentation navigation">
-      <a class="sidebar-head" href="index.html">Documentation</a>
-      <div class="sidebar-group">
-        <p class="sidebar-group-title">Getting started</p>
-        <ul>
-          <li><a href="index.html">Overview</a></li>
-          <li><a href="../desktop.html">Desktop App</a></li>
-        </ul>
+</head>
+<body>
+
+  <header class="docs-header">
+    <div class="container">
+      <div class="left">
+        <a href="../index.html" style="display:flex;align-items:center;gap:11px">
+          <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,54" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+          <span class="brand-text">Git Navigator</span>
+        </a>
+        <span class="docs-badge">Docs</span>
       </div>
-      <div class="sidebar-group">
-        <p class="sidebar-group-title">Remotes &amp; sync</p>
-        <ul>
-          <li><a href="fetch.html">Fetch</a></li>
-          <li><a href="pull.html">Pull</a></li>
-          <li><a href="push.html">Push</a></li>
-        </ul>
+      <div class="right">
+        <a href="https://github.com/binhonglee/git_navigator" style="font-size:14.5px;font-weight:500;color:var(--muted)">GitHub</a>
+        <a class="nav-cta" href="../download.html" style="font-size:14px;padding:8px 16px;border-radius:8px">Download</a>
       </div>
-      <div class="sidebar-group">
-        <p class="sidebar-group-title">History &amp; branches</p>
-        <ul>
-          <li><a href="commit-graph.html">Visual Commit Graph</a></li>
-          <li><a href="branches-and-tags.html">Branches &amp; Tags</a></li>
-          <li><a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a></li>
-          <li><a href="worktrees.html">Linked Worktrees</a></li>
-          <li><a href="reflog.html">Reflog</a></li>
-        </ul>
+    </div>
+  </header>
+
+  <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting started</div>
+        <nav>
+          <a href="index.html">Overview</a>
+        </nav>
       </div>
-      <div class="sidebar-group">
-        <p class="sidebar-group-title">Stacked workflow</p>
-        <ul>
-          <li><a href="stack.html">Branch vs Stack mode</a></li>
-          <li><a href="stack_reviewer.html">Stack Reviewer</a></li>
-        </ul>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Remotes &amp; sync</div>
+        <nav>
+          <a href="fetch.html">Fetch</a>
+          <a href="pull.html">Pull</a>
+          <a href="push.html">Push</a>
+        </nav>
       </div>
-      <div class="sidebar-group">
-        <p class="sidebar-group-title">Changes &amp; files</p>
-        <ul>
-          <li><a href="uncommitted-changes.html">Commit Management</a></li>
-          <li><a href="stash.html">Stash</a></li>
-          <li><a href="file-explorer.html" aria-current="page">File Explorer</a></li>
-          <li><a href="conflict-resolution.html">Conflict Resolution</a></li>
-        </ul>
+      <div class="sidebar-section">
+        <div class="sidebar-title">History &amp; branches</div>
+        <nav>
+          <a href="commit-graph.html">Visual Commit Graph</a>
+          <a href="branches-and-tags.html">Branches &amp; Tags</a>
+          <a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a>
+          <a href="worktrees.html">Linked Worktrees</a>
+          <a href="reflog.html">Reflog</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Stacked workflow</div>
+        <nav>
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Changes &amp; files</div>
+        <nav>
+          <a href="uncommitted-changes.html">Commit Management</a>
+          <a href="stash.html">Stash</a>
+          <a href="file-explorer.html" class="active">File Explorer</a>
+          <a href="conflict-resolution.html">Conflict Resolution</a>
+        </nav>
       </div>
     </aside>
-    <!-- NAV_END -->
-    <nav class="site-nav">
-      <div class="container nav-inner">
-        <a class="nav-brand" href="../index.html">Git Navigator</a>
-        <div class="nav-links">
-          <a href="index.html">Documentation</a>
-          <a href="../download.html">Download</a>
-        </div>
-      </div>
-    </nav>
-    <header>
+    <script>
+      /* Restore docs sidebar scroll before first paint to avoid a flicker. */
+      (function () {
+        var sb = document.currentScript.previousElementSibling;
+        if (!sb || !sb.classList.contains('docs-sidebar')) {
+          sb = document.querySelector('.docs-sidebar');
+        }
+        if (!sb) return;
+        var saved = sessionStorage.getItem('gn-docs-sidebar-scroll');
+        if (saved !== null) sb.scrollTop = parseInt(saved, 10) || 0;
+        var active = sb.querySelector('a.active');
+        if (active) {
+          var top = active.offsetTop;
+          var visible = top >= sb.scrollTop && top <= sb.scrollTop + sb.clientHeight - active.offsetHeight;
+          if (!visible) active.scrollIntoView({ block: 'center' });
+        }
+      })();
+    </script>
+
+    <main class="docs-main">
+      <div class="breadcrumb">Changes &amp; files <span class="sep">/</span> <span class="current">File Explorer</span></div>
+      <header>
       <div class="container hero">
-        <h1>Browse, search, and diff — without leaving your repo</h1>
+        <h1 id="top">Browse, search, and diff — without leaving your repo</h1>
         <p>Git Navigator's Files activity is a worktree-scoped tree with built-in <em>git status</em> badges, CodeMirror-powered file and diff views, and a search box that flips between filename filter and <code>git grep</code> with a single click. Same window, same worktree context, no terminal.</p>
-        <p><a href="../index.html">Back to the main page</a></p>
       </div>
     </header>
     <section>
@@ -167,7 +204,7 @@
     </section>
     <section>
       <div class="container">
-        <h2 class="section-title">Why the Files activity exists</h2>
+        <h2 id="sec-1" class="section-title">Why the Files activity exists</h2>
         <div class="grid">
           <div class="card">
             <h3>Worktree-scoped tree with status badges</h3>
@@ -190,7 +227,7 @@
     </section>
     <section>
       <div class="container">
-        <h2 class="section-title">Walkthrough</h2>
+        <h2 id="sec-2" class="section-title">Walkthrough</h2>
         <div class="walkthrough-modes" role="tablist" aria-label="Walkthrough modes">
           <button type="button" class="walkthrough-mode-btn is-active" role="tab" aria-selected="true" data-target="browse">Browse</button>
           <button type="button" class="walkthrough-mode-btn" role="tab" aria-selected="false" data-target="search">Search</button>
@@ -360,7 +397,7 @@
     </section>
     <section>
       <div class="container">
-        <h2 class="section-title">Files at a glance</h2>
+        <h2 id="sec-3" class="section-title">Files at a glance</h2>
         <div class="card">
           <ol class="tips">
             <li><strong>Open the Files activity.</strong> Click the folder icon in the activity bar to swap from the commit graph to a worktree-scoped file tree. The tree follows the active worktree.</li>
@@ -373,7 +410,7 @@
     </section>
     <section>
       <div class="container">
-        <h2 class="section-title">Frequently asked questions</h2>
+        <h2 id="sec-4" class="section-title">Frequently asked questions</h2>
         <div class="grid">
           <div class="card">
             <h3>Is the File Explorer worktree-aware?</h3>
@@ -398,50 +435,38 @@
         </div>
       </div>
     </section>
-    <section>
-      <div class="container">
-        <h2 class="section-title">Related guides</h2>
-        <div class="footer-inner">
-          <a class="button secondary" href="commit-graph.html">Visual Commit Graph</a>
-          <a class="button secondary" href="stack.html">Branch vs Stack mode</a>
-        </div>
+      <div class="docs-nav-footer">
+        <a class="prev" href="stash.html">
+          <div class="dir">← Previous</div>
+          <div class="title">Stash</div>
+        </a>
+        <a class="next" href="conflict-resolution.html">
+          <div class="dir">Next →</div>
+          <div class="title">Conflict Resolution</div>
+        </a>
       </div>
-    </section>
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
-      </div>
-    </footer>
+    </main>
 
-    <div class="overlay" id="media-overlay" aria-hidden="true">
-      <div class="overlay-content">
-        <button class="overlay-close" type="button" aria-label="Close media">x</button>
-        <div class="overlay-body"></div>
-      </div>
+    <aside class="docs-rail">
+      <div class="rail-title">On this page</div>
+      <nav>
+        <a href="#top" class="active">Overview</a>
+        <a href="#sec-1">Why the Files activity exists</a>
+        <a href="#sec-2">Walkthrough</a>
+        <a href="#sec-3">Files at a glance</a>
+        <a href="#sec-4">Frequently asked questions</a>
+      </nav>
+    </aside>
+
+  </div>
+
+  <div class="overlay" id="media-overlay" aria-hidden="true">
+    <div class="overlay-content">
+      <button class="overlay-close" type="button" aria-label="Close media">×</button>
+      <div class="overlay-body"></div>
     </div>
+  </div>
 
-    <script src="../static/site.js"></script>
-    <script>
-      // Walkthrough mode toggle: click a tab, show its <ol data-mode="...">,
-      // hide the others. Scoped to this page; site.js is untouched.
-      document.querySelectorAll('.walkthrough-modes').forEach(group => {
-        const tabs = Array.from(group.querySelectorAll('.walkthrough-mode-btn'));
-        const lists = Array.from(group.parentElement.querySelectorAll('.walkthrough[data-mode]'));
-        tabs.forEach(tab => {
-          tab.addEventListener('click', () => {
-            const target = tab.dataset.target;
-            tabs.forEach(t => {
-              const active = t.dataset.target === target;
-              t.classList.toggle('is-active', active);
-              t.setAttribute('aria-selected', active ? 'true' : 'false');
-            });
-            lists.forEach(list => {
-              list.toggleAttribute('hidden', list.dataset.mode !== target);
-            });
-          });
-        });
-      });
-    </script>
-  </body>
+  <script src="../static/site.js"></script>
+</body>
 </html>

@@ -1,52 +1,61 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="static/site.css" />
+  <link rel="icon" href="static/icon.png" type="image/png" />
   <title>Download Git Navigator</title>
-  <meta name="description"
-    content="Download Git Navigator for macOS, Windows, and Linux. Install from the Mac App Store or Microsoft Store for automatic updates, or grab a direct download." />
+  <meta name="description" content="Download Git Navigator for macOS, Windows, and Linux. Install from the Mac App Store or Microsoft Store for automatic updates, or grab a direct download." />
   <meta property="og:title" content="Download Git Navigator" />
-  <meta property="og:description"
-    content="Install Git Navigator from the Mac App Store or Microsoft Store, or download directly for macOS, Windows, and Linux." />
+  <meta property="og:description" content="Install Git Navigator from the Mac App Store or Microsoft Store, or download directly for macOS, Windows, and Linux." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gitnav.xyz/download.html" />
-  <meta property="og:image" content="https://gitnav.xyz/static/tauri_dark_macos.png" />
+  <meta property="og:image" content="https://gitnav.xyz/static/base.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script>
-    document.documentElement.classList.add("js");
-  </script>
-  <link rel="icon" href="static/icon.png" type="image/png" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/sora-400.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/fraunces-700.woff2" />
-  <link rel="stylesheet" href="static/site.css" />
 </head>
+<body>
 
-<body class="page-download">
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a class="nav-brand" href="index.html">Git Navigator</a>
-      <div class="nav-links">
-          <a href="docs/index.html">Documentation</a>
-          <a href="download.html">Download</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="nav-brand" href="index.html">
+        <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,54" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+        <span class="nav-brand-text">Git Navigator</span>
+      </a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="docs/index.html">Docs</a>
+          <a href="https://github.com/binhonglee/git_navigator">GitHub</a>
         </div>
-    </div>
-  </nav>
-
-  <header>
-    <div class="container download-hero">
-      <h1>Download Git Navigator</h1>
-      <p class="lead">Install the native desktop app, or add the extension to your favorite IDE.</p>
+        <a class="nav-cta" href="download.html">Download</a>
+      </div>
     </div>
   </header>
 
+  <section class="download-hero">
+    <div class="container">
+      <h1>Download Git Navigator</h1>
+      <p class="lead">Install the native desktop app, or add the extension to your favorite IDE.</p>
+    </div>
+  </section>
+
   <section>
-    <div class="container download-page" data-download-page>
-      <h2 class="section-title">Choose your platform</h2>
-      <p class="download-sub">
-        On macOS and Windows we recommend the app store for automatic updates. Direct
-        downloads are available for every platform.
+    <div class="container" data-download-page>
+      <h2 style="font-family:var(--font-sans);font-size:1.4rem;margin:0 0 8px">Choose your platform</h2>
+      <p style="margin:0 0 24px;color:var(--muted);line-height:1.5">
+        On macOS and Windows we recommend the app store for automatic updates. Direct downloads are available for every platform.
       </p>
 
       <div class="platform-grid">
@@ -62,13 +71,8 @@
               <p>Apple Silicon</p>
             </div>
           </div>
-          <a class="button" href="https://apps.apple.com/us/app/git-navigator/id6777530415">
-            Mac App Store
-          </a>
-          <a class="platform-alt"
-            href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_aarch64.dmg">
-            Direct download (.dmg)
-          </a>
+          <a class="button" href="https://apps.apple.com/us/app/git-navigator/id6777530415">Mac App Store</a>
+          <a class="platform-alt" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_aarch64.dmg">Direct download (.dmg)</a>
           <p class="platform-note">Installs and updates automatically through the App Store.</p>
         </article>
 
@@ -84,13 +88,8 @@
               <p>x64</p>
             </div>
           </div>
-          <a class="button" href="https://apps.microsoft.com/detail/9nqcrg5v83cb">
-            Microsoft Store
-          </a>
-          <a class="platform-alt"
-            href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_x64.msi">
-            Direct download (.msi)
-          </a>
+          <a class="button" href="https://apps.microsoft.com/detail/9nqcrg5v83cb">Microsoft Store</a>
+          <a class="platform-alt" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_x64.msi">Direct download (.msi)</a>
           <p class="platform-note">Installs and updates automatically through the Microsoft Store.</p>
         </article>
 
@@ -103,46 +102,34 @@
               <p>x64</p>
             </div>
           </div>
-          <a class="button"
-            href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_amd64.deb">
-            Download .deb
-          </a>
-          <a class="platform-alt"
-            href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_amd64.AppImage">
-            Or get the .AppImage
-          </a>
+          <a class="button" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_amd64.deb">Download .deb</a>
+          <a class="platform-alt" href="https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.3.6_amd64.AppImage">Or get the .AppImage</a>
           <p class="platform-note">Debian/Ubuntu or portable AppImage. Updates are delivered in-app.</p>
         </article>
       </div>
 
       <div class="download-other">
-        <h3 class="download-subhead">Use it in your editor</h3>
-        <p class="download-sub">Add the Git Navigator extension to a compatible IDE.</p>
-        <div class="hero-platforms" aria-label="IDE extension install options">
-          <a class="platform-button" href="https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator"
-            title="Install in VS Code" aria-label="Install in VS Code">
+        <h3>Use it in your editor</h3>
+        <p class="sub">Add the Git Navigator extension to a compatible IDE.</p>
+        <div class="ide-buttons">
+          <a class="ide-button" href="https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator" title="Install in VS Code" aria-label="Install in VS Code">
             <img src="static/logo-vscode.svg" alt="" />
           </a>
-          <a class="platform-button" href="https://open-vsx.org/extension/binhonglee/git-navigator"
-            title="Install from Open VSX" aria-label="Install from Open VSX">
+          <a class="ide-button" href="https://open-vsx.org/extension/binhonglee/git-navigator" title="Install from Open VSX" aria-label="Install from Open VSX">
             <img src="static/logo-openvsx.svg" alt="" />
           </a>
-          <a class="platform-button" href="cursor:extension/binhonglee.git-navigator" title="Install in Cursor"
-            aria-label="Install in Cursor">
+          <a class="ide-button" href="cursor:extension/binhonglee.git-navigator" title="Install in Cursor" aria-label="Install in Cursor">
             <picture>
               <source srcset="static/logo-cursor-dark.svg" media="(prefers-color-scheme: dark)" />
               <img src="static/logo-cursor-light.svg" alt="" />
             </picture>
           </a>
-          <a class="platform-button" href="antigravity:extension/binhonglee.git-navigator" title="Install in Antigravity"
-            aria-label="Install in Antigravity">
+          <a class="ide-button" href="antigravity:extension/binhonglee.git-navigator" title="Install in Antigravity" aria-label="Install in Antigravity">
             <img src="static/logo-antigravity.png" alt="" />
           </a>
         </div>
-
         <p class="download-foot">
-          Direct downloads are version v<span data-version-label>0.3.6</span>. Looking for older
-          versions or checksums?
+          Direct downloads are version v<span data-version-label>0.3.6</span>. Looking for older versions or checksums?
           <a href="https://github.com/binhonglee/git_navigator/releases">Browse all releases</a>.
         </p>
       </div>
@@ -150,15 +137,51 @@
   </section>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">
-        GitHub
-      </a>
-      <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-row">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,54" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+            <span>Git Navigator</span>
+          </div>
+          <p>Local-first visual Git operations — as a standalone desktop app or inside your favorite IDE.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <div class="footer-col-title">Product</div>
+            <div class="footer-col-links">
+              <a href="download.html">Download</a>
+              <a href="docs/index.html">Documentation</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Resources</div>
+            <div class="footer-col-links">
+              <a href="https://github.com/binhonglee/git_navigator">GitHub</a>
+              <a href="mailto:binhong@binhong.me">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Git Navigator</span>
+        <span>v0.3.6 · 2026-06-16</span>
+      </div>
     </div>
   </footer>
 
   <script src="static/site.js"></script>
 </body>
-
 </html>

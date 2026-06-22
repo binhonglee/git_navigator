@@ -1,65 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privacy Policy - Git Navigator</title>
-    <meta
-      name="description"
-      content="Git Navigator runs on your device, stores data locally, and does not collect your data."
-    />
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/sora-400.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/fraunces-700.woff2" />
-    <link rel="stylesheet" href="static/site.css" />
-  </head>
-  <body class="page-stack">
-    <nav class="site-nav">
-      <div class="container nav-inner">
-        <a class="nav-brand" href="index.html">Git Navigator</a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="static/site.css" />
+  <link rel="icon" href="static/icon.png" type="image/png" />
+  <title>Privacy Policy - Git Navigator</title>
+  <meta name="description" content="Git Navigator runs on your device, stores data locally, and does not collect your data." />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="nav-brand" href="index.html">
+        <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,54" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+        <span class="nav-brand-text">Git Navigator</span>
+      </a>
+      <div class="nav-right">
         <div class="nav-links">
-          <a href="docs/index.html">Documentation</a>
+          <a href="docs/index.html">Docs</a>
           <a href="download.html">Download</a>
         </div>
       </div>
-    </nav>
-    <header>
-      <div class="container hero">
-        <h1>Privacy Policy</h1>
-        <p><a href="index.html">Back to the main page</a></p>
-      </div>
-    </header>
+    </div>
+  </header>
 
-    <section>
-      <div class="container">
-        <div class="card">
-          <p>
-            Git Navigator runs fully on your device. Settings and other app data are stored locally on your
-            machine. Git Navigator does not collect your data.
-          </p>
-          <br/>
-          <p>
-            When you push, fetch, or use provider integrations, those requests go to the services you have
-            configured (your git remotes, GitHub, GitLab, and so on) not through Git Navigator.
-          </p>
-        </div>
-      </div>
-    </section>
+  <div class="page-privacy">
+    <h1>Privacy Policy</h1>
+    <p>Git Navigator runs fully on your device. Settings and other app data are stored locally on your machine. Git Navigator does not collect your data.</p>
+    <p>When you push, fetch, or use provider integrations, those requests go to the services you have configured (your git remotes, GitHub, GitLab, and so on) not through Git Navigator.</p>
+  </div>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <a
-          class="footer-link"
-          href="https://github.com/binhonglee/git_navigator"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub
-        </a>
-        <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 Git Navigator</span>
+        <a href="https://github.com/binhonglee/git_navigator" style="color:var(--muted)">GitHub</a>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="static/site.js"></script>
-  </body>
+  <script src="static/site.js"></script>
+</body>
 </html>

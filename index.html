@@ -1,237 +1,220 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="static/site.css" />
+  <link rel="icon" href="static/icon.png" type="image/png" />
   <title>Git Navigator</title>
-  <meta name="description"
-    content="Git Navigator is available as a standalone desktop app or inside your favorite IDE for visual Git operations, AI-assisted commit workflows, drag-and-drop rebase, conflict resolution, and more." />
+  <meta name="description" content="Git Navigator is a local-first visual Git client that just works. Drag to rebase, click to resolve conflicts, manage worktrees, stash, reflog. No commands to memorize, no clutter to wade through" />
   <meta property="og:title" content="Git Navigator" />
-  <meta property="og:description"
-    content="Local-first visual Git operations as a standalone desktop app or inside your favorite IDE." />
+  <meta property="og:description" content="Local-first visual Git operations as a standalone desktop app or inside your favorite IDE." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gitnav.xyz/" />
-  <meta property="og:image" content="https://gitnav.xyz/static/tauri_dark_macos.png" />
+  <meta property="og:image" content="https://gitnav.xyz/static/base.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script>
-    document.documentElement.classList.add("js");
-  </script>
-  <link rel="icon" href="static/icon.png" type="image/png" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/sora-400.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/fraunces-700.woff2" />
-  <link rel="stylesheet" href="static/site.css" />
 </head>
+<body>
 
-<body class="page-index">
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a class="nav-brand" href="index.html">Git Navigator</a>
-      <div class="nav-links">
-          <a href="docs/index.html">Documentation</a>
-          <a href="download.html">Download</a>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="nav-brand" href="index.html">
+        <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+          <g transform="rotate(15 32 32)">
+            <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+            <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+            <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+            <polygon points="32,59 29,54 35,54" fill="none" stroke="#14171f" stroke-width="1.5"/>
+            <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+            <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+            <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+            <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+          </g>
+        </svg>
+        <span class="nav-brand-text">Git Navigator</span>
+      </a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="docs/index.html">Docs</a>
         </div>
-    </div>
-  </nav>
-  <header>
-    <div class="container hero hero-desktop">
-      <div class="hero-copy">
-        <p class="eyebrow">Desktop app + IDE extension</p>
-        <h1>Git Navigator</h1>
-        <p class="lead">Available as a standalone desktop app or inside your favorite IDE.</p>
-        <p>
-          Rebase, resolve conflicts, manage stacks and worktrees, inspect files and diffs, and use
-          AI-assisted commit workflows in Git Navigator Desktop or the editor extension for
-          VS Code, Cursor, and other compatible IDEs.
-        </p>
-        <div class="hero-actions is-visible">
-          <a class="button hero-download" href="download.html">Download Git Navigator</a>
-        </div>
+        <a class="nav-cta" href="download.html">Download</a>
       </div>
-      <figure class="hero-media hero-desktop-shot">
-        <picture
-          data-hero-shot
-          data-light-macos="static/tauri_light_macos.png"
-          data-dark-macos="static/tauri_dark_macos.png"
-          data-light-windows="static/tauri_light_windows.png"
-          data-dark-windows="static/tauri_dark_windows.png"
-          data-frame-windows="true"
-        >
-          <source srcset="static/tauri_dark_macos.png" media="(prefers-color-scheme: dark)" />
-          <img src="static/tauri_light_macos.png" alt="Git Navigator desktop application screenshot" />
-        </picture>
-      </figure>
     </div>
   </header>
 
-  <section>
+  <!-- Hero -->
+  <section class="hero-section">
+    <div class="hero-glow"></div>
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        Desktop app / IDE extension
+      </div>
+      <h1 class="hero-title">
+        All of Git's power.<br><span class="accent">None of the learning curve.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Git Navigator is a local-first visual Git client that just works. Drag to rebase, click to resolve conflicts, manage worktrees, stash, reflog. <b>No commands to memorize, no clutter to wade through</b>.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="download.html">Download — it's free</a>
+      </div>
+      <p class="hero-platforms">macOS · Windows · Linux &nbsp;|&nbsp; VS Code · Cursor &amp; more</p>
+
+      <div class="hero-screenshot">
+        <div>
+          <picture>
+            <source srcset="static/tauri_dark_macos.png" media="(prefers-color-scheme: dark)" />
+            <img src="static/tauri_light_macos.png" alt="Git Navigator desktop application" />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value props -->
+  <section class="value-props">
     <div class="container">
-      <h2 class="section-title">Why Git Navigator?</h2>
-      <div class="showcase">
-        <div class="showcase-item">
-          <figure class="feature-gallery">
-            <picture>
-              <source srcset="static/desktop-files-dark.png" media="(prefers-color-scheme: dark)" />
-              <img src="static/desktop-files-light.png" alt="Git Navigator desktop file explorer" data-zoom />
-            </picture>
-            <div class="feature-gallery-grid">
-              <picture>
-                <source srcset="static/desktop-files-diff-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/desktop-files-diff-light.png" alt="Git Navigator desktop diff view" data-zoom />
-              </picture>
-              <picture>
-                <source srcset="static/desktop-files-edit-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/desktop-files-edit-light.png" alt="Git Navigator desktop file edit overlay" data-zoom />
-              </picture>
-              <picture>
-                <source srcset="static/desktop-files-search-path-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/desktop-files-search-path-light.png" alt="Git Navigator desktop path search" data-zoom />
-              </picture>
-              <picture>
-                <source srcset="static/desktop-files-search-content-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="static/desktop-files-search-content-light.png" alt="Git Navigator desktop content search" data-zoom />
-              </picture>
-            </div>
-            <figcaption>Browse files, inspect diffs, search content, and edit safely.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Files explorer for Desktop</h3>
-            <p>Browse worktree-aware file trees, search paths and content, inspect file, diff, conflict, and blame views, then edit files with stale-write protection.</p>
+      <div class="grid">
+        <div data-reveal>
+          <div class="prop-bar"></div>
+          <h3>No commands to memorize</h3>
+          <p>Drag, click, and drop your way through rebases, merges, and stacks. The hard parts of Git become things you can see.</p>
+        </div>
+        <div data-reveal>
+          <div class="prop-bar"></div>
+          <h3>Local-first &amp; private</h3>
+          <p>Everything runs on your machine against your real repo. No account required, and your code never leaves your computer.</p>
+        </div>
+        <div data-reveal>
+          <div class="prop-bar"></div>
+          <h3>Lives where you work</h3>
+          <p>Run it as a fast standalone desktop app, or right inside VS Code, Cursor, and other compatible editors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features intro -->
+  <section class="features-intro" id="features">
+    <div class="container">
+      <div data-reveal style="padding:0 0 16px">
+        <div class="label">Features</div>
+        <h2>Everything you do in Git — made obvious.</h2>
+        <p>Each of these is a thing people normally dread in the terminal. Here, you just watch it happen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature rows -->
+  <div class="container feature-rows">
+
+    <div class="feature-row" data-reveal>
+      <div class="text">
+        <div class="label">Commit graph</div>
+        <h3>A history you can actually read</h3>
+        <p>Branches, tags, favorites, and the full history laid out in a clean, readable graph — with push/sync indicators so you always know what's published.</p>
+      </div>
+      <div class="media">
+        <video src="static/commit-graph.mp4" autoplay muted loop playsinline data-zoom></video>
+      </div>
+    </div>
+
+    <div class="feature-row reverse" data-reveal>
+      <div class="text">
+        <div class="label">Rebase</div>
+        <h3>Rebase by dragging</h3>
+        <p>Reorder commits or move a whole stack with your mouse. The thing that scares people out of the CLI becomes simple drag-and-drop.</p>
+      </div>
+      <div class="media">
+        <video src="static/rebase-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+      </div>
+    </div>
+
+    <div class="feature-row" data-reveal>
+      <div class="text">
+        <div class="label">AI commits</div>
+        <h3>Let AI handle the busywork</h3>
+        <p>Plan split commits and draft clear commit messages with your editor's language model. You review and tweak — it does the typing.</p>
+      </div>
+      <div class="media">
+        <video src="static/ai-split-and-commit.mp4" autoplay muted loop playsinline data-zoom></video>
+      </div>
+    </div>
+
+    <div class="feature-row reverse" data-reveal>
+      <div class="text">
+        <div class="label">Conflicts</div>
+        <h3>Conflicts, resolved in clicks</h3>
+        <p>Block-level actions show exactly what changed on each side. Pick one, take both, or edit — no hunting for conflict markers in your files.</p>
+      </div>
+      <div class="media">
+        <video src="static/conflict.mp4" autoplay muted loop playsinline data-zoom></video>
+      </div>
+    </div>
+
+    <div class="feature-row" data-reveal>
+      <div class="text">
+        <div class="label">Files</div>
+        <h3>Browse, diff, and edit in one place</h3>
+        <p>A worktree-aware file tree with path and content search, file, diff, conflict, and blame views, plus safe in-app editing with stale-write protection.</p>
+      </div>
+      <div class="media">
+        <picture>
+          <source srcset="static/desktop-files-diff-dark.png" media="(prefers-color-scheme: dark)" />
+          <img src="static/desktop-files-diff-light.png" alt="Git Navigator files explorer with diff view" data-zoom />
+        </picture>
+      </div>
+    </div>
+
+    <div class="feature-row reverse" data-reveal>
+      <div class="text">
+        <div class="label">Stacks &amp; worktrees</div>
+        <h3>Stacks and worktrees, without the headache</h3>
+        <p>Push stacked branches safely with a clear preview of what's going where, and switch active worktrees without ever leaving the graph.</p>
+      </div>
+      <div class="media">
+        <video src="static/push-stack.mp4" autoplay muted loop playsinline data-zoom></video>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Two-up section -->
+  <section class="two-up-section">
+    <div class="container">
+      <div data-reveal>
+        <div class="label">Two ways to use it</div>
+        <h2>Wherever you already work.</h2>
+      </div>
+      <div class="two-up-grid" data-reveal>
+        <div class="two-up-card">
+          <h3>Git Navigator Desktop</h3>
+          <p>A fast standalone app for macOS, Windows, and Linux. Multi-window for working across repos, a clone flow, SSH key management, and commit signing — the works.</p>
+          <div class="tags">
+            <span class="tag">macOS</span>
+            <span class="tag">Windows</span>
+            <span class="tag">Linux</span>
           </div>
         </div>
-        <div class="showcase-item reverse">
-          <figure>
-            <video src="static/commit-graph.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Interactive commit graph with branch and tag labels.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Focused commit graph</h3>
-            <p>See branches, tags, favorites, and history at a glance with a clean, readable graph.</p>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <figure>
-            <video src="static/rebase-stack.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Drag commits to rebase visually.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Drag-and-drop rebase</h3>
-            <p>Reorder commits visually and move a single branch or a full stack.</p>
-          </div>
-        </div>
-        <div class="showcase-item reverse">
-          <figure>
-            <video src="static/uncommitted.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Stage, unstage, and split commits with precision.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Commit control</h3>
-            <p>Split commits, stage line-by-line, amend, cherry-pick, or uncommit without CLI hops.</p>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <figure>
-            <video src="static/ai-split-and-commit.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Use AI to plan split commits and draft commit messages.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>AI-assisted commit workflows</h3>
-            <p>Plan split commits and generate commit messages with your editor's language model.</p>
-          </div>
-        </div>
-        <div class="showcase-item reverse">
-          <figure>
-            <video src="static/conflict.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Resolve conflicts with block-level actions.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Conflict resolution</h3>
-            <p>Resolve conflicts with clear actions and block-level choices.</p>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <figure>
-            <video src="static/create-branch-anywhere.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Create branches and tags directly from the graph.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Branches & tags</h3>
-            <p>Create, favorite, fast-forward, and clean up branches and tags without leaving the graph.</p>
-          </div>
-        </div>
-        <div class="showcase-item reverse">
-          <figure>
-            <video src="static/push-stack.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Stack push overlay for safe stacked workflows.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Stack push overlay</h3>
-            <p>Choose pull behavior from a dropdown, then push stacked branches with a clear preview.</p>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <figure>
-            <video src="static/switch-worktree.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Switch active worktrees without leaving the graph.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Worktree-aware workflow</h3>
-            <p>See active worktree context and run Git actions against the correct checkout.</p>
-          </div>
-        </div>
-        <div class="showcase-item reverse">
-          <figure>
-            <video src="static/add-and-delete-worktree.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Create and delete linked worktrees with built-in safety checks.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Linked worktree management</h3>
-            <p>Create, clean up, and manage linked worktrees directly from Git Navigator.</p>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <figure>
-            <video src="static/gitlab-mr-ci.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Optional PR/MR and CI status in the commit list.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Provider metadata</h3>
-            <p>Surface PR/MR status and CI checks from GitHub, GitLab, Bitbucket, or Gitea.</p>
-          </div>
-        </div>
-        <div class="showcase-item reverse">
-          <figure>
-            <video src="static/stash.mp4" autoplay muted loop playsinline data-zoom></video>
-            <figcaption>Expandable stash and reflog details with per-file diffs.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Stash & reflog details</h3>
-            <p>Inspect stash entries and reflog history in more detail, then drill into per-file diffs without leaving
-              the overlay.</p>
-          </div>
-        </div>
-        <div class="showcase-item">
-          <figure>
-            <img src="static/stack-graph.png" alt="Stack vs branch mode in Git Navigator" data-zoom />
-            <figcaption>See the difference between stack and branch mode.</figcaption>
-          </figure>
-          <div class="showcase-text">
-            <h3>Stack vs branch mode</h3>
-            <p style="padding-bottom: 20px;">
-              Compare stacked workflows with traditional branching, and learn when to use
-              each mode.
-            </p>
-            <a class="button secondary" href="docs/stack.html">Read the guide</a>
+        <div class="two-up-card">
+          <h3>Editor extension</h3>
+          <p>The same Git Navigator, right inside VS Code, Cursor, and other compatible IDEs. Stay in your editor and keep your flow — no context-switching to a separate app.</p>
+          <div class="tags">
+            <span class="tag">VS Code</span>
+            <span class="tag">Cursor</span>
+            <span class="tag">Antigravity</span>
           </div>
         </div>
       </div>
     </div>
-    </div>
   </section>
 
-  <section>
-    <div class="container whats-new">
-      <h2 class="section-title">What's new</h2>
+  <!-- Changelog -->
+  <section class="changelog-section">
+    <div class="container">
+      <h2>What's new</h2>
       <div class="carousel" aria-label="Changelog updates">
         <!-- CHANGELOG_CARDS_START -->
           <!-- Auto-generated by scripts/update-site.js -->
@@ -336,25 +319,75 @@
     </div>
   </section>
 
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="container cta-inner" data-reveal>
+      <h2>Stop fighting your<br>version control.</h2>
+      <p>Free to download. Local-first. No account required. See how good Git can feel.</p>
+      <div class="hero-actions">
+        <a class="button" href="download.html">Download Git Navigator</a>
+        <a class="button secondary" href="https://github.com/binhonglee/git_navigator">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="footer-link" href="https://github.com/binhonglee/git_navigator" target="_blank" rel="noreferrer">
-        GitHub
-      </a>
-      <a class="button secondary" href="mailto:binhong@binhong.me">Contact</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-row">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,54" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+            <span>Git Navigator</span>
+          </div>
+          <p>Local-first visual Git operations — as a standalone desktop app or inside your favorite IDE.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <div class="footer-col-title">Product</div>
+            <div class="footer-col-links">
+              <a href="download.html">Download</a>
+              <a href="docs/index.html">Documentation</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Resources</div>
+            <div class="footer-col-links">
+              <a href="docs/stack.html">Stack guide</a>
+              <a href="https://github.com/binhonglee/git_navigator">GitHub</a>
+              <a href="mailto:binhong@binhong.me">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Git Navigator</span>
+        <span>v0.3.6 · 2026-06-16</span>
+      </div>
     </div>
   </footer>
 
+  <!-- Media overlay -->
   <div class="overlay" id="media-overlay" aria-hidden="true">
     <div class="overlay-content">
-      <button class="overlay-close" type="button" aria-label="Close media">
-        x
-      </button>
+      <button class="overlay-close" type="button" aria-label="Close media">×</button>
       <div class="overlay-body"></div>
     </div>
   </div>
 
   <script src="static/site.js"></script>
 </body>
-
 </html>

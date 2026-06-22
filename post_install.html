@@ -1,52 +1,42 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Git Navigator · GitHub App Installed</title>
-    <meta
-      name="description"
-      content="Finish Git Navigator GitHub App installation and optionally install for another organization."
-    />
-    <link rel="icon" href="static/icon.png" type="image/png" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/sora-400.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/fraunces-700.woff2" />
-    <link rel="stylesheet" href="static/site.css" />
-  </head>
-  <body class="page-post-install">
-    <div class="card">
-      <h1>GitHub App installed</h1>
-      <p class="question">
-        Want to install the Git Navigator GitHub App for another organization or team?
-      </p>
-      <div class="actions">
-        <a
-          class="button"
-          href="https://github.com/apps/vscode-git-navigator/installations/select_target"
-        >
-          Install for another org/team
-        </a>
-        <button class="button secondary" type="button" id="done-button">
-          No, I'm done
-        </button>
-      </div>
-      <p class="note" id="done" hidden>
-        You're all set. You can return to your editor now.
-      </p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="static/site.css" />
+  <link rel="icon" href="static/icon.png" type="image/png" />
+  <title>Git Navigator · GitHub App Installed</title>
+  <meta name="description" content="Finish Git Navigator GitHub App installation." />
+</head>
+<body class="page-post-install">
+  <div class="card">
+    <h1>GitHub App installed</h1>
+    <p class="question">
+      Want to install the Git Navigator GitHub App for another organization or team?
+    </p>
+    <div class="actions">
+      <a class="button" href="https://github.com/apps/vscode-git-navigator/installations/select_target">
+        Install for another org/team
+      </a>
+      <button class="button secondary" type="button" id="done-button">
+        No, I'm done
+      </button>
     </div>
+    <p class="note" id="done" hidden>
+      You're all set. You can return to your editor now.
+    </p>
+  </div>
 
-    <script>
-      const doneButton = document.getElementById("done-button");
-      const doneNote = document.getElementById("done");
-      const question = document.querySelector(".question");
-      const actions = document.querySelector(".actions");
-
-      doneButton.addEventListener("click", () => {
-        doneNote.hidden = false;
-        question.hidden = true;
-        actions.hidden = true;
-      });
-    </script>
-    <script src="static/site.js"></script>
-  </body>
+  <script>
+    const doneButton = document.getElementById('done-button');
+    const doneNote = document.getElementById('done');
+    const question = document.querySelector('.question');
+    const actions = document.querySelector('.actions');
+    doneButton.addEventListener('click', () => {
+      doneNote.hidden = false;
+      question.hidden = true;
+      actions.hidden = true;
+    });
+  </script>
+</body>
 </html>
