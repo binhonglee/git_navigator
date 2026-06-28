@@ -89,7 +89,20 @@ const replacement = [
   endMarker,
 ].join("\n");
 
-const nextHtml = indexHtml.replace(replaceRegex, replacement);
+let nextHtml = indexHtml.replace(replaceRegex, replacement);
+
+// Keep the footer version badge in sync with the latest release so it never
+// goes stale. Guard on a semver shape so a non-version heading can't write
+// garbage into the footer.
+const footerVersion = selected[0].version;
+const footerDate = selected[0].date;
+if (/^\d+\.\d+\.\d+$/.test(footerVersion)) {
+  nextHtml = nextHtml.replace(
+    /<span>v\d+\.\d+\.\d+ · [^<]*<\/span>/,
+    `<span>v${footerVersion} · ${escapeHtml(footerDate)}</span>`,
+  );
+}
+
 fs.writeFileSync(indexPath, nextHtml);
 
 console.log(`Updated changelog cards with ${selected.length} entries.`);
@@ -104,7 +117,11 @@ if (semverPattern.test(latestVersion) && fs.existsSync(downloadPath)) {
   const downloadHtml = fs.readFileSync(downloadPath, "utf8");
   const nextDownloadHtml = downloadHtml
     .replace(/(data-version-label>)[\d.]+(<)/g, `$1${latestVersion}$2`)
-    .replace(/Git\.Navigator_\d+\.\d+\.\d+_/g, `Git.Navigator_${latestVersion}_`);
+    .replace(/Git\.Navigator_\d+\.\d+\.\d+_/g, `Git.Navigator_${latestVersion}_`)
+    .replace(
+      /<span>v\d+\.\d+\.\d+ · [^<]*<\/span>/,
+      `<span>v${latestVersion} · ${escapeHtml(selected[0].date)}</span>`,
+    );
 
   if (nextDownloadHtml !== downloadHtml) {
     fs.writeFileSync(downloadPath, nextDownloadHtml);

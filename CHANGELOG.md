@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.3.7] - 2026-06-27
+### Desktop
+- Overhaul appearance: swappable color schemes (a default warm "navigator" palette and a GitHub Primer scheme) plus additional popular schemes, selectable independently from light/dark mode
+- Add user-configurable application and monospace fonts
+- Show only the relevant color-scheme selector for the current appearance and sort schemes alphabetically
+- Add third-party license disclosures in settings, including the full license text for bundled themes
+- Auto-fill `user.signingKey` from available SSH keys (preferring ed25519 > ecdsa > rsa) when enabling commit signing, and refuse to enable with an inline hint when no SSH key exists, instead of persisting a broken signing config
+- Add a shared worktree dropdown to the graph header and the stash/reflog overlay
+- Hide the title bar in macOS fullscreen
+- Drop the redundant settings title in the desktop shell
+
+### Shared
+- Add a commit search overlay with a two-step history search
+- Replace the fetch action's "Fetch only" mode with "Fetch + Track": fetching a named remote branch creates or fast-forwards the matching local branch without checking it out, and stops with a force-update prompt when the local branch has diverged
+- Add a branch range diff view in the commit sidebar
+- Always offer a delete option for local branches in the graph dropdown (except the default branch and non-main worktree branches); merged branches keep instant safe-delete while unmerged branches route through a confirmation dialog with a force fallback
+
+### Fixed
+- Scale repos with many linked worktrees (~50): load only the active worktree's reflog on refresh, resolve linked git dirs without subprocesses, reconcile non-active worktrees in batches, and cap per-worktree file watchers
+- Show an open-repository failure dialog and prevent the desktop app from freezing on a bad open (non-Git folder or failed load)
+- Fix a load freeze caused by large uncommitted changes (e.g. a multi-hundred-MB dirty tree) by bounding untracked-file stat work
+- Refresh the Files explorer tree on git-status changes and reload content on a stale-hash save, fixing stale file lists and edit sessions
+- Stop the primary worktree from corrupting other worktrees' uncommitted panels in the desktop app
+- Make new desktop windows respect custom navbar settings
+- Normalize fetch ref input for origin-prefixed refs so `origin/main` is no longer double-prefixed during fetch, rebase, and checkout
+- Use a thread-safe Core Text API for macOS font enumeration
+- Fix a spurious "branch not found" error after deleting a branch from the graph overlay, caused by stacked duplicate click handlers
+- Point the desktop "Install GitHub App" button at the correct app slug (`vscode-git-navigator`). It previously opened `github.com/apps/git-navigator`, an unrelated third-party app that happens to share the name, so the legitimate app was never installed.
+
+### Security
+- If you previously used the desktop "Install GitHub App" button and authorized an app, review your installed GitHub Apps at https://github.com/settings/installations and remove any "Git Navigator" app that is **not** `vscode-git-navigator`. The old link could lead to an unrelated app; this does not indicate your GitHub account was compromised.
+
 ## [0.3.6] - 2026-06-16
 ### Desktop
 - Add a rendered Preview view to the Files explorer for Markdown and HTML files, defaulting documents to Preview
