@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.8] - 2026-07-14
+### Desktop
+- Add right-click New file, New folder, and Edit actions to the file explorer context menu, with an inline create/rename input that shows the matching file/folder icon; a new backend `createRepoEntry` creates files (with any missing parent dirs) or directories, refuses to clobber existing paths, and reveals/selects new files on creation
+- Add right-click delete for files and folders in the file explorer
+- Finish image rendering support in the file explorer
+- Refresh some UI icons
+- Let an open overlay consume the Escape key before the sidebar closes, so pressing Escape closes only the overlay when both an overlay and the sidebar are open
+
+## Extension
+- Fix `git rebase --continue` in the VS Code extension throwing before it ran when the host environment defines sensitive git env vars (e.g. VS Code's `GIT_ASKPASS`), by opting into simple-git's ambient-environment passthrough for the vars git already inherits
+
+### Fixed
+- Fix overly aggressive underscore-italic matching in Markdown rendering
+
+### Internal
+- Migrate the entire webview UI to SolidJS — reactive state and pure reducer, fine-grained rendering, and co-located CSS modules across the commit graph, sidebar, uncommitted panel, overlays, confirm dialogs, push bar, and Tauri shell chrome — retiring the previous imperative DOM/`events.ts` layer
+
 ## [0.3.7] - 2026-06-27
 ### Desktop
 - Overhaul appearance: swappable color schemes (a default warm "navigator" palette and a GitHub Primer scheme) plus additional popular schemes, selectable independently from light/dark mode
