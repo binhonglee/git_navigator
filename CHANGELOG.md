@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.9] - 2026-07-20
+### Desktop
+- Fix the "Open" button in the uncommitted changes panel doing nothing on the desktop app: it now reveals the file in the in-app file explorer (Files activity), matching the ⌘/Ctrl-click on the file row, instead of a no-op
+- Open a newly created file directly in edit mode: creating a file from the explorer now reveals, selects, and opens it in the editor overlay so you can start typing right away
+- Add right-click Rename for files and folders in the file explorer: an inline input replaces the row's name (pre-selecting the basename stem for files), and a new backend `renameRepoEntry` moves the entry — creating any missing destination folders, refusing to clobber an existing path, tolerating case-only renames, and following the moved entry with the selection
+- Add inline video playback to the Files explorer with an OS-player fallback for unsupported formats
+- Preview and extract selected ZIP files in the Files explorer
+- Render app update notes as Markdown in the update notification
+- Add an Entire integration: agent-session viewer, graph checkpoint overlay, cross-links, expandable tool-call rows in the conversation timeline, and full-text transcript search
+
+### Fixed
+- Prioritize the branch's own worktree when fast-forwarding a local tracking branch
+- Fix reactivity regressions from the SolidJS migration (stale renders, missing updates)
+- Unify overlay close controls for consistent dismiss behavior
+- Unify file toggle chevrons across tree views
+
 ## [0.3.8] - 2026-07-14
 ### Desktop
 - Add right-click New file, New folder, and Edit actions to the file explorer context menu, with an inline create/rename input that shows the matching file/folder icon; a new backend `createRepoEntry` creates files (with any missing parent dirs) or directories, refuses to clobber existing paths, and reveals/selects new files on creation
