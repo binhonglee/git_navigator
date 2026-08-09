@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.4.0] - 2026-08-06
+### Performance
+- Make commit-graph rebuilds roughly 42× faster on a 1,500-commit, 40-branch history by batching branch-ancestry computation instead of rebuilding and walking the commit map for every branch pair
+- Avoid full graph-model rebuilds when staging or unstaging files, receiving PR/CI metadata during scrolling, or processing duplicate refresh payloads; metadata now updates only the affected commit badges
+- Scale repositories with many branches by replacing the remaining pairwise branch-matrix work with an inverted ancestry walk and memoizing Tauri upstream-relatedness checks instead of spawning `git merge-base` for every branch on every refresh
+- Suppress the duplicate filesystem-watcher refresh that followed VS Code extension operations, avoiding a second round of Git subprocesses and graph recomputation
+
+### Shared
+- Open directories that are not yet Git repositories in folder mode, with Git-backed surfaces offering to initialize the repository while the desktop Files activity continues to support ignored files, search, external-change refreshes, and relaunch restoration
+- Model stacked-PR layers as branches that can contain multiple commits, so pushing a branch or stack no longer requires one branch per commit and respects each branch's configured remote
+- Diff a commit against any branch it is stacked on, widening the commit and file range one dependency layer at a time instead of jumping directly to the default branch
+- Pull the current branch onto any strict-ancestor branch it is stacked on; dependencies with upstreams are fetched and fast-forwarded first, and stack mode carries descendant branches along with the rebase
+
+### Desktop
+- Highlight all 143 CodeMirror editor grammars and all 192 highlight.js diff and Markdown languages on demand, including whole-filename formats such as `Dockerfile` and `CMakeLists.txt`, without requiring network access
+- Filter Entire sessions by the branches that contain their checkpoint commits, including merge targets and squash merges, with branch counts, merge-path indicators, and linked branch chips
+- Discover developer CLIs from GUI-launched builds by augmenting the inherited `PATH` with the user's login-shell path and well-known install directories, so tools such as Entire, Claude, Codex, and user-installed Git remain available outside a terminal launch
+- Fix stack-mode drag-and-drop rebase so dropping a commit onto an ancestor reparents the dragged commit instead of silently performing a no-op
+- Cherry-pick commits onto the selected target branch rather than the currently checked-out branch, applying multi-commit selections parent-first and returning to the original branch after success
+
+### Fixed
+- Stop the main worktree's uncommitted changes panel from showing the active worktree's changes by carrying the exact status-owning worktree path through both backends and the shared webview
+- Keep an in-progress rebase or cherry-pick preview open when asynchronously loaded PR or CI metadata arrives
+- Detect all seven Git unmerged states before continuing a rebase or cherry-pick, including modify/delete and add-variant conflicts
+- Reconstruct brace-compressed rename paths from `git stash show --numstat`, preserving the renamed file's status and old/new paths
+- Keep header dropdowns correctly positioned and ref-badge actions hover-only after the design-system migration, including correct inside-click handling for SVG icon targets
+
 ## [0.3.9] - 2026-07-20
 ### Desktop
 - Fix the "Open" button in the uncommitted changes panel doing nothing on the desktop app: it now reveals the file in the in-app file explorer (Files activity), matching the ⌘/Ctrl-click on the file row, instead of a no-op
