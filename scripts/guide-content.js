@@ -200,6 +200,14 @@ module.exports = [
     description:
       "Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions.",
     keywords: ["entire", "agent sessions", "ai coding history", "checkpoint viewer", "claude code cursor sessions"],
+    ogImage: "static/entire.png",
+    heroMedia: {
+      type: "image",
+      src: "static/entire.png",
+      alt: "Git Navigator's Entire activity: a list of agent sessions, a session's branch attribution, and its conversation timeline",
+      caption:
+        "The Entire activity on a real Entire-enabled repository: agent sessions on the left, the selected session's branches and details in the middle, and its full conversation timeline below.",
+    },
     hero: {
       heading: "See the agent sessions behind your commits",
       lead:

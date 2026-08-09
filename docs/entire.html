@@ -16,13 +16,13 @@
     <meta property="og:title" content="Entire Integration (Agent Sessions) - Git Navigator" />
     <meta property="og:description" content="Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions." />
     <meta property="og:url" content="https://gitnav.xyz/docs/entire.html" />
-    <meta property="og:image" content="https://gitnav.xyz/static/base.jpg" />
+    <meta property="og:image" content="https://gitnav.xyz/static/entire.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Entire Integration (Agent Sessions) - Git Navigator" />
     <meta name="twitter:description" content="Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions." />
-    <meta name="twitter:image" content="https://gitnav.xyz/static/base.jpg" />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/entire.png" />
 
     <script type="application/ld+json">
 {
@@ -31,7 +31,8 @@
   "headline": "Entire Integration (Agent Sessions)",
   "description": "Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions.",
   "mainEntityOfPage": "https://gitnav.xyz/docs/entire.html",
-  "about": "Git Navigator"
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/entire.png"
 }
     </script>
     <script type="application/ld+json">
@@ -189,6 +190,19 @@
         <p><a href="https://entire.io" target="_blank" rel="noreferrer">Entire</a> captures agent sessions into checkpoints — git objects on <code>entire/checkpoints/v1</code>. Git Navigator adds an <strong>Entire</strong> activity that turns those checkpoints into a browsable history: the conversation timeline, the tool calls, and the commits, all cross-linked to the graph you already work in.</p>
       </div>
     </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <picture>
+                <source srcset="../static/entire-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/entire.png" alt="Git Navigator's Entire activity: a list of agent sessions, a session's branch attribution, and its conversation timeline" data-zoom />
+              </picture>
+            </div>
+            <figcaption>The Entire activity on a real Entire-enabled repository: agent sessions on the left, the selected session's branches and details in the middle, and its full conversation timeline below.</figcaption>
+          </figure>
+      </div>
+    </section>
     <section>
       <div class="container">
         <h2 id="sec-1" class="section-title">What the Entire activity shows</h2>
