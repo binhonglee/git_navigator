@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../static/site.css" />
+  <link rel="icon" href="../static/icon.png" type="image/png" />
+    <title>Stacked PRs - Git Navigator</title>
+    <meta name="description" content="Work in stacks the way Git Navigator now models them: each layer is a branch that can hold multiple commits. Push a whole stack, diff against the branch below, and pull onto the branch you are stacked on." />
+    <meta name="keywords" content="stacked prs, stacked branches git, stacked diffs, git stack workflow, stack mode git navigator" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/stacked-prs.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Stacked PRs - Git Navigator" />
+    <meta property="og:description" content="Work in stacks the way Git Navigator now models them: each layer is a branch that can hold multiple commits. Push a whole stack, diff against the branch below, and pull onto the branch you are stacked on." />
+    <meta property="og:url" content="https://gitnav.xyz/docs/stacked-prs.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/stacked-prs.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Stacked PRs - Git Navigator" />
+    <meta name="twitter:description" content="Work in stacks the way Git Navigator now models them: each layer is a branch that can hold multiple commits. Push a whole stack, diff against the branch below, and pull onto the branch you are stacked on." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/stacked-prs.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Stacked PRs",
+  "description": "Work in stacks the way Git Navigator now models them: each layer is a branch that can hold multiple commits. Push a whole stack, diff against the branch below, and pull onto the branch you are stacked on.",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/stacked-prs.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/stacked-prs.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is a stack layer modeled in Git Navigator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As a branch that can contain multiple commits. Earlier stacking modeled one branch per commit; since v0.4.0 a layer is a real branch, so pushing a branch or a stack no longer forces a branch per commit and each branch's configured remote is respected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I diff a commit against the branch below it in the stack?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Git Navigator can diff a commit against any branch it is stacked on, widening the commit and file range one dependency layer at a time rather than jumping directly to the default branch — so you see exactly what each layer contributes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does pulling onto a stacked branch do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It pulls the current branch onto a strict-ancestor branch it is stacked on. Dependency branches with upstreams are fetched and fast-forwarded first, and in stack mode descendant branches are carried along with the rebase so the whole stack stays consistent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between stack mode and branch mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stack mode keeps descendant commits aligned when you amend or rebase and shows the full stack; branch mode keeps operations scoped to the current branch. See the Branch vs Stack mode guide for the full comparison."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+  <header class="docs-header">
+    <div class="container">
+      <div class="left">
+        <a href="../index.html" style="display:flex;align-items:center;gap:11px">
+          <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,59" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+          <span class="brand-text">Git Navigator</span>
+        </a>
+        <span class="docs-badge">Docs</span>
+      </div>
+      <div class="right">
+        <a href="https://github.com/binhonglee/git_navigator" style="font-size:14.5px;font-weight:500;color:var(--muted)">GitHub</a>
+        <a class="nav-cta" href="../download.html" style="font-size:14px;padding:8px 16px;border-radius:8px">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting started</div>
+        <nav>
+          <a href="index.html">Overview</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Remotes &amp; sync</div>
+        <nav>
+          <a href="fetch.html">Fetch</a>
+          <a href="pull.html">Pull</a>
+          <a href="push.html">Push</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">History &amp; branches</div>
+        <nav>
+          <a href="commit-graph.html">Visual Commit Graph</a>
+          <a href="branches-and-tags.html">Branches &amp; Tags</a>
+          <a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a>
+          <a href="worktrees.html">Linked Worktrees</a>
+          <a href="reflog.html">Reflog</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Stacked workflow</div>
+        <nav>
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stacked-prs.html" class="active">Stacked PRs</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Changes &amp; files</div>
+        <nav>
+          <a href="uncommitted-changes.html">Commit Management</a>
+          <a href="stash.html">Stash</a>
+          <a href="file-explorer.html">File Explorer</a>
+          <a href="folder-mode.html">Folder Mode</a>
+          <a href="conflict-resolution.html">Conflict Resolution</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Customization &amp; AI</div>
+        <nav>
+          <a href="appearance.html">Appearance</a>
+          <a href="ai-assistance.html">AI Assistance</a>
+          <a href="entire.html">Entire (Agent Sessions)</a>
+        </nav>
+      </div>
+    </aside>
+    <script>
+      /* Restore docs sidebar scroll before first paint to avoid a flicker. */
+      (function () {
+        var sb = document.currentScript.previousElementSibling;
+        if (!sb || !sb.classList.contains('docs-sidebar')) {
+          sb = document.querySelector('.docs-sidebar');
+        }
+        if (!sb) return;
+        var saved = sessionStorage.getItem('gn-docs-sidebar-scroll');
+        if (saved !== null) sb.scrollTop = parseInt(saved, 10) || 0;
+        var active = sb.querySelector('a.active');
+        if (active) {
+          var top = active.offsetTop;
+          var visible = top >= sb.scrollTop && top <= sb.scrollTop + sb.clientHeight - active.offsetHeight;
+          if (!visible) active.scrollIntoView({ block: 'center' });
+        }
+      })();
+    </script>
+
+    <main class="docs-main">
+      <div class="breadcrumb">Stacked workflow <span class="sep">/</span> <span class="current">Stacked PRs</span></div>
+      <header>
+      <div class="container hero">
+        <h1 id="top">Stacks built from real branches</h1>
+        <p>Git Navigator models a stack the way your team reviews it: <strong>each layer is a branch</strong> that can hold several commits — not one branch per commit. Push a whole stack respecting each branch's remote, diff a commit against the branch below it, and pull the current branch onto the branch it is stacked on.</p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <picture>
+                <source srcset="../static/stacked-prs-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/stacked-prs.png" alt="Git Navigator in stack mode showing a two-layer stack: feature/ui stacked on feature/api on main" data-zoom />
+              </picture>
+            </div>
+            <figcaption>A two-layer stack rendered in stack mode: feature/ui sits on feature/api, which sits on main — each layer a branch with its own commits.</figcaption>
+          </figure>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-1" class="section-title">How stacking works now</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>A layer is a branch, not a commit</h3>
+            <p>A stack layer is a branch that can hold <em>several</em> commits. Pushing a branch — or a whole stack — no longer means one branch per commit, so your stack maps cleanly onto the PRs your team actually reviews.</p>
+          </div>
+          <div class="card">
+            <h3>Each branch keeps its own remote</h3>
+            <p>A stack push respects every layer's configured upstream, so branches that track different remotes still push where they should in a single flow.</p>
+          </div>
+          <div class="card">
+            <h3>Diff against the branch below</h3>
+            <p>Diff a commit against any branch it is stacked on. Git Navigator widens the commit and file range one dependency layer at a time instead of jumping straight to the default branch — so you review exactly what a layer adds on top of the one beneath it.</p>
+          </div>
+          <div class="card">
+            <h3>Pull onto the branch you are stacked on</h3>
+            <p>Pull the current branch onto any strict-ancestor branch in its stack. Dependencies that have upstreams are fetched and fast-forwarded first, and stack mode carries descendant branches along with the rebase so the whole stack stays aligned.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-2" class="section-title">Working a stack</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Turn on stack mode.</strong> Toggle <strong>Stack</strong> in the graph header. Stack mode keeps descendant commits aligned when you amend or rebase, and shows the full stack rather than collapsing non-tip commits.</li>
+            <li><strong>Build layers as branches.</strong> Branch each layer off the one below it and commit freely — a layer can carry as many commits as the change needs. The graph labels each layer with its branch.</li>
+            <li><strong>Review layer by layer.</strong> Diff a commit against the branch it is stacked on to see only what that layer adds, widening one dependency at a time toward the base.</li>
+            <li><strong>Push or pull the stack.</strong> Push a branch or the whole stack — each layer goes to its own remote — or pull the current branch onto an ancestor branch, fast-forwarding dependencies first and carrying descendants along.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-3" class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>How is a stack layer modeled in Git Navigator?</h3>
+            <p>As a branch that can contain multiple commits. Earlier stacking modeled one branch per commit; since v0.4.0 a layer is a real branch, so pushing a branch or a stack no longer forces a branch per commit and each branch's configured remote is respected.</p>
+          </div>
+          <div class="card">
+            <h3>Can I diff a commit against the branch below it in the stack?</h3>
+            <p>Yes. Git Navigator can diff a commit against any branch it is stacked on, widening the commit and file range one dependency layer at a time rather than jumping directly to the default branch — so you see exactly what each layer contributes.</p>
+          </div>
+          <div class="card">
+            <h3>What does pulling onto a stacked branch do?</h3>
+            <p>It pulls the current branch onto a strict-ancestor branch it is stacked on. Dependency branches with upstreams are fetched and fast-forwarded first, and in stack mode descendant branches are carried along with the rebase so the whole stack stays consistent.</p>
+          </div>
+          <div class="card">
+            <h3>What is the difference between stack mode and branch mode?</h3>
+            <p>Stack mode keeps descendant commits aligned when you amend or rebase and shows the full stack; branch mode keeps operations scoped to the current branch. See the <a href="stack.html">Branch vs Stack mode</a> guide for the full comparison.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="docs-nav-footer">
+        <a class="prev" href="stack.html">
+          <div class="dir">← Previous</div>
+          <div class="title">Branch vs Stack mode</div>
+        </a>
+        <a class="next" href="stack_reviewer.html">
+          <div class="dir">Next →</div>
+          <div class="title">Stack Reviewer</div>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-rail">
+      <div class="rail-title">On this page</div>
+      <nav>
+        <a href="#top" class="active">Overview</a>
+        <a href="#sec-1">How stacking works now</a>
+        <a href="#sec-2">Working a stack</a>
+        <a href="#sec-3">Frequently asked questions</a>
+      </nav>
+    </aside>
+
+  </div>
+
+  <div class="overlay" id="media-overlay" aria-hidden="true">
+    <div class="overlay-content">
+      <button class="overlay-close" type="button" aria-label="Close media">×</button>
+      <div class="overlay-body"></div>
+    </div>
+  </div>
+
+  <script src="../static/site.js"></script>
+</body>
+</html>

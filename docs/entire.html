@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../static/site.css" />
+  <link rel="icon" href="../static/icon.png" type="image/png" />
+    <title>Entire Integration (Agent Sessions) - Git Navigator</title>
+    <meta name="description" content="Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions." />
+    <meta name="keywords" content="entire, agent sessions, ai coding history, checkpoint viewer, claude code cursor sessions" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/entire.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Entire Integration (Agent Sessions) - Git Navigator" />
+    <meta property="og:description" content="Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions." />
+    <meta property="og:url" content="https://gitnav.xyz/docs/entire.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/base.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Entire Integration (Agent Sessions) - Git Navigator" />
+    <meta name="twitter:description" content="Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/base.jpg" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Entire Integration (Agent Sessions)",
+  "description": "Browse the agent sessions behind your commits. Git Navigator surfaces Entire checkpoints as an agent-session viewer, a graph overlay, expandable tool calls, full-text transcript search, and branch-filtered sessions.",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/entire.html",
+  "about": "Git Navigator"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Entire integration in Git Navigator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is an activity that surfaces Entire agent-session checkpoints — git objects stored on entire/checkpoints/v1 — as a browsable history: a session viewer with an expandable conversation timeline, a checkpoint overlay on the commit graph, cross-links between them, and full-text transcript search."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why don't I see the Entire activity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The activity only appears once the Entire CLI is installed and ready and the repository has checkpoints. Git Navigator probes for the CLI at startup and keeps the activity hidden until it reports ready, so a repo without Entire checkpoints simply won't show it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I filter agent sessions by branch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. As of v0.4.0, sessions are resolved by the branches that contain their checkpoint commits — including merge targets and squash merges — and shown with branch counts, merge-path indicators, and linked branch chips so you can scope the list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which agents does this work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entire captures sessions from agents such as Claude Code and Cursor; Git Navigator reads whatever checkpoints Entire has recorded for the repository. See the Entire project for how sessions are captured."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+  <header class="docs-header">
+    <div class="container">
+      <div class="left">
+        <a href="../index.html" style="display:flex;align-items:center;gap:11px">
+          <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,59" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+          <span class="brand-text">Git Navigator</span>
+        </a>
+        <span class="docs-badge">Docs</span>
+      </div>
+      <div class="right">
+        <a href="https://github.com/binhonglee/git_navigator" style="font-size:14.5px;font-weight:500;color:var(--muted)">GitHub</a>
+        <a class="nav-cta" href="../download.html" style="font-size:14px;padding:8px 16px;border-radius:8px">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting started</div>
+        <nav>
+          <a href="index.html">Overview</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Remotes &amp; sync</div>
+        <nav>
+          <a href="fetch.html">Fetch</a>
+          <a href="pull.html">Pull</a>
+          <a href="push.html">Push</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">History &amp; branches</div>
+        <nav>
+          <a href="commit-graph.html">Visual Commit Graph</a>
+          <a href="branches-and-tags.html">Branches &amp; Tags</a>
+          <a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a>
+          <a href="worktrees.html">Linked Worktrees</a>
+          <a href="reflog.html">Reflog</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Stacked workflow</div>
+        <nav>
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stacked-prs.html">Stacked PRs</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Changes &amp; files</div>
+        <nav>
+          <a href="uncommitted-changes.html">Commit Management</a>
+          <a href="stash.html">Stash</a>
+          <a href="file-explorer.html">File Explorer</a>
+          <a href="folder-mode.html">Folder Mode</a>
+          <a href="conflict-resolution.html">Conflict Resolution</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Customization &amp; AI</div>
+        <nav>
+          <a href="appearance.html">Appearance</a>
+          <a href="ai-assistance.html">AI Assistance</a>
+          <a href="entire.html" class="active">Entire (Agent Sessions)</a>
+        </nav>
+      </div>
+    </aside>
+    <script>
+      /* Restore docs sidebar scroll before first paint to avoid a flicker. */
+      (function () {
+        var sb = document.currentScript.previousElementSibling;
+        if (!sb || !sb.classList.contains('docs-sidebar')) {
+          sb = document.querySelector('.docs-sidebar');
+        }
+        if (!sb) return;
+        var saved = sessionStorage.getItem('gn-docs-sidebar-scroll');
+        if (saved !== null) sb.scrollTop = parseInt(saved, 10) || 0;
+        var active = sb.querySelector('a.active');
+        if (active) {
+          var top = active.offsetTop;
+          var visible = top >= sb.scrollTop && top <= sb.scrollTop + sb.clientHeight - active.offsetHeight;
+          if (!visible) active.scrollIntoView({ block: 'center' });
+        }
+      })();
+    </script>
+
+    <main class="docs-main">
+      <div class="breadcrumb">Customization &amp; AI <span class="sep">/</span> <span class="current">Entire Integration (Agent Sessions)</span></div>
+      <header>
+      <div class="container hero">
+        <h1 id="top">See the agent sessions behind your commits</h1>
+        <p><a href="https://entire.io" target="_blank" rel="noreferrer">Entire</a> captures agent sessions into checkpoints — git objects on <code>entire/checkpoints/v1</code>. Git Navigator adds an <strong>Entire</strong> activity that turns those checkpoints into a browsable history: the conversation timeline, the tool calls, and the commits, all cross-linked to the graph you already work in.</p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+        <h2 id="sec-1" class="section-title">What the Entire activity shows</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Agent-session viewer</h3>
+            <p>Open a session and read its conversation timeline. Tool-call rows expand inline so you can see exactly what the agent ran — commands, edits, and results — alongside the messages.</p>
+          </div>
+          <div class="card">
+            <h3>Graph checkpoint overlay</h3>
+            <p>Checkpoints show up against the commit graph, so you can jump from a commit to the session that produced it and back again through the cross-links.</p>
+          </div>
+          <div class="card">
+            <h3>Full-text transcript search</h3>
+            <p>Search across session transcripts to find the moment a decision was made or a command was run, then open that session at the match.</p>
+          </div>
+          <div class="card">
+            <h3>Filter sessions by branch</h3>
+            <p>Sessions are resolved by the branches that contain their checkpoint commits — including merge targets and squash merges — with branch counts, merge-path indicators, and linked branch chips, so you can scope the list to the work you care about.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-2" class="section-title">Using the Entire activity</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Install the Entire CLI.</strong> The Entire activity appears in the rail once the Entire CLI is available and the repository has checkpoints on <code>entire/checkpoints/v1</code>. Git Navigator probes for the CLI and only shows the activity when it is ready.</li>
+            <li><strong>Open a session.</strong> Pick a session to read its conversation timeline. Expand any tool-call row to see the underlying command and its output inline.</li>
+            <li><strong>Cross-link to the graph.</strong> Follow the checkpoint overlay to move between a session and the commits it produced, keeping the agent history and your git history in one place.</li>
+            <li><strong>Filter and search.</strong> Narrow the session list to specific branches using the branch chips, or run a full-text search across transcripts to find a specific moment.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-3" class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>What is the Entire integration in Git Navigator?</h3>
+            <p>It is an activity that surfaces Entire agent-session checkpoints — git objects stored on entire/checkpoints/v1 — as a browsable history: a session viewer with an expandable conversation timeline, a checkpoint overlay on the commit graph, cross-links between them, and full-text transcript search.</p>
+          </div>
+          <div class="card">
+            <h3>Why don't I see the Entire activity?</h3>
+            <p>The activity only appears once the Entire CLI is installed and ready and the repository has checkpoints. Git Navigator probes for the CLI at startup and keeps the activity hidden until it reports ready, so a repo without Entire checkpoints simply won't show it.</p>
+          </div>
+          <div class="card">
+            <h3>Can I filter agent sessions by branch?</h3>
+            <p>Yes. As of v0.4.0, sessions are resolved by the branches that contain their checkpoint commits — including merge targets and squash merges — and shown with branch counts, merge-path indicators, and linked branch chips so you can scope the list.</p>
+          </div>
+          <div class="card">
+            <h3>Which agents does this work with?</h3>
+            <p>Entire captures sessions from agents such as Claude Code and Cursor; Git Navigator reads whatever checkpoints Entire has recorded for the repository. See the <a href="https://entire.io" target="_blank" rel="noreferrer">Entire</a> project for how sessions are captured.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="docs-nav-footer">
+        <a class="prev" href="ai-assistance.html">
+          <div class="dir">← Previous</div>
+          <div class="title">AI Assistance</div>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-rail">
+      <div class="rail-title">On this page</div>
+      <nav>
+        <a href="#top" class="active">Overview</a>
+        <a href="#sec-1">What the Entire activity shows</a>
+        <a href="#sec-2">Using the Entire activity</a>
+        <a href="#sec-3">Frequently asked questions</a>
+      </nav>
+    </aside>
+
+  </div>
+
+  <div class="overlay" id="media-overlay" aria-hidden="true">
+    <div class="overlay-content">
+      <button class="overlay-close" type="button" aria-label="Close media">×</button>
+      <div class="overlay-body"></div>
+    </div>
+  </div>
+
+  <script src="../static/site.js"></script>
+</body>
+</html>
