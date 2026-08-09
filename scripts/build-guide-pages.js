@@ -256,22 +256,27 @@ ${cards}
     </section>`);
   }
 
-  // Walkthrough (single mode).
+  // Walkthrough. Ordered by default ("Step N."); set `walkthroughOrdered: false`
+  // for a set of parallel, independent features, each captioned by its own
+  // `label` instead of a step number.
   if (p.walkthrough?.length) {
     sec += 1;
     sections.push([`sec-${sec}`, p.walkthroughTitle || "Walkthrough"]);
+    const ordered = p.walkthroughOrdered !== false;
+    const listTag = ordered ? "ol" : "ul";
     const items = p.walkthrough
       .map((s, i) => {
         const n = i + 1;
         const idx = String(n).padStart(2, "0");
         const src = `static/${p.slug}-step-${idx}.png`;
-        const alt = `Step ${n} — ${stripTags(s.caption).slice(0, 120)}`;
+        const lead = ordered ? `Step ${n}` : s.label || `Feature ${n}`;
+        const alt = `${lead} — ${stripTags(s.caption).slice(0, 120)}`;
         return `          <li>
             <figure>
               <div class="media-frame">
                 ${themedPicture(src, alt, "                ")}
               </div>
-              <figcaption><strong>Step ${n}.</strong> ${s.caption}</figcaption>
+              <figcaption><strong>${esc(lead)}.</strong> ${s.caption}</figcaption>
             </figure>
           </li>`;
       })
@@ -279,9 +284,9 @@ ${cards}
     parts.push(`    <section>
       <div class="container">
         <h2 id="sec-${sec}" class="section-title">${esc(p.walkthroughTitle || "Walkthrough")}</h2>
-        <ol class="walkthrough">
+        <${listTag} class="walkthrough">
 ${items}
-        </ol>
+        </${listTag}>
       </div>
     </section>`);
   }
