@@ -220,6 +220,12 @@ module.exports = [
       { title: "Full-text transcript search", body: "Search across session transcripts to find the moment a decision was made or a command was run, then open that session at the match." },
       { title: "Filter sessions by branch", body: "Sessions are resolved by the branches that contain their checkpoint commits — including merge targets and squash merges — with branch counts, merge-path indicators, and linked branch chips, so you can scope the list to the work you care about." },
     ],
+    walkthroughTitle: "Reading and filtering sessions",
+    walkthrough: [
+      { caption: "Filter the session list by branch. The dropdown resolves each session by the branches its checkpoints belong to — including merge targets — and shows a session count per branch, so you can scope to just the work that landed on a given branch." },
+      { caption: "Turn off <em>Hide tool use</em> to reveal the tool-call turns inline — every <code>Read</code>, <code>Edit</code>, and <code>Bash</code> the agent ran — each expandable to its full command and output alongside the conversation." },
+      { caption: "Search transcripts across every session at once. The list narrows to sessions with matches (with per-session match counts) and shows the matching snippet, so you can jump straight to the moment something happened." },
+    ],
     steps: {
       title: "Using the Entire activity",
       items: [
