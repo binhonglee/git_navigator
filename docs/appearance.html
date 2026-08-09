@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../static/site.css" />
+  <link rel="icon" href="../static/icon.png" type="image/png" />
+    <title>Appearance: Color Schemes &amp; Fonts - Git Navigator</title>
+    <meta name="description" content="Make the Git Navigator desktop app yours: pick a color scheme for light and dark mode independently, and set the interface and monospace fonts from those installed on your device." />
+    <meta name="keywords" content="git navigator theme, color scheme, dark mode git client, custom fonts, github primer theme" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/appearance.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Appearance: Color Schemes &amp; Fonts - Git Navigator" />
+    <meta property="og:description" content="Make the Git Navigator desktop app yours: pick a color scheme for light and dark mode independently, and set the interface and monospace fonts from those installed on your device." />
+    <meta property="og:url" content="https://gitnav.xyz/docs/appearance.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/appearance-step-01.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Appearance: Color Schemes &amp; Fonts - Git Navigator" />
+    <meta name="twitter:description" content="Make the Git Navigator desktop app yours: pick a color scheme for light and dark mode independently, and set the interface and monospace fonts from those installed on your device." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/appearance-step-01.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Appearance: Color Schemes & Fonts",
+  "description": "Make the Git Navigator desktop app yours: pick a color scheme for light and dark mode independently, and set the interface and monospace fonts from those installed on your device.",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/appearance.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/appearance-step-01.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I use a different color scheme for light and dark mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Appearance and color scheme are separate choices: you decide when light or dark applies, then pick a distinct scheme for each mode. Git Navigator only shows the scheme selector relevant to your current appearance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which color schemes are available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A warm default \"navigator\" palette, a GitHub Primer scheme, and other popular schemes, selectable independently from light/dark mode. Schemes are sorted alphabetically in the selector, and the full license text for bundled themes is disclosed in Settings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change the font Git Navigator uses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — both the application font and the monospace font are configurable from the fonts installed on your device. Leave either on Default to use the built-in faces. The monospace font is what the commit graph, diffs, and file views render with."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if no fonts are detected on my machine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Fonts card falls back to the built-in defaults and shows a note explaining that no device fonts were detected, rather than presenting an empty selector."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is appearance customization in the VS Code extension too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The color-scheme and font controls are part of the standalone desktop app. In the VS Code extension, Git Navigator follows your editor theme so it stays consistent with the rest of VS Code."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+  <header class="docs-header">
+    <div class="container">
+      <div class="left">
+        <a href="../index.html" style="display:flex;align-items:center;gap:11px">
+          <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,59" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+          <span class="brand-text">Git Navigator</span>
+        </a>
+        <span class="docs-badge">Docs</span>
+      </div>
+      <div class="right">
+        <a href="https://github.com/binhonglee/git_navigator" style="font-size:14.5px;font-weight:500;color:var(--muted)">GitHub</a>
+        <a class="nav-cta" href="../download.html" style="font-size:14px;padding:8px 16px;border-radius:8px">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting started</div>
+        <nav>
+          <a href="index.html">Overview</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Remotes &amp; sync</div>
+        <nav>
+          <a href="fetch.html">Fetch</a>
+          <a href="pull.html">Pull</a>
+          <a href="push.html">Push</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">History &amp; branches</div>
+        <nav>
+          <a href="commit-graph.html">Visual Commit Graph</a>
+          <a href="branches-and-tags.html">Branches &amp; Tags</a>
+          <a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a>
+          <a href="worktrees.html">Linked Worktrees</a>
+          <a href="reflog.html">Reflog</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Stacked workflow</div>
+        <nav>
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stacked-prs.html">Stacked PRs</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Changes &amp; files</div>
+        <nav>
+          <a href="uncommitted-changes.html">Commit Management</a>
+          <a href="stash.html">Stash</a>
+          <a href="file-explorer.html">File Explorer</a>
+          <a href="folder-mode.html">Folder Mode</a>
+          <a href="conflict-resolution.html">Conflict Resolution</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Customization &amp; AI</div>
+        <nav>
+          <a href="appearance.html" class="active">Appearance</a>
+          <a href="ai-assistance.html">AI Assistance</a>
+          <a href="entire.html">Entire (Agent Sessions)</a>
+        </nav>
+      </div>
+    </aside>
+    <script>
+      /* Restore docs sidebar scroll before first paint to avoid a flicker. */
+      (function () {
+        var sb = document.currentScript.previousElementSibling;
+        if (!sb || !sb.classList.contains('docs-sidebar')) {
+          sb = document.querySelector('.docs-sidebar');
+        }
+        if (!sb) return;
+        var saved = sessionStorage.getItem('gn-docs-sidebar-scroll');
+        if (saved !== null) sb.scrollTop = parseInt(saved, 10) || 0;
+        var active = sb.querySelector('a.active');
+        if (active) {
+          var top = active.offsetTop;
+          var visible = top >= sb.scrollTop && top <= sb.scrollTop + sb.clientHeight - active.offsetHeight;
+          if (!visible) active.scrollIntoView({ block: 'center' });
+        }
+      })();
+    </script>
+
+    <main class="docs-main">
+      <div class="breadcrumb">Customization &amp; AI <span class="sep">/</span> <span class="current">Appearance: Color Schemes &amp; Fonts</span></div>
+      <header>
+      <div class="container hero">
+        <h1 id="top">Make it look the way you think</h1>
+        <p>The Git Navigator desktop app puts appearance in your hands: choose <strong>when</strong> light or dark mode applies, pick a <strong>color scheme</strong> for each mode independently, and set the interface and monospace <strong>fonts</strong> from those installed on your device.</p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <picture>
+                <source srcset="../static/appearance-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/appearance-step-01.png" alt="Git Navigator Settings showing the Theme card with appearance and color-scheme selectors" data-zoom />
+              </picture>
+            </div>
+            <figcaption>The Theme card in Settings: choose when light or dark applies, then pick a color scheme for each mode.</figcaption>
+          </figure>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-1" class="section-title">What you can customize</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Light and dark, decided separately</h3>
+            <p>Choose <em>Follow OS</em>, <em>Light</em>, or <em>Dark</em> for when each mode applies — then pick a distinct color scheme for light and for dark, so switching modes never forces a palette you dislike.</p>
+          </div>
+          <div class="card">
+            <h3>Swappable color schemes</h3>
+            <p>Ship with a warm default <em>navigator</em> palette, a <em>GitHub Primer</em> scheme, and other popular schemes. Only the selector relevant to your current appearance is shown, and schemes are listed alphabetically.</p>
+          </div>
+          <div class="card">
+            <h3>Your interface and code fonts</h3>
+            <p>Set the application font and the monospace (code/diff) font from the fonts installed on your device, or leave either on <em>Default</em> to use the built-in faces. If no device fonts are detected, the app says so instead of offering an empty list.</p>
+          </div>
+          <div class="card">
+            <h3>Honest about what it bundles</h3>
+            <p>Settings includes third-party license disclosures, with the full license text for the bundled themes — so the appearance you pick is fully accounted for.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-2" class="section-title">Personalizing the desktop app</h2>
+        <ol class="walkthrough">
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/appearance-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/appearance-step-01.png" alt="Step 1 — Open Settings and the Theme card comes first. The Appearance selector decides when light or dark mode applies — Follow O" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 1.</strong> Open Settings and the <strong>Theme</strong> card comes first. The <em>Appearance</em> selector decides when light or dark mode applies — <em>Follow OS</em>, <em>Light</em>, or <em>Dark</em>.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/appearance-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/appearance-step-02.png" alt="Step 2 — Below it, pick a color scheme for each mode independently. Only the selector for your current appearance is shown; schem" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 2.</strong> Below it, pick a <strong>color scheme</strong> for each mode independently. Only the selector for your current appearance is shown; schemes such as the default <em>navigator</em> palette and <em>GitHub Primer</em> are listed alphabetically.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/appearance-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/appearance-step-03.png" alt="Step 3 — The Fonts card sets the interface and monospace fonts from those installed on your device. Leave either on Default to us" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 3.</strong> The <strong>Fonts</strong> card sets the interface and monospace fonts from those installed on your device. Leave either on <em>Default</em> to use the built-in faces — the monospace choice drives the graph, diffs, and file views.</figcaption>
+            </figure>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-3" class="section-title">Set it up in three moves</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Open Settings.</strong> Click the gear icon at the bottom of the activity rail to open the Settings activity in the desktop app.</li>
+            <li><strong>Pick appearance, then schemes.</strong> Choose when light/dark applies in the Theme card, then select a color scheme for each mode. The change applies immediately.</li>
+            <li><strong>Choose your fonts.</strong> In the Fonts card, set the app and monospace fonts from your installed faces, or keep the built-in defaults.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-4" class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Can I use a different color scheme for light and dark mode?</h3>
+            <p>Yes. Appearance and color scheme are separate choices: you decide when light or dark applies, then pick a distinct scheme for each mode. Git Navigator only shows the scheme selector relevant to your current appearance.</p>
+          </div>
+          <div class="card">
+            <h3>Which color schemes are available?</h3>
+            <p>A warm default "navigator" palette, a GitHub Primer scheme, and other popular schemes, selectable independently from light/dark mode. Schemes are sorted alphabetically in the selector, and the full license text for bundled themes is disclosed in Settings.</p>
+          </div>
+          <div class="card">
+            <h3>Can I change the font Git Navigator uses?</h3>
+            <p>Yes — both the application font and the monospace font are configurable from the fonts installed on your device. Leave either on Default to use the built-in faces. The monospace font is what the commit graph, diffs, and file views render with.</p>
+          </div>
+          <div class="card">
+            <h3>What if no fonts are detected on my machine?</h3>
+            <p>The Fonts card falls back to the built-in defaults and shows a note explaining that no device fonts were detected, rather than presenting an empty selector.</p>
+          </div>
+          <div class="card">
+            <h3>Is appearance customization in the VS Code extension too?</h3>
+            <p>The color-scheme and font controls are part of the standalone desktop app. In the VS Code extension, Git Navigator follows your editor theme so it stays consistent with the rest of VS Code.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="docs-nav-footer">
+        <a class="prev" href="conflict-resolution.html">
+          <div class="dir">← Previous</div>
+          <div class="title">Conflict Resolution</div>
+        </a>
+        <a class="next" href="ai-assistance.html">
+          <div class="dir">Next →</div>
+          <div class="title">AI Assistance</div>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-rail">
+      <div class="rail-title">On this page</div>
+      <nav>
+        <a href="#top" class="active">Overview</a>
+        <a href="#sec-1">What you can customize</a>
+        <a href="#sec-2">Personalizing the desktop app</a>
+        <a href="#sec-3">Set it up in three moves</a>
+        <a href="#sec-4">Frequently asked questions</a>
+      </nav>
+    </aside>
+
+  </div>
+
+  <div class="overlay" id="media-overlay" aria-hidden="true">
+    <div class="overlay-content">
+      <button class="overlay-close" type="button" aria-label="Close media">×</button>
+      <div class="overlay-body"></div>
+    </div>
+  </div>
+
+  <script src="../static/site.js"></script>
+</body>
+</html>

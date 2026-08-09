@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../static/site.css" />
+  <link rel="icon" href="../static/icon.png" type="image/png" />
+    <title>Folder Mode - Git Navigator</title>
+    <meta name="description" content="Open any directory in Git Navigator — even one that is not a git repository yet. Browse and search files, then initialize a repository in place when the work is worth tracking." />
+    <meta name="keywords" content="open folder git gui, non-git directory, git init gui, initialize repository, file browser git navigator" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/folder-mode.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Folder Mode - Git Navigator" />
+    <meta property="og:description" content="Open any directory in Git Navigator — even one that is not a git repository yet. Browse and search files, then initialize a repository in place when the work is worth tracking." />
+    <meta property="og:url" content="https://gitnav.xyz/docs/folder-mode.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/folder-mode-step-01.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Folder Mode - Git Navigator" />
+    <meta name="twitter:description" content="Open any directory in Git Navigator — even one that is not a git repository yet. Browse and search files, then initialize a repository in place when the work is worth tracking." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/folder-mode-step-01.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Folder Mode",
+  "description": "Open any directory in Git Navigator — even one that is not a git repository yet. Browse and search files, then initialize a repository in place when the work is worth tracking.",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/folder-mode.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/folder-mode-step-01.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What happens if I open a folder that is not a git repository?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Git Navigator opens it in folder mode. Instead of erroring, the commit graph and other git-backed surfaces show an \"Initialize repository\" offer, and the Files activity works normally so you can browse and edit right away."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I search a folder that is not under version control?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Both the filename filter and content search work in folder mode. Content search runs git grep --no-index --exclude-standard, which searches the directory and still honors .gitignore even though there is no repository yet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does folder mode remember the folder when I relaunch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Folder mode is restored on relaunch so you get back what you had open, with the same initialize offer. A folder is intentionally never persisted as your default repository, so it won't be mistaken for a repo the next time you start fresh."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is folder mode available in the VS Code extension too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both runtimes support opening non-git directories. In VS Code, manual open works and the panel returns the folder-mode state; in the desktop app the folder picker falls back to folder mode whenever the chosen path is not a repository."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+  <header class="docs-header">
+    <div class="container">
+      <div class="left">
+        <a href="../index.html" style="display:flex;align-items:center;gap:11px">
+          <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,59" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+          <span class="brand-text">Git Navigator</span>
+        </a>
+        <span class="docs-badge">Docs</span>
+      </div>
+      <div class="right">
+        <a href="https://github.com/binhonglee/git_navigator" style="font-size:14.5px;font-weight:500;color:var(--muted)">GitHub</a>
+        <a class="nav-cta" href="../download.html" style="font-size:14px;padding:8px 16px;border-radius:8px">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting started</div>
+        <nav>
+          <a href="index.html">Overview</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Remotes &amp; sync</div>
+        <nav>
+          <a href="fetch.html">Fetch</a>
+          <a href="pull.html">Pull</a>
+          <a href="push.html">Push</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">History &amp; branches</div>
+        <nav>
+          <a href="commit-graph.html">Visual Commit Graph</a>
+          <a href="branches-and-tags.html">Branches &amp; Tags</a>
+          <a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a>
+          <a href="worktrees.html">Linked Worktrees</a>
+          <a href="reflog.html">Reflog</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Stacked workflow</div>
+        <nav>
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stacked-prs.html">Stacked PRs</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Changes &amp; files</div>
+        <nav>
+          <a href="uncommitted-changes.html">Commit Management</a>
+          <a href="stash.html">Stash</a>
+          <a href="file-explorer.html">File Explorer</a>
+          <a href="folder-mode.html" class="active">Folder Mode</a>
+          <a href="conflict-resolution.html">Conflict Resolution</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Customization &amp; AI</div>
+        <nav>
+          <a href="appearance.html">Appearance</a>
+          <a href="ai-assistance.html">AI Assistance</a>
+          <a href="entire.html">Entire (Agent Sessions)</a>
+        </nav>
+      </div>
+    </aside>
+    <script>
+      /* Restore docs sidebar scroll before first paint to avoid a flicker. */
+      (function () {
+        var sb = document.currentScript.previousElementSibling;
+        if (!sb || !sb.classList.contains('docs-sidebar')) {
+          sb = document.querySelector('.docs-sidebar');
+        }
+        if (!sb) return;
+        var saved = sessionStorage.getItem('gn-docs-sidebar-scroll');
+        if (saved !== null) sb.scrollTop = parseInt(saved, 10) || 0;
+        var active = sb.querySelector('a.active');
+        if (active) {
+          var top = active.offsetTop;
+          var visible = top >= sb.scrollTop && top <= sb.scrollTop + sb.clientHeight - active.offsetHeight;
+          if (!visible) active.scrollIntoView({ block: 'center' });
+        }
+      })();
+    </script>
+
+    <main class="docs-main">
+      <div class="breadcrumb">Changes &amp; files <span class="sep">/</span> <span class="current">Folder Mode</span></div>
+      <header>
+      <div class="container hero">
+        <h1 id="top">Open any folder — git optional</h1>
+        <p>Point Git Navigator at a directory that is not a git repository and it opens in <strong>folder mode</strong>. Every git-backed surface offers to <em>initialize a repository</em>, while the Files activity keeps working — so you can browse and search a scratch folder now and start tracking it the moment it matters.</p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <picture>
+                <source srcset="../static/folder-mode-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/folder-mode-step-01.png" alt="Git Navigator open on a non-git directory, offering to initialize a repository" data-zoom />
+              </picture>
+            </div>
+            <figcaption>A plain project folder with no <code>.git</code>: the graph surface offers to initialize a repository instead of erroring.</figcaption>
+          </figure>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-1" class="section-title">What folder mode gives you</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Initialize in place, when you are ready</h3>
+            <p>Git-backed surfaces don't error on a non-repo — they show a clear <em>Initialize repository</em> offer. Accept it and the same folder becomes a real repo without reopening anything.</p>
+          </div>
+          <div class="card">
+            <h3>The Files activity stays fully usable</h3>
+            <p>Browse the whole tree, open files in the CodeMirror viewer, and edit them — no repository required. Folder mode is a first-class way to use Git Navigator as a plain file explorer.</p>
+          </div>
+          <div class="card">
+            <h3>Search without an index</h3>
+            <p>Filename filter and content search both work outside a repo: the search shells out to <code>git grep --no-index --exclude-standard</code>, so results honor your <code>.gitignore</code> even before <code>git init</code>.</p>
+          </div>
+          <div class="card">
+            <h3>Honors .gitignore and survives relaunch</h3>
+            <p>The tree walk uses the same ignore rules a repo would, dimming ignored entries like <code>dist/</code>. Folder mode also refreshes on external changes and is restored when you relaunch — a folder is just never silently persisted as your default repository.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-2" class="section-title">Folder mode, end to end</h2>
+        <ol class="walkthrough">
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/folder-mode-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/folder-mode-step-01.png" alt="Step 1 — Opening a directory with no .git boots Git Navigator in folder mode. The commit-graph surface replaces its history with " data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 1.</strong> Opening a directory with no <code>.git</code> boots Git Navigator in folder mode. The commit-graph surface replaces its history with a clear offer to <strong>initialize a repository</strong> — nothing errors, and the title bar still names the folder you opened.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/folder-mode-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/folder-mode-step-02.png" alt="Step 2 — Switch to the Files activity and the folder is fully browsable. The tree walks the directory with the same ignore rules " data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 2.</strong> Switch to the Files activity and the folder is fully browsable. The tree walks the directory with the same ignore rules a repo would use, so <code>dist/</code> shows dimmed as an ignored entry while your source files stay crisp.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/folder-mode-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/folder-mode-step-03.png" alt="Step 3 — Select a file and it opens in the CodeMirror viewer (Markdown and HTML also offer a rendered preview) — read, search, an" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Step 3.</strong> Select a file and it opens in the CodeMirror viewer (Markdown and HTML also offer a rendered preview) — read, search, and edit all work without a repository behind them.</figcaption>
+            </figure>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-3" class="section-title">Using a folder before it is a repo</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Open the directory.</strong> Point Git Navigator at any folder. If it is not a git repository, the app opens it in folder mode automatically instead of refusing to open it.</li>
+            <li><strong>Browse and search freely.</strong> The Files activity, filename filter, and <code>git grep</code> content search all work on the raw directory, honoring <code>.gitignore</code> rules as it walks the tree.</li>
+            <li><strong>Initialize when it matters.</strong> When the work is worth tracking, take the <em>Initialize repository</em> offer on any git-backed surface. The folder becomes a real repo in place — no need to reopen it.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-4" class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>What happens if I open a folder that is not a git repository?</h3>
+            <p>Git Navigator opens it in folder mode. Instead of erroring, the commit graph and other git-backed surfaces show an "Initialize repository" offer, and the Files activity works normally so you can browse and edit right away.</p>
+          </div>
+          <div class="card">
+            <h3>Can I search a folder that is not under version control?</h3>
+            <p>Yes. Both the filename filter and content search work in folder mode. Content search runs <code>git grep --no-index --exclude-standard</code>, which searches the directory and still honors <code>.gitignore</code> even though there is no repository yet.</p>
+          </div>
+          <div class="card">
+            <h3>Does folder mode remember the folder when I relaunch?</h3>
+            <p>Folder mode is restored on relaunch so you get back what you had open, with the same initialize offer. A folder is intentionally never persisted as your default repository, so it won't be mistaken for a repo the next time you start fresh.</p>
+          </div>
+          <div class="card">
+            <h3>Is folder mode available in the VS Code extension too?</h3>
+            <p>Both runtimes support opening non-git directories. In VS Code, manual open works and the panel returns the folder-mode state; in the desktop app the folder picker falls back to folder mode whenever the chosen path is not a repository.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="docs-nav-footer">
+        <a class="prev" href="file-explorer.html">
+          <div class="dir">← Previous</div>
+          <div class="title">File Explorer</div>
+        </a>
+        <a class="next" href="conflict-resolution.html">
+          <div class="dir">Next →</div>
+          <div class="title">Conflict Resolution</div>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-rail">
+      <div class="rail-title">On this page</div>
+      <nav>
+        <a href="#top" class="active">Overview</a>
+        <a href="#sec-1">What folder mode gives you</a>
+        <a href="#sec-2">Folder mode, end to end</a>
+        <a href="#sec-3">Using a folder before it is a repo</a>
+        <a href="#sec-4">Frequently asked questions</a>
+      </nav>
+    </aside>
+
+  </div>
+
+  <div class="overlay" id="media-overlay" aria-hidden="true">
+    <div class="overlay-content">
+      <button class="overlay-close" type="button" aria-label="Close media">×</button>
+      <div class="overlay-body"></div>
+    </div>
+  </div>
+
+  <script src="../static/site.js"></script>
+</body>
+</html>

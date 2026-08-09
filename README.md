@@ -37,7 +37,9 @@ See your entire project history at a glance with an interactive, tree-based comm
 ![stack_vs_branch](static/stack-graph.png)
 
 Choose between traditional branch mode and stack mode for stacked PR workflows. Stack mode keeps descendant commits aligned when you amend or rebase; branch mode keeps operations scoped to the current branch.
-Learn more in the [Stack vs Branch Mode guide](https://gitnav.xyz/stack.html).
+
+Each stack layer is modeled as a **branch that can hold multiple commits** (not one branch per commit), so you can push a whole stack respecting each branch's remote, diff a commit against the branch it's stacked on, and pull the current branch onto an ancestor branch in its stack.
+Learn more in the [Stack vs Branch Mode guide](https://gitnav.xyz/docs/stack.html) and the [Stacked PRs guide](https://gitnav.xyz/docs/stacked-prs.html).
 
 ### 🔄 Drag-and-Drop Rebase
 <video src="static/rebase.mp4" controls muted autoplay loop></video>
@@ -61,6 +63,8 @@ Use your editor's language model support for commit workflows:
 - **Generate commit messages** from the current diff
 - **Plan split commits** before rewriting a large change
 - **Stay local-first** - Git Navigator does not require its own backend for AI features
+
+Learn more in the [AI Assistance guide](https://gitnav.xyz/docs/ai-assistance.html).
 
 ### ⚔️ Visual Conflict Resolution
 <video src="static/conflict.mp4" controls muted autoplay loop></video>
@@ -97,6 +101,17 @@ Tune graph rendering for large repositories:
 - Set **max active branches** and **max tags** limits in Settings
 - Open Git Navigator settings directly from the overflow menu
 
+### 🎨 Appearance (Desktop)
+![appearance](static/appearance-step-01.png)
+
+Make the desktop app yours:
+- Pick a **color scheme** for light and dark mode independently (a warm default "navigator" palette, GitHub Primer, and more)
+- Choose when light/dark applies (Follow OS, Light, Dark)
+- Set the **application and monospace fonts** from those installed on your device
+- Third-party license disclosures for bundled themes in Settings
+
+Learn more in the [Appearance guide](https://gitnav.xyz/docs/appearance.html).
+
 ### 🧹 Stash Management
 <video src="static/stash.mp4" controls muted autoplay loop></video>
 
@@ -106,6 +121,24 @@ Quickly save and restore work-in-progress:
 - Pop and drop stashes as needed
 - Expand stash entries to inspect file lists and per-file diffs
 - View stash history in the context of the active worktree
+
+### 📁 File Explorer (Desktop)
+![desktop-files](static/desktop-files-light.png)
+
+Browse, search, and edit your repository without leaving Git Navigator:
+- Worktree-scoped file tree with inline `M` / `A` / `?` status badges
+- CodeMirror-powered file, diff, and blame views with on-demand syntax highlighting
+- Rendered Markdown/HTML preview (HTML in a sandboxed iframe, scripts opt-in)
+- Filename filter and `git grep` content search from one toggleable search box
+- Right-click New / Rename / Delete, inline image and video playback, ZIP preview/extract
+
+Learn more in the [File Explorer guide](https://gitnav.xyz/docs/file-explorer.html).
+
+### 🗂️ Folder Mode (Desktop)
+![folder-mode](static/folder-mode-step-01.png)
+
+Open **any** directory — even one that isn't a Git repository yet. Git-backed surfaces offer to **initialize a repository** in place, while the Files activity stays fully usable (browse, search, external-change refresh, relaunch restore). Content search honors `.gitignore` even before `git init`.
+Learn more in the [Folder Mode guide](https://gitnav.xyz/docs/folder-mode.html).
 
 ### 📊 Commit Analytics
 <video src="static/commit.mp4" controls muted autoplay loop></video>
@@ -125,6 +158,16 @@ Surface PR/MR and CI status alongside commits with opt-in metadata:
 - Gitea via access token
 - Forge auth cards and sign-in status in Settings
 
+### 🧠 Entire Integration (Desktop, Optional)
+
+Browse the agent sessions behind your commits when [Entire](https://entire.io) checkpoints are present:
+- Agent-session viewer with an expandable conversation timeline and tool-call rows
+- Graph checkpoint overlay that cross-links commits to the session that produced them
+- Full-text transcript search
+- Filter sessions by the branches that contain their checkpoint commits
+
+Learn more in the [Entire Integration guide](https://gitnav.xyz/docs/entire.html).
+
 ### 🎯 Advanced Git Operations
 - **Split commits** - Break a large commit into smaller, focused commits by selecting individual hunks
 - **AI split planning** - Ask AI to suggest how a large change should be divided
@@ -135,6 +178,9 @@ Surface PR/MR and CI status alongside commits with opt-in metadata:
 - **Uncommit** - Undo the last commit and return changes to working directory
 - **Fetch and checkout** - Get and switch to remote branches
 - **History (reflog)** - View recent HEAD movements to recover lost work, then expand entries for commit metadata and diffs
+- **Commit search** - Two-step history search to find commits fast
+- **Git identity & signing** - View/edit `user.name`, `user.email`, and `remote.origin.url`, manage SSH keys, and set up SSH commit signing from Settings
+- **Multi-window (desktop)** - Work across multiple repositories in parallel windows
 
 ## 💡 Use Cases
 
