@@ -118,6 +118,8 @@ if (semverPattern.test(latestVersion) && fs.existsSync(downloadPath)) {
   const nextDownloadHtml = downloadHtml
     .replace(/(data-version-label>)[\d.]+(<)/g, `$1${latestVersion}$2`)
     .replace(/Git\.Navigator_\d+\.\d+\.\d+_/g, `Git.Navigator_${latestVersion}_`)
+    // The .deb asset is published lowercase (git-navigator_<ver>_amd64.deb).
+    .replace(/git-navigator_\d+\.\d+\.\d+_/g, `git-navigator_${latestVersion}_`)
     .replace(
       /<span>v\d+\.\d+\.\d+ · [^<]*<\/span>/,
       `<span>v${latestVersion} · ${escapeHtml(selected[0].date)}</span>`,

@@ -63,6 +63,7 @@ const SIDEBAR = [
       ["appearance.html", "Appearance"],
       ["ai-assistance.html", "AI Assistance"],
       ["entire.html", "Entire (Agent Sessions)"],
+      ["terminal.html", "Terminal & Agents"],
     ],
   },
 ];

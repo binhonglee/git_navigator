@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../static/site.css" />
+  <link rel="icon" href="../static/icon.png" type="image/png" />
+    <title>Terminal &amp; Agent Sessions - Git Navigator</title>
+    <meta name="description" content="A worktree-aware terminal inside the Git Navigator desktop app: real PTY shells with tabs, split panes, per-worktree tab sets, layouts that survive restarts, and AI agent sessions (Claude, Codex, opencode, cursor-agent, kiro-cli) that resume where they left off." />
+    <meta name="keywords" content="embedded terminal, worktree terminal, split panes, claude code terminal, codex resume, agent sessions" />
+    <link rel="canonical" href="https://gitnav.xyz/docs/terminal.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Git Navigator" />
+    <meta property="og:title" content="Terminal &amp; Agent Sessions - Git Navigator" />
+    <meta property="og:description" content="A worktree-aware terminal inside the Git Navigator desktop app: real PTY shells with tabs, split panes, per-worktree tab sets, layouts that survive restarts, and AI agent sessions (Claude, Codex, opencode, cursor-agent, kiro-cli) that resume where they left off." />
+    <meta property="og:url" content="https://gitnav.xyz/docs/terminal.html" />
+    <meta property="og:image" content="https://gitnav.xyz/static/terminal.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Terminal &amp; Agent Sessions - Git Navigator" />
+    <meta name="twitter:description" content="A worktree-aware terminal inside the Git Navigator desktop app: real PTY shells with tabs, split panes, per-worktree tab sets, layouts that survive restarts, and AI agent sessions (Claude, Codex, opencode, cursor-agent, kiro-cli) that resume where they left off." />
+    <meta name="twitter:image" content="https://gitnav.xyz/static/terminal.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Terminal & Agent Sessions",
+  "description": "A worktree-aware terminal inside the Git Navigator desktop app: real PTY shells with tabs, split panes, per-worktree tab sets, layouts that survive restarts, and AI agent sessions (Claude, Codex, opencode, cursor-agent, kiro-cli) that resume where they left off.",
+  "mainEntityOfPage": "https://gitnav.xyz/docs/terminal.html",
+  "about": "Git Navigator",
+  "image": "https://gitnav.xyz/static/terminal.png"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the terminal available in the VS Code extension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The Terminal activity is part of the desktop app only; in VS Code, use the editor's built-in terminal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI agents can I launch from the terminal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude, Codex, opencode, cursor-agent, and kiro-cli. The new-tab picker only lists the ones it finds on your PATH, and each agent's session is captured so a restore resumes that exact session."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Git Navigator save what I type or my terminal output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keystrokes are never logged. Shell panes keep their last 200 lines of scrollback so it can be restored after a restart; turn off Restore shell scrollback on restart in the Terminal settings to stop that and delete the stored history. Agent panes are never stored — their agent CLI resumes the transcript itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I see whether a shell is busy without switching to it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tab strip and the worktree strip both show per-pane working/idle activity, so you can tell at a glance which shells are still running something."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+  <header class="docs-header">
+    <div class="container">
+      <div class="left">
+        <a href="../index.html" style="display:flex;align-items:center;gap:11px">
+          <svg class="logo-svg" width="22" height="22" viewBox="0 0 64 64" fill="none">
+    <g transform="rotate(15 32 32)">
+      <circle cx="32" cy="32" r="30" fill="#ffffff" stroke="#14171f" stroke-width="1.5"/>
+      <polygon points="32,4 29,9 35,9" fill="#14171f" stroke="#14171f"/>
+      <circle cx="32" cy="16" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <polygon points="32,59 29,54 35,59" fill="none" stroke="#14171f" stroke-width="1.5"/>
+      <circle cx="47" cy="19" r="3" fill="#ffffff" stroke="#14171f" stroke-width="2"/>
+      <circle cx="32" cy="47" r="4" fill="#ffffff" stroke="#14171f" stroke-width="2.5"/>
+      <line x1="32" y1="19" x2="32" y2="44" stroke="#14171f" stroke-width="2.5"/>
+      <path d="M 47,23 L 47,28 Q 47,33 42,33 L 32,33" stroke="#14171f" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path fill="#14171f" d="M 12.6,26.6 23.25,29.75 20.1,32.25 23.875,36 22,37.875 18.25,34.125 15.75,37.25 z"/>
+    </g>
+  </svg>
+          <span class="brand-text">Git Navigator</span>
+        </a>
+        <span class="docs-badge">Docs</span>
+      </div>
+      <div class="right">
+        <a href="https://github.com/binhonglee/git_navigator" style="font-size:14.5px;font-weight:500;color:var(--muted)">GitHub</a>
+        <a class="nav-cta" href="../download.html" style="font-size:14px;padding:8px 16px;border-radius:8px">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="docs-layout">
+
+    <aside class="docs-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting started</div>
+        <nav>
+          <a href="index.html">Overview</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Remotes &amp; sync</div>
+        <nav>
+          <a href="fetch.html">Fetch</a>
+          <a href="pull.html">Pull</a>
+          <a href="push.html">Push</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">History &amp; branches</div>
+        <nav>
+          <a href="commit-graph.html">Visual Commit Graph</a>
+          <a href="branches-and-tags.html">Branches &amp; Tags</a>
+          <a href="drag-and-drop-rebase.html">Drag-and-drop Rebase</a>
+          <a href="worktrees.html">Linked Worktrees</a>
+          <a href="reflog.html">Reflog</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Stacked workflow</div>
+        <nav>
+          <a href="stack.html">Branch vs Stack mode</a>
+          <a href="stacked-prs.html">Stacked PRs</a>
+          <a href="stack_reviewer.html">Stack Reviewer</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Changes &amp; files</div>
+        <nav>
+          <a href="uncommitted-changes.html">Commit Management</a>
+          <a href="stash.html">Stash</a>
+          <a href="file-explorer.html">File Explorer</a>
+          <a href="folder-mode.html">Folder Mode</a>
+          <a href="conflict-resolution.html">Conflict Resolution</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Customization &amp; AI</div>
+        <nav>
+          <a href="appearance.html">Appearance</a>
+          <a href="ai-assistance.html">AI Assistance</a>
+          <a href="entire.html">Entire (Agent Sessions)</a>
+          <a href="terminal.html" class="active">Terminal &amp; Agents</a>
+        </nav>
+      </div>
+    </aside>
+    <script>
+      /* Restore docs sidebar scroll before first paint to avoid a flicker. */
+      (function () {
+        var sb = document.currentScript.previousElementSibling;
+        if (!sb || !sb.classList.contains('docs-sidebar')) {
+          sb = document.querySelector('.docs-sidebar');
+        }
+        if (!sb) return;
+        var saved = sessionStorage.getItem('gn-docs-sidebar-scroll');
+        if (saved !== null) sb.scrollTop = parseInt(saved, 10) || 0;
+        var active = sb.querySelector('a.active');
+        if (active) {
+          var top = active.offsetTop;
+          var visible = top >= sb.scrollTop && top <= sb.scrollTop + sb.clientHeight - active.offsetHeight;
+          if (!visible) active.scrollIntoView({ block: 'center' });
+        }
+      })();
+    </script>
+
+    <main class="docs-main">
+      <div class="breadcrumb">Customization &amp; AI <span class="sep">/</span> <span class="current">Terminal &amp; Agent Sessions</span></div>
+      <header>
+      <div class="container hero">
+        <h1 id="top">A terminal that knows your worktrees</h1>
+        <p>As of v0.5.0 the desktop app has a <strong>Terminal</strong> activity in the rail. It runs real PTY shells — so <code>vim</code>, <code>htop</code>, and <code>git log</code> render properly — organized into tabs and split panes, with one tab set per worktree. Your layout and your agent sessions come back when you relaunch.</p>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+          <figure>
+            <div class="media-frame">
+              <picture>
+                <source srcset="../static/terminal-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="../static/terminal.png" alt="Git Navigator's Terminal activity: worktree tabs on top, a shell tab split into three panes running git log, git worktree list, and git status" data-zoom />
+              </picture>
+            </div>
+            <figcaption>One tab split three ways in the <code>main</code> worktree. The strip above holds a tab set for each linked worktree.</figcaption>
+          </figure>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-1" class="section-title">What the Terminal activity does</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>One tab set per worktree</h3>
+            <p>Each <a href="worktrees.html">linked worktree</a> gets its own terminal tabs. Switching worktrees swaps the tab set while background shells keep running and streaming, and a worktree only gets a shell once you open it — not merely because it exists.</p>
+          </div>
+          <div class="card">
+            <h3>Tabs and split panes</h3>
+            <p>Open as many tabs as you need and split any pane horizontally or vertically. Drag a divider to resize, and the strip shows which panes are busy and which are idle at a glance.</p>
+          </div>
+          <div class="card">
+            <h3>Agent sessions that resume</h3>
+            <p>Start Claude, Codex, opencode, cursor-agent, or kiro-cli straight from the new-tab picker. Quit the app mid-session and relaunch: the pane resumes the full transcript at zero token cost. Several sessions can share one worktree.</p>
+          </div>
+          <div class="card">
+            <h3>Layouts survive restarts</h3>
+            <p>Worktree sets, tabs, and the split-pane tree are restored on relaunch. Shell panes also get back their last 200 lines of scrollback above a dated divider; agent panes are never stored.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-2" class="section-title">A closer look</h2>
+        <ul class="walkthrough">
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/terminal-step-01-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/terminal-step-01.png" alt="New-tab picker — The + menu (or Ctrl+Shift+T) opens a plain shell, starts an agent, or resumes an earlier session. It only lists agent CL" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>New-tab picker.</strong> The <strong>+</strong> menu (or <kbd>Ctrl+Shift+T</kbd>) opens a plain shell, starts an agent, or resumes an earlier session. It only lists agent CLIs it finds on your <code>PATH</code>, and the digit hints let you pick without the mouse.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/terminal-step-02-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/terminal-step-02.png" alt="An agent in a tab — Claude Code running in its own tab, in the worktree's directory, right next to the shell tab. This capture shows a first" data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>An agent in a tab.</strong> Claude Code running in its own tab, in the worktree's directory, right next to the shell tab. This capture shows a first run without credentials; a signed-in agent opens straight into its session and is resumed on the next launch.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="media-frame">
+                <picture>
+                  <source srcset="../static/terminal-step-03-dark.png" media="(prefers-color-scheme: dark)" />
+                  <img src="../static/terminal-step-03.png" alt="Switch worktrees — Selecting fix/overlay in the worktree strip opens that worktree's own tab set, with the shell already in its directory. " data-zoom />
+                </picture>
+              </div>
+              <figcaption><strong>Switch worktrees.</strong> Selecting <code>fix/overlay</code> in the worktree strip opens that worktree's own tab set, with the shell already in its directory. The <code>main</code> tabs keep running in the background.</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-3" class="section-title">Getting around</h2>
+        <div class="card">
+          <ol class="tips">
+            <li><strong>Open the activity.</strong> Click <strong>Terminal</strong> in the activity rail (above Settings). The first tab opens a login shell in the worktree that is active in the Git activity.</li>
+            <li><strong>Open a tab or an agent.</strong> Use the <strong>+</strong> button, or press <kbd>Cmd+T</kbd> on macOS / <kbd>Ctrl+Shift+T</kbd> on Windows and Linux to open the picker from the keyboard. Press <kbd>1</kbd> for a shell or <kbd>2</kbd>+ for an agent — the picker lists only the agent CLIs found on your <code>PATH</code>.</li>
+            <li><strong>Move between tabs and worktrees.</strong> <kbd>Ctrl+Tab</kbd> / <kbd>Ctrl+Shift+Tab</kbd> cycle tabs in the current worktree. <kbd>Ctrl+Cmd+Tab</kbd> on macOS (or <kbd>Ctrl+Alt+Tab</kbd> on Windows and Linux) cycles worktrees. The mouse wheel scrolls either tab strip sideways.</li>
+            <li><strong>Close safely.</strong> <kbd>Cmd+W</kbd> on macOS / <kbd>Ctrl+Shift+W</kbd> elsewhere closes the active tab. Git Navigator asks first when the tab has several panes, a running command, or a live agent session; answer the dialog with <kbd>y</kbd> or <kbd>n</kbd>.</li>
+            <li><strong>Copy and paste.</strong> On Windows and Linux use <kbd>Ctrl+Shift+C</kbd> / <kbd>Ctrl+Shift+V</kbd>, so plain <kbd>Ctrl+C</kbd> always interrupts. macOS uses the usual <kbd>Cmd+C</kbd> / <kbd>Cmd+V</kbd>.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 id="sec-4" class="section-title">Frequently asked questions</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Is the terminal available in the VS Code extension?</h3>
+            <p>No. The Terminal activity is part of the desktop app only; in VS Code, use the editor's built-in terminal.</p>
+          </div>
+          <div class="card">
+            <h3>Which AI agents can I launch from the terminal?</h3>
+            <p>Claude, Codex, opencode, cursor-agent, and kiro-cli. The new-tab picker only lists the ones it finds on your PATH, and each agent's session is captured so a restore resumes that exact session.</p>
+          </div>
+          <div class="card">
+            <h3>Does Git Navigator save what I type or my terminal output?</h3>
+            <p>Keystrokes are never logged. Shell panes keep their last 200 lines of scrollback so it can be restored after a restart; turn off <em>Restore shell scrollback on restart</em> in the Terminal settings to stop that and delete the stored history. Agent panes are never stored — their agent CLI resumes the transcript itself.</p>
+          </div>
+          <div class="card">
+            <h3>Can I see whether a shell is busy without switching to it?</h3>
+            <p>Yes. The tab strip and the worktree strip both show per-pane working/idle activity, so you can tell at a glance which shells are still running something.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="docs-nav-footer">
+        <a class="prev" href="entire.html">
+          <div class="dir">← Previous</div>
+          <div class="title">Entire (Agent Sessions)</div>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-rail">
+      <div class="rail-title">On this page</div>
+      <nav>
+        <a href="#top" class="active">Overview</a>
+        <a href="#sec-1">What the Terminal activity does</a>
+        <a href="#sec-2">A closer look</a>
+        <a href="#sec-3">Getting around</a>
+        <a href="#sec-4">Frequently asked questions</a>
+      </nav>
+    </aside>
+
+  </div>
+
+  <div class="overlay" id="media-overlay" aria-hidden="true">
+    <div class="overlay-content">
+      <button class="overlay-close" type="button" aria-label="Close media">×</button>
+      <div class="overlay-body"></div>
+    </div>
+  </div>
+
+  <script src="../static/site.js"></script>
+</body>
+</html>

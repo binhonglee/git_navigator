@@ -11,9 +11,9 @@ Git Navigator brings the power of Git into a beautiful, interactive visualizatio
 ## ⬇️ Install
 
 ### Desktop app
-- macOS (Apple Silicon): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.4.0_aarch64.dmg)
-- Windows (x64): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.4.0_x64.msi)
-- Linux (.deb, x64): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/git-navigator_0.4.0_amd64.deb)
+- macOS (Apple Silicon): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.5.0_aarch64.dmg)
+- Windows (x64): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/Git.Navigator_0.5.0_x64.msi)
+- Linux (.deb, x64): [Download](https://github.com/binhonglee/git_navigator/releases/latest/download/git-navigator_0.5.0_amd64.deb)
 
 ### Editor extension
 - VS Code Marketplace: [Install](https://marketplace.visualstudio.com/items?itemName=binhonglee.git-navigator)
@@ -168,6 +168,17 @@ Browse the agent sessions behind your commits when [Entire](https://entire.io) c
 
 Learn more in the [Entire Integration guide](https://gitnav.xyz/docs/entire.html).
 
+### 🖥️ Terminal & Agent Sessions (Desktop)
+<video src="static/terminal.mp4" controls muted autoplay loop></video>
+
+A worktree-aware terminal built into the desktop app:
+- Real PTY shells with **tabs** and **split panes**, one tab set per worktree that keeps running in the background
+- Launch and resume **Claude, Codex, opencode, cursor-agent, and kiro-cli** sessions from the new-tab picker; relaunch the app and each agent resumes its full transcript at zero token cost
+- Layouts (worktree sets, tabs, splits) and the last 200 lines of shell scrollback are restored after a restart
+- Keyboard shortcuts for tabs, worktrees, splits, and close, plus per-pane working/idle indicators
+
+Learn more in the [Terminal & Agent Sessions guide](https://gitnav.xyz/docs/terminal.html).
+
 ### 🎯 Advanced Git Operations
 - **Split commits** - Break a large commit into smaller, focused commits by selecting individual hunks
 - **AI split planning** - Ask AI to suggest how a large change should be divided
@@ -181,6 +192,8 @@ Learn more in the [Entire Integration guide](https://gitnav.xyz/docs/entire.html
 - **Commit search** - Two-step history search to find commits fast
 - **Git identity & signing** - View/edit `user.name`, `user.email`, and `remote.origin.url`, manage SSH keys, and set up SSH commit signing from Settings
 - **Multi-window (desktop)** - Work across multiple repositories in parallel windows
+- **Submodule overlay** - Open a submodule with its own status, files, diff, and stage/commit flow (or in a new window) without leaving the parent repository
+- **Searchable Settings** - Search every setting and browse a read-only keyboard-shortcuts reference; search the active tab with Cmd/Ctrl+K
 
 ## 💡 Use Cases
 

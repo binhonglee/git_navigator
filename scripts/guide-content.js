@@ -243,5 +243,59 @@ module.exports = [
       { q: "Which agents does this work with?", a: 'Entire captures sessions from agents such as Claude Code and Cursor; Git Navigator reads whatever checkpoints Entire has recorded for the repository. See the <a href="https://entire.io" target="_blank" rel="noreferrer">Entire</a> project for how sessions are captured.' },
     ],
     prev: { href: "ai-assistance.html", label: "AI Assistance" },
+    next: { href: "terminal.html", label: "Terminal & Agents" },
+  },
+
+  {
+    slug: "terminal",
+    title: "Terminal & Agent Sessions",
+    breadcrumb: "Customization & AI",
+    description:
+      "A worktree-aware terminal inside the Git Navigator desktop app: real PTY shells with tabs, split panes, per-worktree tab sets, layouts that survive restarts, and AI agent sessions (Claude, Codex, opencode, cursor-agent, kiro-cli) that resume where they left off.",
+    keywords: ["embedded terminal", "worktree terminal", "split panes", "claude code terminal", "codex resume", "agent sessions"],
+    ogImage: "static/terminal.png",
+    heroMedia: {
+      type: "image",
+      src: "static/terminal.png",
+      alt: "Git Navigator's Terminal activity: worktree tabs on top, a shell tab split into three panes running git log, git worktree list, and git status",
+      caption:
+        "One tab split three ways in the <code>main</code> worktree. The strip above holds a tab set for each linked worktree.",
+    },
+    hero: {
+      heading: "A terminal that knows your worktrees",
+      lead:
+        "As of v0.5.0 the desktop app has a <strong>Terminal</strong> activity in the rail. It runs real PTY shells — so <code>vim</code>, <code>htop</code>, and <code>git log</code> render properly — organized into tabs and split panes, with one tab set per worktree. Your layout and your agent sessions come back when you relaunch.",
+    },
+    highlightsTitle: "What the Terminal activity does",
+    highlights: [
+      { title: "One tab set per worktree", body: 'Each <a href="worktrees.html">linked worktree</a> gets its own terminal tabs. Switching worktrees swaps the tab set while background shells keep running and streaming, and a worktree only gets a shell once you open it — not merely because it exists.' },
+      { title: "Tabs and split panes", body: "Open as many tabs as you need and split any pane horizontally or vertically. Drag a divider to resize, and the strip shows which panes are busy and which are idle at a glance." },
+      { title: "Agent sessions that resume", body: "Start Claude, Codex, opencode, cursor-agent, or kiro-cli straight from the new-tab picker. Quit the app mid-session and relaunch: the pane resumes the full transcript at zero token cost. Several sessions can share one worktree." },
+      { title: "Layouts survive restarts", body: "Worktree sets, tabs, and the split-pane tree are restored on relaunch. Shell panes also get back their last 200 lines of scrollback above a dated divider; agent panes are never stored." },
+    ],
+    walkthroughTitle: "A closer look",
+    walkthroughOrdered: false,
+    walkthrough: [
+      { label: "New-tab picker", caption: "The <strong>+</strong> menu (or <kbd>Ctrl+Shift+T</kbd>) opens a plain shell, starts an agent, or resumes an earlier session. It only lists agent CLIs it finds on your <code>PATH</code>, and the digit hints let you pick without the mouse." },
+      { label: "An agent in a tab", caption: "Claude Code running in its own tab, in the worktree's directory, right next to the shell tab. This capture shows a first run without credentials; a signed-in agent opens straight into its session and is resumed on the next launch." },
+      { label: "Switch worktrees", caption: "Selecting <code>fix/overlay</code> in the worktree strip opens that worktree's own tab set, with the shell already in its directory. The <code>main</code> tabs keep running in the background." },
+    ],
+    steps: {
+      title: "Getting around",
+      items: [
+        { title: "Open the activity", body: "Click <strong>Terminal</strong> in the activity rail (above Settings). The first tab opens a login shell in the worktree that is active in the Git activity." },
+        { title: "Open a tab or an agent", body: "Use the <strong>+</strong> button, or press <kbd>Cmd+T</kbd> on macOS / <kbd>Ctrl+Shift+T</kbd> on Windows and Linux to open the picker from the keyboard. Press <kbd>1</kbd> for a shell or <kbd>2</kbd>+ for an agent — the picker lists only the agent CLIs found on your <code>PATH</code>." },
+        { title: "Move between tabs and worktrees", body: "<kbd>Ctrl+Tab</kbd> / <kbd>Ctrl+Shift+Tab</kbd> cycle tabs in the current worktree. <kbd>Ctrl+Cmd+Tab</kbd> on macOS (or <kbd>Ctrl+Alt+Tab</kbd> on Windows and Linux) cycles worktrees. The mouse wheel scrolls either tab strip sideways." },
+        { title: "Close safely", body: "<kbd>Cmd+W</kbd> on macOS / <kbd>Ctrl+Shift+W</kbd> elsewhere closes the active tab. Git Navigator asks first when the tab has several panes, a running command, or a live agent session; answer the dialog with <kbd>y</kbd> or <kbd>n</kbd>." },
+        { title: "Copy and paste", body: "On Windows and Linux use <kbd>Ctrl+Shift+C</kbd> / <kbd>Ctrl+Shift+V</kbd>, so plain <kbd>Ctrl+C</kbd> always interrupts. macOS uses the usual <kbd>Cmd+C</kbd> / <kbd>Cmd+V</kbd>." },
+      ],
+    },
+    faqs: [
+      { q: "Is the terminal available in the VS Code extension?", a: "No. The Terminal activity is part of the desktop app only; in VS Code, use the editor's built-in terminal." },
+      { q: "Which AI agents can I launch from the terminal?", a: "Claude, Codex, opencode, cursor-agent, and kiro-cli. The new-tab picker only lists the ones it finds on your PATH, and each agent's session is captured so a restore resumes that exact session." },
+      { q: "Does Git Navigator save what I type or my terminal output?", a: "Keystrokes are never logged. Shell panes keep their last 200 lines of scrollback so it can be restored after a restart; turn off <em>Restore shell scrollback on restart</em> in the Terminal settings to stop that and delete the stored history. Agent panes are never stored — their agent CLI resumes the transcript itself." },
+      { q: "Can I see whether a shell is busy without switching to it?", a: "Yes. The tab strip and the worktree strip both show per-pane working/idle activity, so you can tell at a glance which shells are still running something." },
+    ],
+    prev: { href: "entire.html", label: "Entire (Agent Sessions)" },
   },
 ];

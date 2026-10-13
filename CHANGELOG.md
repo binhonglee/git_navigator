@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.5.0] - 2026-10-12
+### Desktop
+- Add an embedded, worktree-aware terminal activity backed by real PTY shells, with terminal tabs, split panes, and per-worktree tab sets that stay live in the background and hand off cleanly between worktrees
+- Persist the terminal layout across restarts — worktree sets, tabs, and the split-pane tree are restored on relaunch, and agent sessions resume their full transcript at zero token cost
+- Launch and resume AI agent sessions directly from the new-tab picker, covering Claude, Codex, opencode, cursor-agent, and kiro-cli, with live session capture and per-session leases so multiple sessions can share one worktree
+- Add keyboard shortcuts for terminal tabs, worktrees, splits, and tab close, plus a keyboard-only new-tab picker that lists only the agent CLIs found on your PATH
+- Copy and paste in the terminal with Ctrl+Shift+C/V on Windows and Linux while keeping plain Ctrl+C as an interrupt; macOS uses the native Cmd-based Edit menu
+- Report per-pane working/idle activity in the tab strip and worktree strip so you can see at a glance which shells are busy
+- Keep terminal output responsive under a flood via backpressure, and restyle terminal panes live when the color scheme or fonts change
+- Support macOS screenshots and screen recordings of the desktop app for capture tooling
+- Restore the last 200 lines of each shell pane's scrollback after a restart, above a dated divider; agent panes are never stored, and the Terminal setting "Restore shell scrollback on restart" (on by default) turns it off and deletes the stored history
+- Pin each opencode tab to its own session, so restoring several opencode tabs in one worktree no longer collapses them all onto the directory's latest session
+- Show real titles in the Codex resume picker instead of bare session ids, and hide the app's own commit-message and split-commit Codex runs from the picker and from session restore
+- Ask before closing a tab that runs a live agent session, and confirm or cancel the close dialog with y and n
+- Close the new-tab menu and tab context menus with Escape without sending an Escape key to the shell
+- Keep the active terminal tab and worktree tab fully in view, and scroll the tab strips sideways with the mouse wheel
+- Open OSC 8 hyperlinks from terminal output in the browser (http and https links only)
+- Restyle the terminal and worktree tab strips as square tabs with worktree and terminal icons
+- Refresh the graph within a second when branches, tags, remote-tracking refs, or stashes change outside the app (for example a `git fetch` or `git branch -f` in another terminal), and check for staleness when you return to the Git activity or the window
+
+### Shared
+- Make Settings searchable in both the Tauri app and the VS Code extension, and add a read-only keyboard-shortcuts reference card
+- Search the active tab with Cmd/Ctrl+K
+- Add a "copy branch name" action and activity-switching shortcuts, and converge the tab search bars and surfaces on shared design-system primitives
+- Show the loading overlay for every action that changes the repository, starting at the click instead of when the backend answers; quick actions such as staging files, resolving conflicts, and Files writes show it only if they take longer than 300 ms, and overlapping runs no longer clear each other's overlay
+- Open a submodule in an overlay with its own status, files, diff, and stage/commit flow (or in a new window) instead of switching the whole app into it, and list only the initialized submodules of the active worktree
+
+### Fixed
+- Keep header dropdowns above the graph content so they are no longer clipped by commit rows
+- Remove clean worktrees that contain initialized submodules; Git Navigator verifies that the worktree and every nested submodule are clean before it forces the removal
+- Show the loading overlay above an open confirm dialog, so actions such as deleting a branch no longer look frozen while Git runs
+- Stop a click on a dialog button from opening a hover menu (such as a ref-badge menu) that re-renders under the pointer
+- Write the desktop app's `settings.json` atomically, so two running instances can no longer leave a torn settings file
+
 ## [0.4.0] - 2026-08-06
 ### Performance
 - Make commit-graph rebuilds roughly 42× faster on a 1,500-commit, 40-branch history by batching branch-ancestry computation instead of rebuilding and walking the commit map for every branch pair
