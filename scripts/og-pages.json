@@ -1,0 +1,19 @@
+[
+  { "html": "index.html", "path": "index.html", "name": "index" },
+  { "html": "download.html", "path": "download.html", "name": "download" },
+  { "html": "docs/index.html", "path": "docs/index.html", "name": "docs-index" },
+  { "html": "docs/branches-and-tags.html", "path": "docs/branches-and-tags.html", "name": "docs-branches-and-tags" },
+  { "html": "docs/commit-graph.html", "path": "docs/commit-graph.html", "name": "docs-commit-graph" },
+  { "html": "docs/conflict-resolution.html", "path": "docs/conflict-resolution.html", "name": "docs-conflict-resolution" },
+  { "html": "docs/drag-and-drop-rebase.html", "path": "docs/drag-and-drop-rebase.html", "name": "docs-drag-and-drop-rebase" },
+  { "html": "docs/fetch.html", "path": "docs/fetch.html", "name": "docs-fetch" },
+  { "html": "docs/file-explorer.html", "path": "docs/file-explorer.html", "name": "docs-file-explorer" },
+  { "html": "docs/pull.html", "path": "docs/pull.html", "name": "docs-pull" },
+  { "html": "docs/push.html", "path": "docs/push.html", "name": "docs-push" },
+  { "html": "docs/reflog.html", "path": "docs/reflog.html", "name": "docs-reflog" },
+  { "html": "docs/stack.html", "path": "docs/stack.html", "name": "docs-stack" },
+  { "html": "docs/stack_reviewer.html", "path": "docs/stack_reviewer.html", "name": "docs-stack-reviewer" },
+  { "html": "docs/stash.html", "path": "docs/stash.html", "name": "docs-stash" },
+  { "html": "docs/uncommitted-changes.html", "path": "docs/uncommitted-changes.html", "name": "docs-uncommitted-changes" },
+  { "html": "docs/worktrees.html", "path": "docs/worktrees.html", "name": "docs-worktrees" }
+]

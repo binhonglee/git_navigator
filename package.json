@@ -1,0 +1,10 @@
+{
+  "name": "gitnav-site",
+  "private": true,
+  "scripts": {
+    "generate:og-previews": "node scripts/generate-og-previews.js"
+  },
+  "devDependencies": {
+    "@globetrotte/altimeter": "^0.0.5"
+  }
+}

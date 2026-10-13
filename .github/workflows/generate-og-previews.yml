@@ -1,0 +1,46 @@
+name: Generate OG previews
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - assets
+    paths:
+      - "**/*.html"
+      - "static/site.css"
+      - "static/site.js"
+      - "scripts/generate-og-previews.js"
+      - "scripts/og-pages.json"
+      - "package.json"
+      - "package-lock.json"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-previews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
+      - name: Generate preview screenshots
+        run: npm run generate:og-previews
+
+      - name: Commit updated previews
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: regenerate OG preview images"
+          file_pattern: "static/og/*.jpg **/*.html"
