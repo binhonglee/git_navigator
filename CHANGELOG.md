@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.5.1] - 2026-10-31
+
+### Desktop
+- Record freeze diagnostics in a persistent log: main-thread stalls, webview stalls and slow message handlers, slow git operations, webview reloads, and mirrored warnings are written as NDJSON to `<config dir>/logs/diagnostics.log` (rotated, never containing file contents or credentials), with a new "Open logs folder" button in Settings → About for attaching it to a bug report
+- Keep terminal sessions and view state across a webview reload: when macOS kills the page (WebKit memory pressure or a crash), the app reloads itself and reattaches to every running shell and agent pane, replaying its recent output instead of spawning a new shell over a live process; the attach-or-spawn decision is now atomic in the backend, so a slow or busy page can never kill a live pane
+- Run a new worktree's post-create command in an in-app terminal pane inside the new worktree (the pane stays interactive after the command ends), falling back to the OS terminal only when the pane cannot start; the command runs once and is never re-run after a restart or a retry
+- Browse and open gitignored directories in the Files explorer — collapsed ignored folders now expand, and their files open like any other file
+- Add an "Include ignored files" toggle to Files search (on by default, persisted in app settings), so content and name searches cover gitignored paths too; both searches are bounded so a huge build-output directory cannot hang them
+- Add "Search in this folder" to every folder row's context menu in the Files explorer: a removable chip scopes both the name filter and the content search to that folder, and it composes with the ignored-files toggle
+- Keep the rest of the app usable while a git operation runs in the desktop shell: the loading overlay now covers only the Git activity, the activity rail and app bar stay clickable, and activity-switching shortcuts keep working
+- Show the loading overlay while the saved repository restores at launch, instead of a frozen welcome state followed by a second overlay flash after the graph lands
+- Hide links to the website in Microsoft Store builds to satisfy Store certification; direct-download, Mac App Store, and VS Code builds keep them
+
+### Shared
+- Show each branch's remote state as a badge in the Branches overlay — "pushed", "N to push", "N to pull", both counts when diverged, "not pushed", or "remote gone" — plus the branch's PR badge styled exactly like the graph's, and correct provider labels for self-hosted forges
+- Recognize branches pushed without `-u` (for example by a CLI agent) as on their remote instead of "not pushed", add a "Set upstream to <ref>" action to the branch menus, and hide "Open on <provider>" when the upstream is gone; PR badges now match by the PR's head branch, so a fresh branch riding another branch's PR no longer inherits that PR's number
+- Delete branches in the background: the Delete action hides the branch immediately and runs without a confirm dialog or loading overlay (git's safe delete still refuses unmerged branches), and a failed delete restores the branch and queues a failure dialog that offers force only when git refused a non-force delete; deleting a merged branch uses the same background path
+- Make parsed git output immune to the user's git config: colors (`color.ui=always` and friends), diff prefixes, external-diff and textconv filters, path quoting, and `diff3`/`zdiff3` conflict styles can no longer corrupt what the app reads — this also stops raw ANSI escape codes from appearing in diffs
+
+### Fixed
+- Keep file diffs in step with stage and unstage: a staged file shows its staged diff (Staged and Unstaged sections apart when partly staged), "No changes" appears only when the file truly matches HEAD, each side reports its own errors, and an edit that keeps the same changed-line counts now refreshes the diff instead of showing the old text
+- Switch to the main worktree in the same refresh when the active worktree is removed outside the app (`git worktree remove` in a terminal, `rm -rf`, or a prune), instead of freezing the graph on a deleted directory; an info toast names the removed worktree, and terminal panes of the removed worktree stay open
+- Fix a stack overflow that crashed the app on linear histories of about 2,000 commits by walking commit ancestors iteratively
+- Stop the branch range diff in the commit sidebar from re-requesting itself in a loop after each response
+- Keep ref badges and their open menus stable across graph refreshes, and keep a deleted branch hidden until an update that no longer lists it lands (no flash back between the delete and the refresh)
+- Fit the terminal grid to the real pane content box so the last row and column are no longer clipped at some window sizes, and remove a thin dark strip below the last row
+- Show the real backend error on the agent recovery overlay ("Retry / Start fresh") as one muted, selectable detail line instead of only the generic copy
+- Fix Files search follow-ups: a cleared content query no longer replays a late grep reply, the ignored-file index rebuilds after a tree invalidation, the name filter no longer shows phantom loading rows, folders under a collapsed ignored directory now render dimmed like their leaves, and simultaneous searches from two windows no longer cancel each other
+
+### Performance
+- Run every user-started git operation without a time limit — commits with slow pre-commit hooks, large checkouts, and LFS checkouts run to completion instead of being killed mid-write — while every background read keeps a bounded timeout, so a hung git process (fsmonitor handshake, credential prompt) can no longer stall the refresh poll or the UI
+- Read a worktree's status in one git process instead of chaining rev-parse, config, and rev-list calls around every status read, and serve remote tag hashes from a TTL cache so graph updates never touch the network
+- Drop filesystem events for gitignored paths (a build in `target/` or `node_modules/` no longer repaints the status every poll tick) and rate-limit background worktree status emits, so a burst of edits costs one status read
+- Reload a worktree's Files tree only when its set of index and untracked entries actually moves, so a stream of agent edits to tracked files no longer re-walks the repository on every status push
+- Mount the Branches and Tags overlay only while it is open and apply pending branch-deletion hides per row instead of rebuilding the graph, keeping branch deletes fast on large repositories
+
 ## [0.5.0] - 2026-10-12
 ### Desktop
 - Add an embedded, worktree-aware terminal activity backed by real PTY shells, with terminal tabs, split panes, and per-worktree tab sets that stay live in the background and hand off cleanly between worktrees
